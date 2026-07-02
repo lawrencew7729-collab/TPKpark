@@ -1,0 +1,5 @@
+# robots.txt for TPK Park
+User-agent: *
+Allow: /
+
+Sitemap: https://www.tpkpark.com/sitemap.xml
