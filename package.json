@@ -1,0 +1,24 @@
+{
+  "name": "tpkpark-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./css/tailwind.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrencew7729-collab/TPKpark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lawrencew7729-collab/TPKpark/issues"
+  },
+  "homepage": "https://github.com/lawrencew7729-collab/TPKpark#readme",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}

@@ -60,132 +60,76 @@
     }
     </script>
     
-    <!-- 严格锁定稳定版本的第三方 CDN -->
-    <script src="https://cdn.tailwindcss.com/3.4.3"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10.3.1/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        olive: { 900: '#3A4A3E', 800: '#4A5D4E', 700: '#5F7363' },
-                        charcoal: { 900: '#1F2022', 800: '#2E3033', 700: '#43464A', 300: '#9CA3AF', 100: '#F3F4F6', 500: '#6B7280' },
-                        gold: '#C5A059',
-                        light: '#F8F9F8',
-                        brand: { light: '#f3f4f6', gold: '#cba153', dark: '#1c1c1c', gray: '#5a5a5a' }
-                    },
-                    fontFamily: {
-                        futura: ['"Futura PT"', 'sans-serif'],
-                        century: ['"Century Gothic"', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 4s ease-in-out infinite',
-                        'pulse-gold': 'pulseGold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'slide-down': 'slideDown 0.3s ease-out forwards',
-                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
-                        'shimmer': 'shimmer 4s linear infinite',
-                    },
-                    keyframes: {
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-                        pulseGold: { '0%, 100%': { opacity: '1', transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(203, 161, 83, 0.7)' }, '50%': { opacity: '.9', transform: 'scale(1.05)', boxShadow: '0 0 0 15px rgba(203, 161, 83, 0)' } },
-                        slideDown: { '0%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' }, '100%': { opacity: '1', transform: 'translateY(0) scale(1)' } },
-                        shimmer: { '0%': { backgroundPosition: '200% center' }, '100%': { backgroundPosition: '-200% center' } }
-                    }
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "TPK Park",
+                "item": "https://www.tpkpark.com/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is TPK Park?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TPK Park is Puchong's premier Home & Living, Auto Hub and Lifestyle destination located along the Bukit Jalil Highway in Taman Perindustrian Kinrara, Puchong."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where is TPK Park located?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TPK Park is located at Taman Perindustrian Kinrara, along the Bukit Jalil Highway, Puchong, Selangor, Malaysia."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What brands are at TPK Park?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TPK Park features top home and living brands including Kuche+BaTH, BMS Jubin, V Haus Living, BUILTOP, Baagus, Balens Design, Gahing, Lavino, Signature and more."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the Home Carnival at TPK Park?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The TPK Park Home Carnival is a 5-day event from 1–5 July featuring exclusive promotions, daily lucky draws with RM500+ spending, Touch 'n Go eWallet rewards, and grand prizes including a refrigerator worth RM2,469."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are there leasing opportunities at TPK Park?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, TPK Park offers business-ready commercial spaces for lease suitable for home improvement, automotive, and lifestyle businesses. Contact us via the enquiry form on our website."
                 }
             }
-        }
+        ]
+    }
     </script>
-
-    <style>
-        @font-face {
-            font-family: 'Futura PT';
-            src: local('Futura PT Extra Bold'), local('Futura-ExtraBold');
-            font-weight: 800;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Century Gothic';
-            src: local('Century Gothic Light'), local('CenturyGothic-Light');
-            font-weight: 300;
-            font-style: normal;
-        }
-
-        /* 强力防御：锁定根节点防止横向溢出 */
-        html, body { 
-            max-width: 100%; 
-            overflow-x: hidden; 
-            background-color: #F8F9F8; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            font-family: "Century Gothic", sans-serif !important;
-            font-weight: 300 !important;
-        }
-        
-        h1, h2, h3, h4, h5, h6, .font-futura {
-            font-family: "Futura PT", sans-serif !important;
-            font-weight: 800 !important;
-        }
-        
-        p, span, div, input, textarea, button, a, .font-century {
-            font-family: "Century Gothic", sans-serif !important;
-            font-weight: 300 !important;
-        }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #F8F9F8; }
-        ::-webkit-scrollbar-thumb { background: #4A5D4E; border-radius: 4px; }
-
-        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-        .clip-irregular { border-radius: 40px 0 40px 0; }
-        .clip-irregular-alt { border-radius: 0 40px 0 40px; }
-
-        .lightbox-overlay, .enquiry-modal-overlay, .notice-modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(5px); }
-        .lightbox-overlay.active, .enquiry-modal-overlay.active, .notice-modal-overlay.active { opacity: 1; pointer-events: auto; z-index: 9999; }
-        .lightbox-content, .enquiry-modal-content, .notice-modal-content { transform: scale(0.95); transition: transform 0.3s ease; }
-        .lightbox-overlay.active .lightbox-content, .enquiry-modal-overlay.active .enquiry-modal-content, .notice-modal-overlay.active .notice-modal-content { transform: scale(1); }
-
-        .swiper-pagination-bullet-active { background-color: #3A4A3E !important; }
-        .social-swiper-pagination .swiper-pagination-bullet-active { background-color: #C5A059 !important; }
-        .news-swiper-pagination .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.4); }
-        .news-swiper-pagination .swiper-pagination-bullet-active { background-color: #C5A059 !important; }
-
-        .reveal-hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal-visible { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        .view-section { display: none; animation: fadeIn 0.4s ease-in-out; flex-grow: 1; }
-        .view-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .stack-container { position: relative; width: 100%; height: 100%; perspective: 1000px; }
-        
-        .stack-container[data-state="1"] .card-1 { transform: translateX(0) scale(1); z-index: 30; opacity: 1; }
-        .stack-container[data-state="1"] .card-2 { transform: translateX(8%) scale(0.95); z-index: 20; opacity: 0.8; }
-        .stack-container[data-state="1"] .card-3 { transform: translateX(16%) scale(0.90); z-index: 10; opacity: 0.6; }
-
-        .stack-container[data-state="2"] .card-2 { transform: translateX(0) scale(1); z-index: 30; opacity: 1; }
-        .stack-container[data-state="2"] .card-3 { transform: translateX(8%) scale(0.95); z-index: 20; opacity: 0.8; }
-        .stack-container[data-state="2"] .card-1 { transform: translateX(16%) scale(0.90); z-index: 10; opacity: 0.6; }
-
-        .stack-container[data-state="3"] .card-3 { transform: translateX(0) scale(1); z-index: 30; opacity: 1; }
-        .stack-container[data-state="3"] .card-1 { transform: translateX(8%) scale(0.95); z-index: 20; opacity: 0.8; }
-        .stack-container[data-state="3"] .card-2 { transform: translateX(16%) scale(0.90); z-index: 10; opacity: 0.6; }
-        
-        /* 强制覆盖属性确保重叠和防止溢出 */
-        .stack-card { 
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-            position: absolute !important; 
-            top: 0; left: 0;
-            width: 82% !important; 
-            height: 100% !important; 
-            transform-origin: left center; 
-        }
-    </style>
+    
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10.3.1/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
 </head>
 <body class="text-gray-800 antialiased font-century font-light">
 
@@ -281,7 +225,7 @@
                         </div>
                         
                         <div class="bg-white p-2 md:p-3 rounded-3xl shadow-2xl relative overflow-hidden clip-irregular-alt transform transition duration-500 hover:scale-105">
-                            <img src="https://i.imgur.com/syF6CHS.jpg" alt="Home Carnival Event" class="w-full h-auto rounded-2xl object-cover" onerror="this.src='https://placehold.co/800x1000/C5A059/FFF?text=Carnival+Event'">
+                            <img loading="lazy" src="https://i.imgur.com/syF6CHS.jpg" alt="Home Carnival Event" class="w-full h-auto rounded-2xl object-cover" onerror="this.src='https://placehold.co/800x1000/C5A059/FFF?text=Carnival+Event'">
                         </div>
                     </div>
                 </div>
@@ -293,7 +237,7 @@
                 <div class="absolute top-10 right-[-5%] w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
                 <div class="max-w-5xl w-full mx-auto text-center z-10 flex flex-col items-center">
                     <div class="reveal-anim delay-100 flex flex-col items-center mb-8 w-full">
-                        <img src="https://i.imgur.com/yFCJC9P.png" alt="Malaysia Book of Records" class="h-28 md:h-40 w-auto object-contain shrink-0 drop-shadow-xl" onerror="this.src='https://placehold.co/300x120/f3f4f6/1c1c1c?text=Book+of+Records'">
+                        <img loading="lazy" src="https://i.imgur.com/yFCJC9P.png" alt="Malaysia Book of Records" class="h-28 md:h-40 w-auto object-contain shrink-0 drop-shadow-xl" onerror="this.src='https://placehold.co/300x120/f3f4f6/1c1c1c?text=Book+of+Records'">
                         <p class="text-lg md:text-xl text-brand-gray font-century font-light max-w-3xl mx-auto mt-6">
                             A Malaysia Book of Records milestone in TPK Park's transformation into Puchong's recognised Home & Living destination.
                         </p>
@@ -349,15 +293,15 @@
                     </div>
                     
                     <div class="grid grid-cols-3 gap-2 md:gap-6 w-full">
-                        <a href="https://kbomy.com/" target="_blank" class="reveal-anim delay-0 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/RkqPoxX.jpg" alt="Kuche+BaTH Outlet - Home & Living Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
-                        <a href="https://www.jubinbms.com.my/bathroom-accessories-renovation-material-ceramic-tiles-porcelain-mosaics-italian-faucet-tap-fittings-cotto-johor-bahru-kuala-lumpur-seremban-sarawak" target="_blank" class="reveal-anim delay-100 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/0obKj8q.jpg" alt="BMS Jubin - Bathroom & Tiles Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
-                        <a href="https://www.vhausliving.com/" target="_blank" class="reveal-anim delay-200 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/OKNIcEV.jpg" alt="V Haus Living - Furniture & Home Living Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
-                        <a href="https://www.builtopmalaysia.com/" target="_blank" class="reveal-anim delay-0 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/9xqSdLR.jpg" alt="BUILTOP - Construction & Renovation Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
-                        <a href="https://www.baagus.com/" target="_blank" class="reveal-anim delay-100 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/Clkd3Wj.jpg" alt="Baagus - Home Decor Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
-                        <a href="https://balensdesign.com/" target="_blank" class="reveal-anim delay-200 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/srfngr4.jpg" alt="Balens Design - Interior Design Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
-                        <a href="https://gahing.com/" target="_blank" class="reveal-anim delay-0 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/bq1kfCQ.jpg" alt="Gahing - Hardware & Home Improvement Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
-                        <a href="https://www.lavino.com.my/" target="_blank" class="reveal-anim delay-100 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/w0pcs4w.jpg" alt="Lavino - Kitchen & Bathroom Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
-                        <a href="https://signature.my/" target="_blank" class="reveal-anim delay-200 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img src="https://i.imgur.com/TbSsOwh.jpg" alt="Signature - Lifestyle Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
+                        <a href="https://kbomy.com/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-0 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/RkqPoxX.jpg" alt="Kuche+BaTH Outlet - Home & Living Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
+                        <a href="https://www.jubinbms.com.my/bathroom-accessories-renovation-material-ceramic-tiles-porcelain-mosaics-italian-faucet-tap-fittings-cotto-johor-bahru-kuala-lumpur-seremban-sarawak" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-100 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/0obKj8q.jpg" alt="BMS Jubin - Bathroom & Tiles Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
+                        <a href="https://www.vhausliving.com/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-200 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/OKNIcEV.jpg" alt="V Haus Living - Furniture & Home Living Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
+                        <a href="https://www.builtopmalaysia.com/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-0 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/9xqSdLR.jpg" alt="BUILTOP - Construction & Renovation Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
+                        <a href="https://www.baagus.com/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-100 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/Clkd3Wj.jpg" alt="Baagus - Home Decor Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[70px] md:max-h-[112px]"></a>
+                        <a href="https://balensdesign.com/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-200 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/srfngr4.jpg" alt="Balens Design - Interior Design Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
+                        <a href="https://gahing.com/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-0 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/bq1kfCQ.jpg" alt="Gahing - Hardware & Home Improvement Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
+                        <a href="https://www.lavino.com.my/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-100 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/w0pcs4w.jpg" alt="Lavino - Kitchen & Bathroom Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
+                        <a href="https://signature.my/" target="_blank" rel="noopener noreferrer" class="reveal-anim delay-200 h-full w-full min-h-[90px] md:min-h-[160px] flex flex-col items-center justify-center p-3 md:p-6 rounded-lg md:rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white border border-gray-100 cursor-pointer"><img loading="lazy" src="https://i.imgur.com/TbSsOwh.jpg" alt="Signature - Lifestyle Brand at TPK Park" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 max-h-[50px] md:max-h-[80px]"></a>
                     </div>
                 </div>
             </section>
@@ -386,7 +330,7 @@
                         <div class="reveal-anim delay-200 flex h-full">
                             <div class="bg-white border border-gray-100 rounded-lg md:rounded-2xl p-3 md:p-6 flex flex-col items-center text-center w-full hover:border-blue-300 transition-colors shadow-sm relative pb-12 md:pb-16">
                                 <div class="w-12 h-8 md:w-24 md:h-16 flex items-center justify-center mb-2 md:mb-4">
-                                    <img src="https://i.imgur.com/iNrQPKD.png" alt="TNG" class="w-full h-full object-contain drop-shadow-sm">
+                                    <img loading="lazy" src="https://i.imgur.com/iNrQPKD.png" alt="TNG" class="w-full h-full object-contain drop-shadow-sm">
                                 </div>
                                 <h4 class="font-futura text-[10px] sm:text-sm md:text-xl text-brand-dark mb-1 md:mb-2 leading-tight">Touch 'n Go</h4>
                                 <p class="text-brand-gray font-century font-light text-[7px] sm:text-xs md:text-sm leading-tight mb-3">eWallet Rewards</p>
@@ -428,7 +372,7 @@
                     
                     <div class="relative z-10 text-charcoal-700 w-full flex flex-col items-start">
                         <!-- MD Photo - 彻底强制左对齐，去除圆角，并且在手机和电脑端都在文字上方独立排版 -->
-                        <img src="https://i.imgur.com/vM9ott4.jpg" alt="Managing Director" class="block w-40 sm:w-48 md:w-64 mb-6 object-cover shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative z-20 self-start">
+                        <img loading="lazy" src="https://i.imgur.com/vM9ott4.jpg" alt="Managing Director" class="block w-40 sm:w-48 md:w-64 mb-6 object-cover shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative z-20 self-start">
                         
                         <h3 class="text-lg sm:text-xl md:text-3xl font-futura text-charcoal-900 mb-4 md:mb-6 italic leading-relaxed md:leading-snug text-left self-start w-full">
                             "TPK Park's transformation from a traditional industrial park into a vibrant Home & Living, Auto Hub and Lifestyle destination has been a <span class="text-gold">three-decade journey.</span>"
@@ -474,16 +418,16 @@
                     <div class="swiper-wrapper">
                         <!-- Top New Social Items -->
                         <div class="swiper-slide w-[260px] md:w-[300px]">
-                            <a href="http://xhslink.com/o/8uDPbP77dQO" target="_blank" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
+                            <a href="http://xhslink.com/o/8uDPbP77dQO" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
                                 <div class="relative w-full aspect-[4/5] bg-charcoal-900 rounded-2xl mb-4 overflow-hidden">
-                                    <img src="https://i.imgur.com/bNJ4sH6.jpg" alt="Yumiki" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                                    <img loading="lazy" src="https://i.imgur.com/bNJ4sH6.jpg" alt="Yumiki" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-lg">
                                             <i class="ph-fill ph-play text-2xl"></i>
                                         </div>
                                     </div>
                                     <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1 font-century font-light">
-                                        <img src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert mr-1" alt="XHS"> Xiaohongshu
+                                        <img loading="lazy" src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert mr-1" alt="XHS"> Xiaohongshu
                                     </div>
                                 </div>
                                 <div class="px-2 pb-2">
@@ -496,9 +440,9 @@
                         </div>
                         
                         <div class="swiper-slide w-[260px] md:w-[300px]">
-                            <a href="https://vt.tiktok.com/ZSCaqfFoG/" target="_blank" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
+                            <a href="https://vt.tiktok.com/ZSCaqfFoG/" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
                                 <div class="relative w-full aspect-[4/5] bg-charcoal-900 rounded-2xl mb-4 overflow-hidden">
-                                    <img src="https://i.imgur.com/j2xUL8M.jpg" alt="Wanie" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                                    <img loading="lazy" src="https://i.imgur.com/j2xUL8M.jpg" alt="Wanie" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-lg">
                                             <i class="ph-fill ph-play text-2xl"></i>
@@ -518,16 +462,16 @@
                         </div>
 
                         <div class="swiper-slide w-[260px] md:w-[300px]">
-                            <a href="http://xhslink.com/o/96laPIkPtzl" target="_blank" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
+                            <a href="http://xhslink.com/o/96laPIkPtzl" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
                                 <div class="relative w-full aspect-[4/5] bg-charcoal-900 rounded-2xl mb-4 overflow-hidden">
-                                    <img src="https://i.imgur.com/mGGvkED.jpg" alt="Sunnie" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                                    <img loading="lazy" src="https://i.imgur.com/mGGvkED.jpg" alt="Sunnie" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-lg">
                                             <i class="ph-fill ph-play text-2xl"></i>
                                         </div>
                                     </div>
                                     <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1 font-century font-light">
-                                        <img src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert mr-1" alt="XHS"> Xiaohongshu
+                                        <img loading="lazy" src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert mr-1" alt="XHS"> Xiaohongshu
                                     </div>
                                 </div>
                                 <div class="px-2 pb-2">
@@ -540,9 +484,9 @@
                         </div>
 
                         <div class="swiper-slide w-[260px] md:w-[300px]">
-                            <a href="https://vt.tiktok.com/ZSCaqmWnU/" target="_blank" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
+                            <a href="https://vt.tiktok.com/ZSCaqmWnU/" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
                                 <div class="relative w-full aspect-[4/5] bg-charcoal-900 rounded-2xl mb-4 overflow-hidden">
-                                    <img src="https://i.imgur.com/dmikg84.jpg" alt="Soultannn" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                                    <img loading="lazy" src="https://i.imgur.com/dmikg84.jpg" alt="Soultannn" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-lg">
                                             <i class="ph-fill ph-play text-2xl"></i>
@@ -562,16 +506,16 @@
                         </div>
 
                         <div class="swiper-slide w-[260px] md:w-[300px]">
-                            <a href="http://xhslink.com/o/6JQwCogMhQw" target="_blank" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
+                            <a href="http://xhslink.com/o/6JQwCogMhQw" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
                                 <div class="relative w-full aspect-[4/5] bg-charcoal-900 rounded-2xl mb-4 overflow-hidden">
-                                    <img src="https://i.imgur.com/awIevQD.jpg" alt="Evon" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                                    <img loading="lazy" src="https://i.imgur.com/awIevQD.jpg" alt="Evon" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-lg">
                                             <i class="ph-fill ph-play text-2xl"></i>
                                         </div>
                                     </div>
                                     <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1 font-century font-light">
-                                        <img src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert mr-1" alt="XHS"> Xiaohongshu
+                                        <img loading="lazy" src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert mr-1" alt="XHS"> Xiaohongshu
                                     </div>
                                 </div>
                                 <div class="px-2 pb-2">
@@ -584,9 +528,9 @@
                         </div>
 
                         <div class="swiper-slide w-[260px] md:w-[300px]">
-                            <a href="https://www.instagram.com/reels/DaIcrUytsLL/" target="_blank" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
+                            <a href="https://www.instagram.com/reels/DaIcrUytsLL/" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-100 rounded-3xl p-4 hover:shadow-2xl transition-shadow duration-300 group">
                                 <div class="relative w-full aspect-[4/5] bg-charcoal-900 rounded-2xl mb-4 overflow-hidden">
-                                    <img src="https://i.imgur.com/mgIVjhW.jpg" alt="az.v.i.b.e.s" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                                    <img loading="lazy" src="https://i.imgur.com/mgIVjhW.jpg" alt="az.v.i.b.e.s" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-lg">
                                             <i class="ph-fill ph-play text-2xl"></i>
@@ -635,7 +579,7 @@
                         <!-- Newest News Item Added -->
                         <div class="swiper-slide">
                             <a href="https://www.hmetro.com.my/taxonomy/term/2057/2026/07/1377876/tpk-park-kluster-home-living-terbesar-di-malaysia" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://raw.githubusercontent.com/lawrencew7729-collab/TPKpark/main/news-cover.jpg" alt="TPK Park News HM Metro" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://raw.githubusercontent.com/lawrencew7729-collab/TPKpark/main/news-cover.jpg" alt="TPK Park News HM Metro" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -646,7 +590,7 @@
                         
                         <div class="swiper-slide">
                             <a href="https://www.kwongwah.com.my/?p=1801778" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/TVeuKhd.jpg" alt="TPK Park News Kwong Wah" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/TVeuKhd.jpg" alt="TPK Park News Kwong Wah" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -657,7 +601,7 @@
                         
                         <div class="swiper-slide">
                             <a href="https://www.nst.com.my/business/corporate/2026/06/1475902/tpk-park-enters-record-books-largest-home-and-living-retail" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/J5m7PV5.jpg" alt="TPK Park News NST" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/J5m7PV5.jpg" alt="TPK Park News NST" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -668,7 +612,7 @@
                         
                         <div class="swiper-slide">
                             <a href="https://guangming.com.my/%e3%80%90%e5%b8%82%e5%9c%ba%e6%83%85%e6%8a%a5%e3%80%91%e5%b7%a5%e4%b8%9a%e5%9b%ad%e6%9c%80%e5%a4%a7%e5%ae%b6%e5%b1%85%e4%b8%8e%e7%94%9f%e6%b4%bb%e9%9b%b6%e5%94%ae%e9%9b%86%e7%be%a4" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/3N1S23N.jpg" alt="TPK Park News Guang Ming" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/3N1S23N.jpg" alt="TPK Park News Guang Ming" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -679,7 +623,7 @@
                         
                         <div class="swiper-slide">
                             <a href="https://businessnews.com.my/tpk-park-30-year-transformation-book-of-record/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/PN8KtTZ.jpg" alt="TPK Park News Business News" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/PN8KtTZ.jpg" alt="TPK Park News Business News" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -690,7 +634,7 @@
 
                         <div class="swiper-slide">
                             <a href="https://malayanewsroom.com/26/06/2026/tpk-park-raih-pengiktirafan-malaysia-book-of-records-hasil-transformasi-selama-30-tahun/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/NRbC08K.jpg" alt="TPK Park News 1" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/NRbC08K.jpg" alt="TPK Park News - Media Coverage Article" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -701,7 +645,7 @@
 
                         <div class="swiper-slide">
                             <a href="https://kl.chinapress.com.my/20260625/%E9%87%91%E9%8A%AE%E5%B7%A5%E4%B8%9A%E5%9B%AD%E4%B8%8B%E6%9C%88%E5%98%89%E5%B9%B4%E5%8D%8E-%E5%8F%82%E5%B1%95%E5%95%86%E8%AE%BE%E5%AE%A2%E6%9C%8D%E9%83%A8%E5%88%86%E6%8A%98%E6%89%A380/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/4i6kR6D.jpg" alt="TPK Park News 2" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/4i6kR6D.jpg" alt="TPK Park News - Industry Feature" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -712,7 +656,7 @@
                         
                         <div class="swiper-slide">
                             <a href="https://mymntnews.com/2026/06/27/tpk-park-raih-pengiktirafan-malaysia-book-of-records-hasil-transformasi-selama-30-tahun/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-2xl cursor-pointer block w-full h-[320px] md:h-[350px]">
-                                <img src="https://i.imgur.com/yQTpLFu.jpg" alt="TPK Park News 3" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                                <img loading="lazy" src="https://i.imgur.com/yQTpLFu.jpg" alt="TPK Park News - Property Development Update" class="absolute inset-0 w-full h-full object-cover md:transform md:group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                                 <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                                     <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 md:group-hover:translate-y-0">
                                         Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -760,15 +704,15 @@
                         <div class="relative w-full aspect-video md:aspect-[3/2] cursor-pointer group stack-container" data-state="1" onclick="cycleStack(this)">
                             <!-- 确保所有内部卡片都有绝对的绝对定位属性避免溢出 -->
                             <div class="stack-card card-1 rounded-[20px] lg:rounded-[40px] shadow-lg overflow-hidden bg-white">
-                                <img src="https://i.imgur.com/EDf26sR.jpg" class="w-full h-full object-cover">
+                                <img loading="lazy" src="https://i.imgur.com/EDf26sR.jpg" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
                             </div>
                             <div class="stack-card card-2 rounded-[20px] lg:rounded-[40px] shadow-lg overflow-hidden bg-white">
-                                <img src="https://i.imgur.com/XsscuQz.jpg" class="w-full h-full object-cover">
+                                <img loading="lazy" src="https://i.imgur.com/XsscuQz.jpg" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
                             </div>
                             <div class="stack-card card-3 rounded-[20px] lg:rounded-[40px] shadow-lg overflow-hidden bg-white">
-                                <img src="https://i.imgur.com/Z5h4hmH.jpg" class="w-full h-full object-cover">
+                                <img loading="lazy" src="https://i.imgur.com/Z5h4hmH.jpg" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
                             </div>
                         </div>
@@ -811,11 +755,11 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Design, Renovation & Fit-out Services</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://balensdesign.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/srfngr4.jpg" alt="Bal3ns" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://balensdesign.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/srfngr4.jpg" alt="Bal3ns" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://www.builtopmalaysia.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/9xqSdLR.jpg" alt="BUILTOP" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.builtopmalaysia.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/9xqSdLR.jpg" alt="BUILTOP" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -823,8 +767,8 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Tiles, Surfaces & Flooring</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://www.jubinbms.com.my/bathroom-accessories-renovation-material-ceramic-tiles-porcelain-mosaics-italian-faucet-tap-fittings-cotto-johor-bahru-kuala-lumpur-seremban-sarawak" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/0obKj8q.jpg" alt="BMS" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.jubinbms.com.my/bathroom-accessories-renovation-material-ceramic-tiles-porcelain-mosaics-italian-faucet-tap-fittings-cotto-johor-bahru-kuala-lumpur-seremban-sarawak" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/0obKj8q.jpg" alt="BMS" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -832,11 +776,11 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Kitchen Appliances, Bathroom & Sanitaryware Solutions</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://gahing.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/bq1kfCQ.jpg" alt="Gahing" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://gahing.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/bq1kfCQ.jpg" alt="Gahing" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://kbomy.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/RkqPoxX.jpg" alt="Kuche+BaTH Outlet" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://kbomy.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/RkqPoxX.jpg" alt="Kuche+BaTH Outlet" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -844,14 +788,14 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Cabinetry, Wardrobe & Built-in Living Solutions</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://www.instagram.com/chooseinterior.cid/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/kA7JHqn.jpg" alt="Choose" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.instagram.com/chooseinterior.cid/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/kA7JHqn.jpg" alt="Choose" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://klot.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group overflow-hidden">
-                                <img src="https://i.imgur.com/Qv8LijZ.jpg" alt="KLOT" class="w-full h-full object-contain scale-[1.5] group-hover:scale-[1.6] transition-transform duration-300">
+                            <a href="https://klot.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group overflow-hidden">
+                                <img loading="lazy" src="https://i.imgur.com/Qv8LijZ.jpg" alt="KLOT" class="w-full h-full object-contain scale-[1.5] group-hover:scale-[1.6] transition-transform duration-300">
                             </a>
-                            <a href="https://signature.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/TbSsOwh.jpg" alt="signature" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://signature.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/TbSsOwh.jpg" alt="signature" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -859,14 +803,14 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Doors, Gates, Glass & Access Systems</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://www.dcmoto.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/cPfVST1.jpg" alt="DC Moto" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.dcmoto.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/cPfVST1.jpg" alt="DC Moto" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://www.fagolli.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/3JhYOBP.jpg" alt="Fagolli" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.fagolli.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/3JhYOBP.jpg" alt="Fagolli" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://premiodoor.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/Xx0nqBc.jpg" alt="Premio Safety Door" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://premiodoor.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/Xx0nqBc.jpg" alt="Premio Safety Door" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -874,11 +818,11 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Curtains, Wallpaper & Soft Furnishings</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://www.baagus.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/Clkd3Wj.jpg" alt="Baagus" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.baagus.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/Clkd3Wj.jpg" alt="Baagus" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://www.mk.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/dnvNm63.jpg" alt="MK" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.mk.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/dnvNm63.jpg" alt="MK" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -886,11 +830,11 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Furniture, Mattresses & Home Furnishings</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://www.lavino.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/w0pcs4w.jpg" alt="Lavino" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.lavino.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/w0pcs4w.jpg" alt="Lavino" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
-                            <a href="https://www.vhausliving.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/OKNIcEV.jpg" alt="V-HAUS" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.vhausliving.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/OKNIcEV.jpg" alt="V-HAUS" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -899,8 +843,8 @@
                     <div>
                         <h4 class="text-sm md:text-base font-futura text-olive-900 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">Tools & Equipment</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://www.totaltools.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                                <img src="https://i.imgur.com/nd44vwJ.jpg" alt="Total" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                            <a href="https://www.totaltools.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                                <img loading="lazy" src="https://i.imgur.com/nd44vwJ.jpg" alt="Total" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                             </a>
                         </div>
                     </div>
@@ -914,32 +858,32 @@
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="https://share.google/NCCN717dpHWDmPONe" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/Ljpjfq3.jpg" alt="Mazda" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://share.google/NCCN717dpHWDmPONe" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/Ljpjfq3.jpg" alt="Mazda" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://kiapuchong.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/WiQV4r2.jpg" alt="Kia" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://kiapuchong.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/WiQV4r2.jpg" alt="Kia" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.perodua3skinrara.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/1TSVXoc.jpg" alt="Perodua" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.perodua3skinrara.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/1TSVXoc.jpg" alt="Perodua" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.fadzilrecond.com/home" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/IqzzD0b.jpg" alt="Fadzil" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.fadzilrecond.com/home" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/IqzzD0b.jpg" alt="Fadzil" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://share.google/uXwycGArhhqYbkpgp" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/bBIDMEF.jpg" alt="Jaecoo" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://share.google/uXwycGArhhqYbkpgp" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/bBIDMEF.jpg" alt="Jaecoo" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://techtra.edu.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/vjUKfBo.jpg" alt="Techtra" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://techtra.edu.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/vjUKfBo.jpg" alt="Techtra" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://mercedesworkshop.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/xDhYa95.jpg" alt="Techtrics" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://mercedesworkshop.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/xDhYa95.jpg" alt="Techtrics" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.toyokar.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/ecFt5hj.jpg" alt="Toyokar" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.toyokar.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/ecFt5hj.jpg" alt="Toyokar" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.facebook.com/jondetailing" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/B969lyF.jpg" alt="Jon Detailing" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.facebook.com/jondetailing" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/B969lyF.jpg" alt="Jon Detailing" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
                 </div>
             </div>
@@ -951,32 +895,32 @@
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="https://www.motdgroup.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/3v9ts8U.jpg" alt="Motd" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.motdgroup.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/3v9ts8U.jpg" alt="Motd" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://share.google/aChfOguYFfQYbDDRX" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/2KykLdk.jpg" alt="Jazmina" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://share.google/aChfOguYFfQYbDDRX" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/2KykLdk.jpg" alt="Jazmina" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://maps.app.goo.gl/mPtmYw8xahaMmz2Y7" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/Z9AyKR8.jpg" alt="Lifestyle Brand" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://maps.app.goo.gl/mPtmYw8xahaMmz2Y7" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/Z9AyKR8.jpg" alt="Lifestyle Brand" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.facebook.com/aafiyah2018/?_rdr" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/y21PPFr.jpg" alt="Aafiyah" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.facebook.com/aafiyah2018/?_rdr" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/y21PPFr.jpg" alt="Aafiyah" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://99speedmart.com.my/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/FgVgsyE.jpg" alt="99 Speedmart" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://99speedmart.com.my/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/FgVgsyE.jpg" alt="99 Speedmart" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://optimumswimschool.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group overflow-hidden">
-                        <img src="https://i.imgur.com/M7NL8Uj.jpg" alt="Optimum" class="w-full h-full object-contain scale-[1.5] group-hover:scale-[1.6] transition-transform duration-300">
+                    <a href="https://optimumswimschool.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group overflow-hidden">
+                        <img loading="lazy" src="https://i.imgur.com/M7NL8Uj.jpg" alt="Optimum" class="w-full h-full object-contain scale-[1.5] group-hover:scale-[1.6] transition-transform duration-300">
                     </a>
-                    <a href="https://forseelens.com/" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/WPQsRdL.jpg" alt="Forsee Lens" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://forseelens.com/" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/WPQsRdL.jpg" alt="Forsee Lens" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.facebook.com/Acesgymnasticacademy" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/GAlkax6.jpg" alt="Aces Gymnastic Academy" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.facebook.com/Acesgymnasticacademy" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/GAlkax6.jpg" alt="Aces Gymnastic Academy" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
-                    <a href="https://www.facebook.com/happivilles?mibextid=wwXIfr&rdid=FTFDxYSRUwfdxuWd&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18niSuoAiw%2F%3Fmibextid%3DwwXIfr#" target="_blank" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
-                        <img src="https://i.imgur.com/Dp6P0OV.jpg" alt="Happivilles" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                    <a href="https://www.facebook.com/happivilles?mibextid=wwXIfr&rdid=FTFDxYSRUwfdxuWd&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18niSuoAiw%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer" class="bg-white p-2 md:p-3 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center h-24 md:h-32 hover:border-gold hover:shadow-md transition-all group">
+                        <img loading="lazy" src="https://i.imgur.com/Dp6P0OV.jpg" alt="Happivilles" class="w-[85%] h-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </a>
                 </div>
             </div>
@@ -1007,22 +951,22 @@
                             <h3 class="text-2xl md:text-3xl font-futura text-charcoal-900 mb-1 group-hover:text-olive-900 transition-colors">Premium Shop</h3>
                             <div class="text-sm text-gold font-futura mb-3 tracking-wide">[Limited Units Available]</div>
                             <p class="text-charcoal-500 font-century font-light text-sm md:text-base leading-relaxed max-w-2xl mb-4">High-visibility retail spaces within TPK Park's customer-facing commercial area. Ideal for showrooms, lifestyle retail, cafés, services and brands that benefit from visitor traffic.</p>
-                            <a href="https://drive.google.com/file/d/1Ra_w9kqPuFZ2Zcy1xuLWaS7TU7mlrAaV/view" target="_blank" class="inline-flex items-center gap-2 bg-charcoal-100 hover:bg-charcoal-900 hover:text-white text-charcoal-900 px-4 py-2 rounded-full font-futura text-xs transition-colors duration-300 relative z-20">
+                            <a href="https://drive.google.com/file/d/1Ra_w9kqPuFZ2Zcy1xuLWaS7TU7mlrAaV/view" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-charcoal-100 hover:bg-charcoal-900 hover:text-white text-charcoal-900 px-4 py-2 rounded-full font-futura text-xs transition-colors duration-300 relative z-20">
                                 <i class="ph ph-file-pdf text-lg"></i> View Unit Details
                             </a>
                         </div>
                         
                         <div class="relative w-full md:w-64 h-48 md:h-40 cursor-pointer group/stack stack-container mx-auto md:mx-0 mt-4 md:mt-0" data-state="1" onclick="cycleStack(this)">
                             <div class="stack-card card-1 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/P4Lj1qX.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/P4Lj1qX.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/P4Lj1qX.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="stack-card card-2 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/fpOMhvX.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/fpOMhvX.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/fpOMhvX.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="stack-card card-3 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/1xHWs1n.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/1xHWs1n.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/1xHWs1n.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="absolute bottom-2 right-2 bg-black/50 backdrop-blur text-white p-1.5 rounded-full text-xs shadow-lg z-[60] pointer-events-none">
@@ -1040,22 +984,22 @@
                             <h3 class="text-2xl md:text-3xl font-futura text-charcoal-900 mb-1 group-hover:text-olive-900 transition-colors">Detached Unit</h3>
                             <div class="text-sm text-gold font-futura mb-3 tracking-wide">[1 Unit Available]</div>
                             <p class="text-charcoal-500 font-century font-light text-sm md:text-base leading-relaxed max-w-2xl mb-4">Standalone flagship space for businesses that need scale, exclusivity and strong brand presence. Suitable for corporate showrooms, automotive centres, large-format retail and headquarters-style operations.</p>
-                            <a href="https://drive.google.com/file/d/1goBmVOQPjiembAGMzcmu2E82VXE_PSOO/view" target="_blank" class="inline-flex items-center gap-2 bg-charcoal-100 hover:bg-charcoal-900 hover:text-white text-charcoal-900 px-4 py-2 rounded-full font-futura text-xs transition-colors duration-300 relative z-20">
+                            <a href="https://drive.google.com/file/d/1goBmVOQPjiembAGMzcmu2E82VXE_PSOO/view" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-charcoal-100 hover:bg-charcoal-900 hover:text-white text-charcoal-900 px-4 py-2 rounded-full font-futura text-xs transition-colors duration-300 relative z-20">
                                 <i class="ph ph-file-pdf text-lg"></i> View Unit Details
                             </a>
                         </div>
                         
                         <div class="relative w-full md:w-64 h-48 md:h-40 cursor-pointer group/stack stack-container mx-auto md:mx-0 mt-4 md:mt-0" data-state="1" onclick="cycleStack(this)">
                             <div class="stack-card card-1 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/Ghs7Ubv.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/Ghs7Ubv.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/Ghs7Ubv.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="stack-card card-2 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/6EpNMuk.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/6EpNMuk.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/6EpNMuk.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="stack-card card-3 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/iumKVFP.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/iumKVFP.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/iumKVFP.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="absolute bottom-2 right-2 bg-black/50 backdrop-blur text-white p-1.5 rounded-full text-xs shadow-lg z-[60] pointer-events-none">
@@ -1073,22 +1017,22 @@
                             <h3 class="text-2xl md:text-3xl font-futura text-charcoal-900 mb-1 group-hover:text-olive-900 transition-colors">Semi-Detached Unit</h3>
                             <div class="text-sm text-gold font-futura mb-3 tracking-wide">[1 Unit Available]</div>
                             <p class="text-charcoal-500 font-century font-light text-sm md:text-base leading-relaxed max-w-2xl mb-4">Spacious units with wider frontage and flexible internal space for display, service and operations. Suitable for furniture galleries, interior design centres, automotive services and established Home & Living brands.</p>
-                            <a href="https://drive.google.com/file/d/1_yj2sZ-tIZ7gBKHUwyRgPt2OpV6dN0g8/view" target="_blank" class="inline-flex items-center gap-2 bg-charcoal-100 hover:bg-charcoal-900 hover:text-white text-charcoal-900 px-4 py-2 rounded-full font-futura text-xs transition-colors duration-300 relative z-20">
+                            <a href="https://drive.google.com/file/d/1_yj2sZ-tIZ7gBKHUwyRgPt2OpV6dN0g8/view" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-charcoal-100 hover:bg-charcoal-900 hover:text-white text-charcoal-900 px-4 py-2 rounded-full font-futura text-xs transition-colors duration-300 relative z-20">
                                 <i class="ph ph-file-pdf text-lg"></i> View Unit Details
                             </a>
                         </div>
                         
                         <div class="relative w-full md:w-64 h-48 md:h-40 cursor-pointer group/stack stack-container mx-auto md:mx-0 mt-4 md:mt-0" data-state="1" onclick="cycleStack(this)">
                             <div class="stack-card card-1 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/I5lSjeF.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/I5lSjeF.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/I5lSjeF.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="stack-card card-2 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/ZfYsuBJ.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/ZfYsuBJ.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/ZfYsuBJ.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="stack-card card-3 rounded-xl shadow-sm border border-gray-100 overflow-hidden bg-white relative">
-                                <img src="https://i.imgur.com/SNjvo71.jpg" class="w-full h-full object-cover pointer-events-none">
+                                <img loading="lazy" src="https://i.imgur.com/SNjvo71.jpg" class="w-full h-full object-cover pointer-events-none">
                                 <button onclick="openLightbox('https://i.imgur.com/SNjvo71.jpg'); event.stopPropagation();" class="absolute top-2 right-2 bg-black/40 hover:bg-black/70 transition text-white p-1.5 rounded-full z-10 backdrop-blur pointer-events-auto"><i class="ph ph-arrows-out"></i></button>
                             </div>
                             <div class="absolute bottom-2 right-2 bg-black/50 backdrop-blur text-white p-1.5 rounded-full text-xs shadow-lg z-[60] pointer-events-none">
@@ -1156,7 +1100,7 @@
                 
                 <!-- Newest News Item Added -->
                 <a href="https://www.hmetro.com.my/taxonomy/term/2057/2026/07/1377876/tpk-park-kluster-home-living-terbesar-di-malaysia" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://raw.githubusercontent.com/lawrencew7729-collab/TPKpark/main/news-cover.jpg" alt="TPK Park News HM Metro" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://raw.githubusercontent.com/lawrencew7729-collab/TPKpark/main/news-cover.jpg" alt="TPK Park News HM Metro" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1166,7 +1110,7 @@
                 
                 <!-- Newest News Item Added -->
                 <a href="https://www.kwongwah.com.my/?p=1801778" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/TVeuKhd.jpg" alt="TPK Park News Kwong Wah" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/TVeuKhd.jpg" alt="TPK Park News Kwong Wah" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1176,7 +1120,7 @@
                 
                 <!-- News 1 -->
                 <a href="https://www.nst.com.my/business/corporate/2026/06/1475902/tpk-park-enters-record-books-largest-home-and-living-retail" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/J5m7PV5.jpg" alt="TPK Park News NST" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/J5m7PV5.jpg" alt="TPK Park News NST" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1186,7 +1130,7 @@
 
                 <!-- News 2 -->
                 <a href="https://guangming.com.my/%e3%80%90%e5%b8%82%e5%9c%ba%e6%83%85%e6%8a%a5%e3%80%91%e5%b7%a5%e4%b8%9a%e5%9b%ad%e6%9c%80%e5%a4%a7%e5%ae%b6%e5%b1%85%e4%b8%8e%e7%94%9f%e6%b4%bb%e9%9b%b6%e5%94%ae%e9%9b%86%e7%be%a4" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/3N1S23N.jpg" alt="TPK Park News Guang Ming" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/3N1S23N.jpg" alt="TPK Park News Guang Ming" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1196,7 +1140,7 @@
 
                 <!-- News 3 -->
                 <a href="https://businessnews.com.my/tpk-park-30-year-transformation-book-of-record/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/PN8KtTZ.jpg" alt="TPK Park News Business News" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/PN8KtTZ.jpg" alt="TPK Park News Business News" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1206,7 +1150,7 @@
 
                 <!-- News 4 -->
                 <a href="https://malayanewsroom.com/26/06/2026/tpk-park-raih-pengiktirafan-malaysia-book-of-records-hasil-transformasi-selama-30-tahun/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/NRbC08K.jpg" alt="TPK Park News 1" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/NRbC08K.jpg" alt="TPK Park News - Media Coverage Article" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1216,7 +1160,7 @@
 
                 <!-- News 5 -->
                 <a href="https://kl.chinapress.com.my/20260625/%E9%87%91%E9%8A%AE%E5%B7%A5%E4%B8%9A%E5%9B%AD%E4%B8%8B%E6%9C%88%E5%98%89%E5%B9%B4%E5%8D%8E-%E5%8F%82%E5%B1%95%E5%95%86%E8%AE%BE%E5%AE%A2%E6%9C%8D%E9%83%A8%E5%88%86%E6%8A%98%E6%89%A380/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/4i6kR6D.jpg" alt="TPK Park News 2" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/4i6kR6D.jpg" alt="TPK Park News - Industry Feature" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1226,7 +1170,7 @@
 
                 <!-- News 6 -->
                 <a href="https://mymntnews.com/2026/06/27/tpk-park-raih-pengiktirafan-malaysia-book-of-records-hasil-transformasi-selama-30-tahun/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/yQTpLFu.jpg" alt="TPK Park News 3" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/yQTpLFu.jpg" alt="TPK Park News - Property Development Update" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1236,7 +1180,7 @@
 
                 <!-- News 7 (Image only) -->
                 <div onclick="openLightbox('https://i.imgur.com/8IEQ6wJ.jpg')" class="group relative overflow-hidden rounded-[30px] shadow-lg cursor-pointer block h-[380px] md:h-[400px]">
-                    <img src="https://i.imgur.com/8IEQ6wJ.jpg" alt="TPK Park News 4" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
+                    <img loading="lazy" src="https://i.imgur.com/8IEQ6wJ.jpg" alt="TPK Park News - Business Spotlight" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x1200/1F2022/FFF?text=News+Update'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500 flex flex-col justify-end p-6 md:p-8">
                         <div class="bg-white text-charcoal-900 px-6 py-3 rounded-full text-sm font-futura flex items-center gap-2 w-max shadow-xl transition-transform duration-300 transform group-hover:-translate-y-2">
                             Read More <i class="ph ph-arrow-up-right text-lg text-gold"></i>
@@ -1291,7 +1235,7 @@
             </button>
             
             <div class="flex items-center gap-3 mb-6">
-                <img src="https://i.imgur.com/iNrQPKD.png" alt="TNG" class="w-12 h-8 object-contain">
+                <img loading="lazy" src="https://i.imgur.com/iNrQPKD.png" alt="TNG" class="w-12 h-8 object-contain">
                 <h3 class="text-xl md:text-2xl font-futura text-gray-900">Lucky Draw Prize Pool</h3>
             </div>
             
@@ -1382,7 +1326,7 @@
             <button onclick="closeLightbox(event)" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white transition z-10 bg-black/50 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <i class="ph ph-x text-2xl"></i>
             </button>
-            <img id="lightboxImage" src="" alt="Enlarged News" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
+            <img loading="lazy" id="lightboxImage" src="" alt="Enlarged News" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
         </div>
     </div>
 
@@ -1391,8 +1335,8 @@
             
             <div class="flex items-center flex-wrap sm:flex-nowrap gap-4 lg:gap-6 w-full lg:w-auto">
                 <div class="flex items-center gap-4 md:gap-6 shrink-0">
-                    <img src="https://i.imgur.com/fqfcH6c.png" alt="TPK Park Footer Logo" class="h-10 md:h-16 object-contain" onerror="this.src='https://placehold.co/150x50/1F2022/FFF?text=TPK+PARK'">
-                    <img src="https://i.imgur.com/kLcfdU8.png" alt="Malaysia Book of Records" class="h-10 md:h-16 object-contain" onerror="this.src='https://placehold.co/150x50/1F2022/FFF?text=MBOR'">
+                    <img loading="lazy" src="https://i.imgur.com/fqfcH6c.png" alt="TPK Park Footer Logo" class="h-10 md:h-16 object-contain" onerror="this.src='https://placehold.co/150x50/1F2022/FFF?text=TPK+PARK'">
+                    <img loading="lazy" src="https://i.imgur.com/kLcfdU8.png" alt="Malaysia Book of Records" class="h-10 md:h-16 object-contain" onerror="this.src='https://placehold.co/150x50/1F2022/FFF?text=MBOR'">
                 </div>
                 
                 <div class="hidden sm:block w-px h-12 md:h-16 bg-charcoal-700 shrink-0"></div>
@@ -1413,7 +1357,7 @@
                 <a href="https://www.instagram.com/tpkpark?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="hover:text-white transition"><i class="ph ph-instagram-logo text-2xl"></i></a>
                 <a href="https://www.tiktok.com/@tpkpark?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="hover:text-white transition"><i class="ph ph-tiktok-logo text-2xl"></i></a>
                 <a href="https://xhslink.com/m/7k7Wti5x0LM" target="_blank" rel="noopener noreferrer" class="hover:text-white transition group">
-                    <img src="https://i.imgur.com/S3VVqDh.png" alt="Xiaohongshu" class="w-6 h-6 object-contain opacity-80 group-hover:opacity-100 transition" onerror="this.src='https://placehold.co/24x24/1F2022/FFF?text=XHS'">
+                    <img loading="lazy" src="https://i.imgur.com/S3VVqDh.png" alt="Xiaohongshu" class="w-6 h-6 object-contain opacity-80 group-hover:opacity-100 transition" onerror="this.src='https://placehold.co/24x24/1F2022/FFF?text=XHS'">
                 </a>
             </div>
         </div>
@@ -1579,12 +1523,12 @@
                 
                 let iconHtml = '<i class="ph-fill ph-tiktok-logo"></i>';
                 if (isIg) iconHtml = '<i class="ph-fill ph-instagram-logo"></i>';
-                else if (isXhs) iconHtml = '<img src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert" style="opacity: 0.9;" alt="XHS">';
+                else if (isXhs) iconHtml = '<img loading="lazy" src="https://i.imgur.com/S3VVqDh.png" class="w-3 h-3 object-contain filter invert" style="opacity: 0.9;" alt="XHS">';
                 
                 return `
-                <a href="${item.link}" target="_blank" class="flex flex-col bg-white rounded-2xl shadow-sm border ${item.high ? 'border-gold/50 shadow-gold/10' : 'border-gray-100'} hover:shadow-lg transition-all group overflow-hidden p-2 sm:p-3">
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="flex flex-col bg-white rounded-2xl shadow-sm border ${item.high ? 'border-gold/50 shadow-gold/10' : 'border-gray-100'} hover:shadow-lg transition-all group overflow-hidden p-2 sm:p-3">
                     <div class="relative w-full aspect-[9/16] bg-charcoal-900 rounded-xl mb-3 overflow-hidden">
-                        <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/400x711/1F2022/FFF?text=${encodeURIComponent(item.name)}'">
+                        <img loading="lazy" src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/400x711/1F2022/FFF?text=${encodeURIComponent(item.name)}'">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="w-8 h-8 sm:w-12 sm:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition transform group-hover:scale-110 shadow-md">
                                 <i class="ph-fill ph-play text-sm sm:text-xl"></i>

@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles copied from index.html <style> block */
+@font-face {
+    font-family: 'Futura PT';
+    src: local('Futura PT Extra Bold'), local('Futura-ExtraBold');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Century Gothic';
+    src: local('Century Gothic Light'), local('CenturyGothic-Light');
+    font-weight: 300;
+    font-style: normal;
+}
+
+html, body { 
+    max-width: 100%; 
+    overflow-x: hidden; 
+    background-color: #F8F9F8; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    font-family: "Century Gothic", sans-serif !important;
+    font-weight: 300 !important;
+}
+
+h1, h2, h3, h4, h5, h6, .font-futura {
+    font-family: "Futura PT", sans-serif !important;
+    font-weight: 800 !important;
+}
+
+p, span, div, input, textarea, button, a, .font-century {
+    font-family: "Century Gothic", sans-serif !important;
+    font-weight: 300 !important;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F8F9F8; }
+::-webkit-scrollbar-thumb { background: #4A5D4E; border-radius: 4px; }
+
+.clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+.clip-irregular { border-radius: 40px 0 40px 0; }
+.clip-irregular-alt { border-radius: 0 40px 0 40px; }
+
+.lightbox-overlay, .enquiry-modal-overlay, .notice-modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(5px); }
+.lightbox-overlay.active, .enquiry-modal-overlay.active, .notice-modal-overlay.active { opacity: 1; pointer-events: auto; z-index: 9999; }
+.lightbox-content, .enquiry-modal-content, .notice-modal-content { transform: scale(0.95); transition: transform 0.3s ease; }
+.lightbox-overlay.active .lightbox-content, .enquiry-modal-overlay.active .enquiry-modal-content, .notice-modal-overlay.active .notice-modal-content { transform: scale(1); }
+
+.swiper-pagination-bullet-active { background-color: #3A4A3E !important; }
+.social-swiper-pagination .swiper-pagination-bullet-active { background-color: #C5A059 !important; }
+.news-swiper-pagination .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.4); }
+.news-swiper-pagination .swiper-pagination-bullet-active { background-color: #C5A059 !important; }
+
+.reveal-hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+.reveal-visible { opacity: 1; transform: translateY(0); }
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+.view-section { display: none; animation: fadeIn 0.4s ease-in-out; flex-grow: 1; }
+.view-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.stack-container { position: relative; width: 100%; height: 100%; perspective: 1000px; }
+.stack-container[data-state="1"] .card-1 { transform: translateX(0) scale(1); z-index: 30; opacity: 1; }
+.stack-container[data-state="1"] .card-2 { transform: translateX(8%) scale(0.95); z-index: 20; opacity: 0.8; }
+.stack-container[data-state="1"] .card-3 { transform: translateX(16%) scale(0.90); z-index: 10; opacity: 0.6; }
+.stack-container[data-state="2"] .card-2 { transform: translateX(0) scale(1); z-index: 30; opacity: 1; }
+.stack-container[data-state="2"] .card-3 { transform: translateX(8%) scale(0.95); z-index: 20; opacity: 0.8; }
+.stack-container[data-state="2"] .card-1 { transform: translateX(16%) scale(0.90); z-index: 10; opacity: 0.6; }
+.stack-container[data-state="3"] .card-3 { transform: translateX(0) scale(1); z-index: 30; opacity: 1; }
+.stack-container[data-state="3"] .card-1 { transform: translateX(8%) scale(0.95); z-index: 20; opacity: 0.8; }
+.stack-container[data-state="3"] .card-2 { transform: translateX(16%) scale(0.90); z-index: 10; opacity: 0.6; }
+
+.stack-card { 
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    position: absolute !important; 
+    top: 0; left: 0;
+    width: 82% !important; 
+    height: 100% !important; 
+    transform-origin: left center; 
+}
