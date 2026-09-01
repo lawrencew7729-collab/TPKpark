@@ -1,9 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.tpkpark.com/</loc>
-    <lastmod>2026-07-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/about/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/home-living/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/home-living/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/automotive/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/automotive/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/lifestyle/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/lifestyle/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/leasing/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/leasing/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/news/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/news/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/news/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/news/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/news/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/milestones/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/milestones/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/wong-shung-yen/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/wong-shung-yen/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/contact/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/about/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/home-living/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/home-living/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/automotive/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/automotive/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/lifestyle/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/lifestyle/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/leasing/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/leasing/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/news/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/news/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/news/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/news/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/news/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/milestones/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/milestones/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/wong-shung-yen/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/wong-shung-yen/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/ms/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/contact/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/about/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/home-living/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/home-living/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/home-living/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/automotive/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/automotive/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/automotive/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/lifestyle/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/lifestyle/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/lifestyle/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/leasing/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/leasing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/leasing/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/news/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/news/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/news/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/news/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/news/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/milestones/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/milestones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/milestones/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/wong-shung-yen/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/wong-shung-yen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/wong-shung-yen/"/>
+  </url>
+  <url>
+    <loc>https://www.tpkpark.com/zh/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://www.tpkpark.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://www.tpkpark.com/ms/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-MY" href="https://www.tpkpark.com/zh/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tpkpark.com/contact/"/>
   </url>
 </urlset>
