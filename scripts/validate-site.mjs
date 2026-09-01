@@ -1,0 +1,140 @@
+import { access, readFile } from "node:fs/promises";
+import { dirname, join, normalize } from "node:path";
+import { fileURLToPath } from "node:url";
+import { localeConfig, origin, routeIds, routePath, site } from "./site-data.mjs";
+
+const root = process.cwd();
+const locales = Object.keys(localeConfig);
+const failures = [];
+let jsonLdBlocks = 0;
+let imageCount = 0;
+let labelCount = 0;
+let internalLinkCount = 0;
+
+function fail(file, message) {
+  failures.push(`${file}: ${message}`);
+}
+
+function outputFile(locale, routeId) {
+  const path = routePath(locale, routeId);
+  return path === "/" ? join(root, "index.html") : join(root, path.slice(1), "index.html");
+}
+
+function matches(html, pattern) {
+  return [...html.matchAll(pattern)];
+}
+
+function attr(tag, name) {
+  const found = tag.match(new RegExp(`\\s${name}=(?:"([^"]*)"|'([^']*)')`, "i"));
+  return found ? (found[1] ?? found[2]) : null;
+}
+
+async function exists(path) {
+  try { await access(path); return true; } catch { return false; }
+}
+
+for (const locale of locales) {
+  for (const routeId of routeIds) {
+    const file = outputFile(locale, routeId);
+    const label = file.replace(`${root}/`, "");
+    if (!(await exists(file))) {
+      fail(label, "missing generated page");
+      continue;
+    }
+
+    const html = await readFile(file, "utf8");
+    const page = site[locale].pages[routeId];
+    const canonical = `${origin}${routePath(locale, routeId)}`;
+
+    if (!html.startsWith("<!doctype html>")) fail(label, "missing HTML5 doctype");
+    if (!html.includes(`<html lang="${localeConfig[locale].htmlLang}">`)) fail(label, "incorrect html lang");
+    if (!html.includes(`<title>${page.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")} | TPK Park</title>`)) fail(label, "incorrect or missing title");
+    if (!html.includes(`<link rel="canonical" href="${canonical}">`)) fail(label, "incorrect canonical URL");
+    if (!html.includes('<meta name="description" content="')) fail(label, "missing meta description");
+
+    const h1s = matches(html, /<h1(?:\s[^>]*)?>/gi);
+    if (h1s.length !== 1) fail(label, `expected one h1, found ${h1s.length}`);
+
+    const alternates = matches(html, /<link rel="alternate" hreflang="[^"]+" href="[^"]+">/g);
+    if (alternates.length !== 4) fail(label, `expected four hreflang links, found ${alternates.length}`);
+    for (const key of locales) {
+      const expected = `<link rel="alternate" hreflang="${localeConfig[key].hreflang}" href="${origin}${routePath(key, routeId)}">`;
+      if (!html.includes(expected)) fail(label, `missing ${localeConfig[key].hreflang} alternate`);
+    }
+
+    const jsonScripts = matches(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g);
+    if (jsonScripts.length !== 1) fail(label, `expected one JSON-LD block, found ${jsonScripts.length}`);
+    for (const block of jsonScripts) {
+      jsonLdBlocks += 1;
+      try {
+        const parsed = JSON.parse(block[1]);
+        if (parsed["@context"] !== "https://schema.org") fail(label, "JSON-LD context is incorrect");
+        if (!Array.isArray(parsed["@graph"])) fail(label, "JSON-LD graph is missing");
+      } catch (error) {
+        fail(label, `invalid JSON-LD: ${error.message}`);
+      }
+    }
+
+    const images = matches(html, /<img\b[^>]*>/gi);
+    imageCount += images.length;
+    for (const image of images) if (attr(image[0], "alt") === null) fail(label, `image missing alt: ${image[0].slice(0, 100)}`);
+
+    const ids = new Set(matches(html, /\sid="([^"]+)"/g).map((match) => match[1]));
+    const labels = matches(html, /<label\b[^>]*>/gi);
+    labelCount += labels.length;
+    for (const labelTag of labels) {
+      const target = attr(labelTag[0], "for");
+      if (!target || !ids.has(target)) fail(label, `label has no valid control: ${labelTag[0]}`);
+    }
+
+    const links = matches(html, /<a\b[^>]*>/gi);
+    for (const linkTag of links) {
+      const href = attr(linkTag[0], "href");
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("http://") || href.startsWith("https://")) continue;
+      internalLinkCount += 1;
+      if (!href.startsWith("/")) {
+        fail(label, `internal link is not root-relative: ${href}`);
+        continue;
+      }
+      const clean = href.split(/[?#]/)[0];
+      const target = clean.endsWith("/") ? join(root, clean.slice(1), "index.html") : join(root, clean.slice(1));
+      if (!(await exists(normalize(target)))) fail(label, `broken internal link: ${href}`);
+    }
+
+    const externalLinks = links.filter((linkTag) => {
+      const href = attr(linkTag[0], "href");
+      return href?.startsWith("http") && !href.startsWith(origin);
+    });
+    for (const linkTag of externalLinks) {
+      if (attr(linkTag[0], "target") === "_blank" && !(attr(linkTag[0], "rel") || "").includes("noopener")) fail(label, "target=_blank link missing noopener");
+    }
+
+    const forbidden = ["+603-8070-1234", "lawrencew7729-collab/TPKpark", "data-i18n="];
+    for (const phrase of forbidden) if (html.includes(phrase)) fail(label, `contains forbidden legacy text: ${phrase}`);
+  }
+}
+
+const sitemapPath = join(root, "sitemap.xml");
+const sitemap = await readFile(sitemapPath, "utf8");
+const locs = matches(sitemap, /<loc>([^<]+)<\/loc>/g);
+if (locs.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected 30 locations, found ${locs.length}`);
+for (const locale of locales) for (const routeId of routeIds) {
+  const url = `${origin}${routePath(locale, routeId)}`;
+  if (!sitemap.includes(`<loc>${url}</loc>`)) fail("sitemap.xml", `missing ${url}`);
+}
+
+const robots = await readFile(join(root, "robots.txt"), "utf8");
+if (!robots.includes(`Sitemap: ${origin}/sitemap.xml`)) fail("robots.txt", "missing sitemap declaration");
+if (!(await exists(join(root, "css", "tailwind.css")))) fail("css/tailwind.css", "missing compiled stylesheet");
+
+if (failures.length) {
+  console.error(`Validation failed with ${failures.length} issue(s):`);
+  for (const failure of failures) console.error(`- ${failure}`);
+  process.exit(1);
+}
+
+console.log(`Validated ${locales.length * routeIds.length} pages.`);
+console.log(`JSON-LD blocks: ${jsonLdBlocks}`);
+console.log(`Images with alt attributes: ${imageCount}`);
+console.log(`Associated form labels: ${labelCount}`);
+console.log(`Internal links checked: ${internalLinkCount}`);
