@@ -1,7 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 import { dirname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
-import { localeConfig, origin, routeIds, routePath, site } from "./site-data.mjs";
+import { localeConfig, origin, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
 
 const root = process.cwd();
 const locales = Object.keys(localeConfig);
@@ -29,6 +29,10 @@ function attr(tag, name) {
   return found ? (found[1] ?? found[2]) : null;
 }
 
+function escapeHtml(value) {
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+}
+
 async function exists(path) {
   try { await access(path); return true; } catch { return false; }
 }
@@ -44,13 +48,23 @@ for (const locale of locales) {
 
     const html = await readFile(file, "utf8");
     const page = site[locale].pages[routeId];
+    const seoTitle = seoTitles[locale][routeId];
     const canonical = `${origin}${routePath(locale, routeId)}`;
 
     if (!html.startsWith("<!doctype html>")) fail(label, "missing HTML5 doctype");
     if (!html.includes(`<html lang="${localeConfig[locale].htmlLang}">`)) fail(label, "incorrect html lang");
-    if (!html.includes(`<title>${page.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")} | TPK Park</title>`)) fail(label, "incorrect or missing title");
+    if (!seoTitle) fail(label, "missing configured SEO title");
+    if (seoTitle?.length > 65) fail(label, `SEO title exceeds 65 characters: ${seoTitle.length}`);
+    if (!html.includes(`<title>${escapeHtml(seoTitle)}</title>`)) fail(label, "incorrect or missing SEO title");
     if (!html.includes(`<link rel="canonical" href="${canonical}">`)) fail(label, "incorrect canonical URL");
     if (!html.includes('<meta name="description" content="')) fail(label, "missing meta description");
+    if (!html.includes('<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">')) fail(label, "missing explicit index/follow directive");
+    if (!html.includes(`<meta property="og:title" content="${escapeHtml(seoTitle)}">`)) fail(label, "incorrect Open Graph title");
+    if (!html.includes(`<meta name="twitter:title" content="${escapeHtml(seoTitle)}">`)) fail(label, "incorrect Twitter title");
+    if (!html.includes(`<meta property="og:locale" content="${localeConfig[locale].ogLocale}">`)) fail(label, "incorrect Open Graph locale");
+
+    const ogLocaleAlternates = matches(html, /<meta property="og:locale:alternate" content="[^"]+">/g);
+    if (ogLocaleAlternates.length !== locales.length - 1) fail(label, `expected two Open Graph locale alternates, found ${ogLocaleAlternates.length}`);
 
     const h1s = matches(html, /<h1(?:\s[^>]*)?>/gi);
     if (h1s.length !== 1) fail(label, `expected one h1, found ${h1s.length}`);
@@ -70,6 +84,17 @@ for (const locale of locales) {
         const parsed = JSON.parse(block[1]);
         if (parsed["@context"] !== "https://schema.org") fail(label, "JSON-LD context is incorrect");
         if (!Array.isArray(parsed["@graph"])) fail(label, "JSON-LD graph is missing");
+        const graph = parsed["@graph"] || [];
+        const webPage = graph.find((entry) => entry["@type"] === "WebPage");
+        if (!webPage) fail(label, "WebPage schema is missing");
+        if (webPage?.dateModified !== routeLastModified[routeId]) fail(label, "WebPage dateModified is incorrect");
+        if (routeId === "profile") {
+          const person = graph.find((entry) => entry["@type"] === "Person");
+          if (!person) fail(label, "Person schema is missing");
+          if (person?.["@id"] !== `${canonical}#person`) fail(label, "Person schema ID is incorrect");
+          if (webPage?.mainEntity?.["@id"] !== `${canonical}#person`) fail(label, "profile WebPage mainEntity is incorrect");
+          if (person?.alumniOf?.some((institution) => institution.name === "Universiti Tunku Abdul Rahman")) fail(label, "current university is incorrectly listed as alumniOf");
+        }
       } catch (error) {
         fail(label, `invalid JSON-LD: ${error.message}`);
       }
@@ -117,10 +142,13 @@ for (const locale of locales) {
 const sitemapPath = join(root, "sitemap.xml");
 const sitemap = await readFile(sitemapPath, "utf8");
 const locs = matches(sitemap, /<loc>([^<]+)<\/loc>/g);
+const lastmods = matches(sitemap, /<lastmod>([^<]+)<\/lastmod>/g);
 if (locs.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected 30 locations, found ${locs.length}`);
+if (lastmods.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected 30 lastmod values, found ${lastmods.length}`);
 for (const locale of locales) for (const routeId of routeIds) {
   const url = `${origin}${routePath(locale, routeId)}`;
   if (!sitemap.includes(`<loc>${url}</loc>`)) fail("sitemap.xml", `missing ${url}`);
+  if (!sitemap.includes(`<loc>${url}</loc>\n    <lastmod>${routeLastModified[routeId]}</lastmod>`)) fail("sitemap.xml", `missing or incorrect lastmod for ${url}`);
 }
 
 const robots = await readFile(join(root, "robots.txt"), "utf8");
