@@ -8,7 +8,7 @@ Static multilingual website for TPK Park, deployed by Vercel.
 - `scripts/build-site.mjs` generates 10 routes for each language (30 HTML pages).
 - `scripts/validate-site.mjs` checks routes, internal links, metadata, `hreflang`, JSON-LD, images and form labels.
 - `src/input.css` contains the shared design system.
-- Generated HTML is committed so the site remains portable and easy to inspect.
+- Generated HTML and CSS are produced during the build; the generator, content model and stylesheet source are the maintenance source of truth.
 
 ## Local commands
 
