@@ -16,10 +16,51 @@ export const routeSlugs = {
 export const routeIds = Object.keys(routeSlugs);
 
 export const localeConfig = {
-  en: { prefix: "", htmlLang: "en-MY", hreflang: "en-MY", short: "EN", label: "English" },
-  ms: { prefix: "ms", htmlLang: "ms-MY", hreflang: "ms-MY", short: "BM", label: "Bahasa Melayu" },
-  zh: { prefix: "zh", htmlLang: "zh-Hans-MY", hreflang: "zh-Hans-MY", short: "中", label: "中文" }
+  en: { prefix: "", htmlLang: "en-MY", hreflang: "en-MY", ogLocale: "en_MY", short: "EN", label: "English" },
+  ms: { prefix: "ms", htmlLang: "ms-MY", hreflang: "ms-MY", ogLocale: "ms_MY", short: "BM", label: "Bahasa Melayu" },
+  zh: { prefix: "zh", htmlLang: "zh-Hans-MY", hreflang: "zh-Hans-MY", ogLocale: "zh_MY", short: "中", label: "中文" }
 };
+
+export const seoTitles = {
+  en: {
+    home: "TPK Park Puchong | Home & Living, Automotive & Lifestyle",
+    about: "About TPK Park | Industrial Park Renewal in Puchong",
+    homeLiving: "Home & Living Showrooms in Puchong | TPK Park",
+    automotive: "Automotive Sales & Services in Puchong | TPK Park",
+    lifestyle: "Dining, Fitness & Lifestyle in Puchong | TPK Park",
+    leasing: "Commercial & Industrial Property for Rent in Puchong | TPK Park",
+    news: "TPK Park News & Media Coverage | Puchong",
+    milestones: "TPK Park Milestones | Home & Living Recognition",
+    profile: "Wong Shung Yen 黄松延 | Managing Director, TPK Park",
+    contact: "Contact TPK Park Puchong | Leasing & Enquiries"
+  },
+  ms: {
+    home: "TPK Park Puchong | Home & Living, Automotif & Lifestyle",
+    about: "Tentang TPK Park | Pembaharuan Taman Perindustrian Puchong",
+    homeLiving: "Bilik Pameran Home & Living di Puchong | TPK Park",
+    automotive: "Jualan & Servis Automotif di Puchong | TPK Park",
+    lifestyle: "Makan, Kecergasan & Lifestyle di Puchong | TPK Park",
+    leasing: "Ruang Komersial & Perindustrian untuk Disewa | TPK Park",
+    news: "Berita & Liputan Media TPK Park | Puchong",
+    milestones: "Pencapaian TPK Park | Pengiktirafan Home & Living",
+    profile: "Wong Shung Yen 黄松延 | Pengarah Urusan TPK Park",
+    contact: "Hubungi TPK Park Puchong | Penyewaan & Pertanyaan"
+  },
+  zh: {
+    home: "蒲种TPK Park | 家居生活、汽车服务与生活品味",
+    about: "关于TPK Park | 蒲种成熟工业园更新与地方营造",
+    homeLiving: "蒲种家居生活展厅与装修品牌 | TPK Park",
+    automotive: "蒲种汽车销售、维修与美容服务 | TPK Park",
+    lifestyle: "蒲种餐饮、运动与生活配套 | TPK Park",
+    leasing: "蒲种商业与工业单位出租 | TPK Park",
+    news: "TPK Park新闻与媒体报道 | 蒲种",
+    milestones: "TPK Park里程碑 | 家居生活集群认证",
+    profile: "黄松延 Wong Shung Yen | TPK Park董事经理",
+    contact: "联系蒲种TPK Park | 租赁与一般咨询"
+  }
+};
+
+export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, "2026-09-01"]));
 
 export function routePath(locale, routeId) {
   const prefix = localeConfig[locale].prefix;

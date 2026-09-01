@@ -7,7 +7,9 @@ import {
   origin,
   primaryNav,
   routeIds,
+  routeLastModified,
   routePath,
+  seoTitles,
   site,
   socialLinks
 } from "./site-data.mjs";
@@ -232,6 +234,8 @@ function cta(locale) {
 
 function schemas(locale, routeId, page) {
   const url = absolute(locale, routeId);
+  const personId = `${url}#person`;
+  const pageEntityId = routeId === "profile" ? personId : `${origin}/#organization`;
   const graph = [
     {
       "@type": "Organization",
@@ -241,7 +245,8 @@ function schemas(locale, routeId, page) {
       url: `${origin}/`,
       telephone: "+60 3 8076 5200",
       email: "info@tpkpark.com",
-      address: { "@type": "PostalAddress", streetAddress: "Taman Perindustrian Kinrara", postalCode: "47180", addressLocality: "Puchong", addressRegion: "Selangor", addressCountry: "MY" },
+      foundingDate: "2010",
+      address: { "@type": "PostalAddress", streetAddress: "2 Jalan TPK 1/4, Taman Perindustrian Kinrara", postalCode: "47180", addressLocality: "Puchong", addressRegion: "Selangor", addressCountry: "MY" },
       sameAs: socialLinks.map(([, socialUrl]) => socialUrl)
     },
     {
@@ -259,7 +264,10 @@ function schemas(locale, routeId, page) {
       name: page.title,
       description: page.description,
       isPartOf: { "@id": `${origin}/#website` },
-      about: { "@id": `${origin}/#organization` },
+      about: { "@id": pageEntityId },
+      mainEntity: { "@id": pageEntityId },
+      datePublished: "2026-09-01",
+      dateModified: routeLastModified[routeId],
       inLanguage: localeConfig[locale].htmlLang
     }
   ];
@@ -284,14 +292,16 @@ function schemas(locale, routeId, page) {
   if (routeId === "profile") {
     graph.push({
       "@type": "Person",
+      "@id": personId,
       name: "Wong Shung Yen",
       alternateName: "黄松延",
       jobTitle: "Managing Director",
       worksFor: { "@id": `${origin}/#organization` },
       url,
       image: images.portrait,
+      mainEntityOfPage: { "@id": `${url}#webpage` },
       sameAs: ["https://www.linkedin.com/in/wong-shung-yen/", "https://www.imdb.com/name/nm6562891/"],
-      alumniOf: [{ "@type": "CollegeOrUniversity", name: "University of Melbourne" }, { "@type": "CollegeOrUniversity", name: "Universiti Tunku Abdul Rahman" }],
+      alumniOf: [{ "@type": "CollegeOrUniversity", name: "University of Melbourne" }],
       knowsAbout: ["Property Development", "Industrial Real Estate", "Asset Management", "Retail Clustering", "Placemaking"]
     });
   }
@@ -338,8 +348,10 @@ function scripts(locale) {
 function renderPage(locale, routeId) {
   const t = site[locale];
   const page = t.pages[routeId];
+  const seoTitle = seoTitles[locale][routeId];
   const canonical = absolute(locale, routeId);
   const alternates = locales.map((key) => `<link rel="alternate" hreflang="${localeConfig[key].hreflang}" href="${absolute(key, routeId)}">`).join("\n  ");
+  const ogLocaleAlternates = locales.filter((key) => key !== locale).map((key) => `<meta property="og:locale:alternate" content="${localeConfig[key].ogLocale}">`).join("\n  ");
   const hero = routeId === "home" ? homeHero(locale, page) : pageHero(locale, routeId, page);
   const blocks = page.blocks.map((block, index) => renderBlock(locale, routeId, page, block, index)).join("");
   const ogImage = page.image || (routeId === "profile" ? images.portrait : images.park);
@@ -349,19 +361,28 @@ function renderPage(locale, routeId) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(page.title)} | TPK Park</title>
+  <title>${escapeHtml(seoTitle)}</title>
   <meta name="description" content="${escapeHtml(page.description)}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#173e31">
   <link rel="canonical" href="${canonical}">
   ${alternates}
   <link rel="alternate" hreflang="x-default" href="${absolute("en", routeId)}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${routeId === "profile" ? "profile" : "website"}">
   <meta property="og:site_name" content="TPK Park">
-  <meta property="og:title" content="${escapeHtml(page.title)}">
+  <meta property="og:locale" content="${localeConfig[locale].ogLocale}">
+  ${ogLocaleAlternates}
+  <meta property="og:title" content="${escapeHtml(seoTitle)}">
   <meta property="og:description" content="${escapeHtml(page.description)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${ogImage}">
+  <meta property="og:image:alt" content="${escapeHtml(page.title)}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHtml(seoTitle)}">
+  <meta name="twitter:description" content="${escapeHtml(page.description)}">
+  <meta name="twitter:image" content="${ogImage}">
+  <meta name="twitter:image:alt" content="${escapeHtml(page.title)}">
+  <link rel="preconnect" href="https://i.imgur.com" crossorigin>
   <link rel="stylesheet" href="/css/tailwind.css">
   <script type="application/ld+json">${safeJson(schemas(locale, routeId, page))}</script>
 </head>
@@ -390,7 +411,7 @@ for (const locale of locales) {
 
 const sitemapEntries = locales.flatMap((locale) => routeIds.map((routeId) => {
   const alternates = locales.map((key) => `    <xhtml:link rel="alternate" hreflang="${localeConfig[key].hreflang}" href="${absolute(key, routeId)}"/>`).join("\n");
-  return `  <url>\n    <loc>${absolute(locale, routeId)}</loc>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${absolute("en", routeId)}"/>\n  </url>`;
+  return `  <url>\n    <loc>${absolute(locale, routeId)}</loc>\n    <lastmod>${routeLastModified[routeId]}</lastmod>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${absolute("en", routeId)}"/>\n  </url>`;
 })).join("\n");
 
 await writeFile(join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${sitemapEntries}\n</urlset>\n`, "utf8");
