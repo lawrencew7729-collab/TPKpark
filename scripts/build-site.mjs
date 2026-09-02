@@ -193,10 +193,10 @@ function renderUnitDetails(locale, block) {
   const keys = ["availability", "address", "builtUp", "landArea", "askingRent", "format"];
   const facts = keys.filter((key) => unit.values[key]).map((key) => `<div class="unit-fact"><dt>${escapeHtml(ui.labels[key])}</dt><dd>${escapeHtml(unit.values[key][locale])}</dd></div>`).join("");
   const brochureExternal = unit.brochureUrl.startsWith("http");
-  const brochureAttrs = brochureExternal ? ' target="_blank" rel="noopener noreferrer"' : ' target="_blank"';
+  const brochureAttrs = brochureExternal ? ' target="_blank" rel="noopener noreferrer"' : " download";
   return `<section class="section unit-details"><div class="shell">
     ${sectionHeader({ kicker: ui.factsKicker, title: ui.factsTitle, text: ui.factsText })}
-    <dl class="unit-facts">${facts}<div class="unit-fact"><dt>${escapeHtml(ui.labels.lastUpdated)}</dt><dd><time datetime="2026-09-01">${escapeHtml(ui.lastUpdated)}</time></dd></div></dl>
+    <dl class="unit-facts">${facts}<div class="unit-fact"><dt>${escapeHtml(ui.labels.lastUpdated)}</dt><dd><time datetime="${routeLastModified[unit.routeId]}">${escapeHtml(ui.lastUpdated)}</time></dd></div></dl>
     <div class="unit-actions">
       <a class="button button-dark" href="${contactHref(locale, block.inventory)}">${escapeHtml(ui.enquire)} <span class="arrow" aria-hidden="true">→</span></a>
       <a class="button button-outline" href="tel:+60380765200">${escapeHtml(ui.call)}</a>

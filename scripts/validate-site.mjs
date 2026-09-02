@@ -112,6 +112,9 @@ for (const locale of locales) {
       const unit = leasingInventory[page.unitKey];
       if (!html.includes('class="unit-facts"')) fail(label, "unit facts are missing");
       if (!html.includes(`${routePath(locale, "contact")}?space=${unit.queryValue}`)) fail(label, "unit-specific enquiry link is missing");
+      if (!html.includes(`href="${unit.brochureUrl}"`)) fail(label, "leasing information pack link is missing");
+      if (unit.brochureUrl.startsWith("/") && !html.includes(`href="${unit.brochureUrl}" download`)) fail(label, "local leasing information pack is not configured as a download");
+      if (!html.includes(`<time datetime="${routeLastModified[unit.routeId]}">`)) fail(label, "visible leasing update date is incorrect");
       for (const value of Object.values(unit.values)) {
         if (value && !html.includes(escapeHtml(value[locale]))) fail(label, `missing localized inventory fact: ${value[locale]}`);
       }
