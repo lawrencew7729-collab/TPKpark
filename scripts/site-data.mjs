@@ -21,7 +21,7 @@ export const routeIds = Object.keys(routeSlugs);
 export const localeConfig = {
   en: { prefix: "", htmlLang: "en-MY", hreflang: "en-MY", ogLocale: "en_MY", short: "EN", label: "English" },
   ms: { prefix: "ms", htmlLang: "ms-MY", hreflang: "ms-MY", ogLocale: "ms_MY", short: "BM", label: "Bahasa Melayu" },
-  zh: { prefix: "zh", htmlLang: "zh-Hans-MY", hreflang: "zh-Hans-MY", ogLocale: "zh_MY", short: "中", label: "中文" }
+  zh: { prefix: "zh", htmlLang: "zh-Hans-MY", hreflang: "zh-Hans-MY", ogLocale: "zh_MY", short: "中文", label: "中文" }
 };
 
 export const seoTitles = {
@@ -264,6 +264,7 @@ const common = {
     skip: "Skip to main content",
     menuOpen: "Open menu",
     menuClose: "Close menu",
+    language: "Language",
     discover: "Discover the park",
     enquiries: "Leasing enquiries",
     readMore: "Read more",
@@ -299,6 +300,7 @@ const common = {
     skip: "Langkau ke kandungan utama",
     menuOpen: "Buka menu",
     menuClose: "Tutup menu",
+    language: "Bahasa",
     discover: "Terokai TPK Park",
     enquiries: "Pertanyaan penyewaan",
     readMore: "Baca lanjut",
@@ -334,6 +336,7 @@ const common = {
     skip: "跳至主要内容",
     menuOpen: "打开菜单",
     menuClose: "关闭菜单",
+    language: "语言",
     discover: "探索园区",
     enquiries: "租赁咨询",
     readMore: "了解更多",
