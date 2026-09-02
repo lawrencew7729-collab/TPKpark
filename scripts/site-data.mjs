@@ -101,7 +101,11 @@ export const leasingInventory = {
     routeId: "leasingShop",
     queryValue: "shop-showroom",
     image: images.leasingShop,
-    brochureUrl: "/assets/leasing/tpk-park-section-2-shoplots-for-lease.pdf",
+    brochureUrls: {
+      en: "/assets/leasing/tpk-park-section-2-shoplots-for-lease.pdf",
+      ms: "/assets/leasing/tpk-park-section-2-shoplots-for-lease-ms.pdf",
+      zh: "/assets/leasing/tpk-park-section-2-shoplots-for-lease-zh.pdf"
+    },
     mapUrl: "https://www.google.com/maps/search/Jalan+TPK+2%2F8,+Taman+Perindustrian+Kinrara,+Puchong",
     values: {
       availability: { en: "Limited units — confirm current options", ms: "Unit terhad — sahkan pilihan semasa", zh: "少量单位 — 请确认当前选择" },
@@ -116,7 +120,11 @@ export const leasingInventory = {
     routeId: "leasingDetached",
     queryValue: "detached-building",
     image: images.leasingDetached,
-    brochureUrl: "/assets/leasing/tpk-park-detached-showroom-building-no-7-for-lease.pdf",
+    brochureUrls: {
+      en: "/assets/leasing/tpk-park-detached-showroom-building-no-7-for-lease.pdf",
+      ms: "/assets/leasing/tpk-park-detached-showroom-building-no-7-for-lease-ms.pdf",
+      zh: "/assets/leasing/tpk-park-detached-showroom-building-no-7-for-lease-zh.pdf"
+    },
     mapUrl: "https://www.google.com/maps/search/No.+7+Jalan+TPK+2%2F4,+Taman+Perindustrian+Kinrara,+Puchong",
     values: {
       availability: { en: "1 building — confirm current availability", ms: "1 bangunan — sahkan ketersediaan semasa", zh: "1栋 — 请确认当前供应" },
@@ -131,7 +139,11 @@ export const leasingInventory = {
     routeId: "leasingSemiDetached",
     queryValue: "semi-detached",
     image: images.leasingSemiDetached,
-    brochureUrl: "/assets/leasing/tpk-park-semi-detached-showroom-industrial-unit-no-69-for-lease.pdf",
+    brochureUrls: {
+      en: "/assets/leasing/tpk-park-semi-detached-showroom-industrial-unit-no-69-for-lease.pdf",
+      ms: "/assets/leasing/tpk-park-semi-detached-showroom-industrial-unit-no-69-for-lease-ms.pdf",
+      zh: "/assets/leasing/tpk-park-semi-detached-showroom-industrial-unit-no-69-for-lease-zh.pdf"
+    },
     mapUrl: "https://www.google.com/maps/search/69+Jalan+TPK+2%2F8,+Taman+Perindustrian+Kinrara,+Puchong",
     values: {
       availability: { en: "1 building — confirm current availability", ms: "1 bangunan — sahkan ketersediaan semasa", zh: "1栋 — 请确认当前供应" },
@@ -275,6 +287,7 @@ const common = {
       enquire: "Enquire about this space",
       call: "Call leasing team",
       brochure: "Download leasing information pack (PDF)",
+      brochureEnglish: null,
       location: "View location",
       disclaimer: "Availability, dimensions, asking rent and commercial terms are indicative and subject to verification, landlord approval and contract. This page is not an offer or reservation."
     },
@@ -309,6 +322,7 @@ const common = {
       enquire: "Tanya tentang ruang ini",
       call: "Hubungi pasukan penyewaan",
       brochure: "Muat turun pek maklumat penyewaan (PDF)",
+      brochureEnglish: "Muat turun versi Bahasa Inggeris (PDF)",
       location: "Lihat lokasi",
       disclaimer: "Ketersediaan, keluasan, sewa diminta dan terma komersial adalah indikatif serta tertakluk kepada pengesahan, kelulusan tuan tanah dan kontrak. Halaman ini bukan tawaran atau tempahan."
     },
@@ -343,6 +357,7 @@ const common = {
       enquire: "查询此单位",
       call: "致电租赁团队",
       brochure: "下载租赁资料包（PDF）",
+      brochureEnglish: "下载英文版（PDF）",
       location: "查看位置",
       disclaimer: "单位供应、面积、叫租及商业条款均为参考资料，须经核实、业主批准并以合约为准。本页不构成正式报价或预留。"
     },
