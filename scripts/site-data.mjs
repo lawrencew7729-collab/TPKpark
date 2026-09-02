@@ -72,7 +72,8 @@ export const seoTitles = {
   }
 };
 
-export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, "2026-09-01"]));
+const brochureRouteIds = new Set(["leasingShop", "leasingDetached", "leasingSemiDetached"]);
+export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, brochureRouteIds.has(routeId) ? "2026-09-02" : "2026-09-01"]));
 
 export function routePath(locale, routeId) {
   const prefix = localeConfig[locale].prefix;
@@ -100,7 +101,7 @@ export const leasingInventory = {
     routeId: "leasingShop",
     queryValue: "shop-showroom",
     image: images.leasingShop,
-    brochureUrl: "/shoplot.pdf",
+    brochureUrl: "/assets/leasing/tpk-park-section-2-shoplots-for-lease.pdf",
     mapUrl: "https://www.google.com/maps/search/Jalan+TPK+2%2F8,+Taman+Perindustrian+Kinrara,+Puchong",
     values: {
       availability: { en: "Limited units — confirm current options", ms: "Unit terhad — sahkan pilihan semasa", zh: "少量单位 — 请确认当前选择" },
@@ -115,7 +116,7 @@ export const leasingInventory = {
     routeId: "leasingDetached",
     queryValue: "detached-building",
     image: images.leasingDetached,
-    brochureUrl: "https://drive.google.com/file/d/1goBmVOQPjiembAGMzcmu2E82VXE_PSOO/view",
+    brochureUrl: "/assets/leasing/tpk-park-detached-showroom-building-no-7-for-lease.pdf",
     mapUrl: "https://www.google.com/maps/search/No.+7+Jalan+TPK+2%2F4,+Taman+Perindustrian+Kinrara,+Puchong",
     values: {
       availability: { en: "1 building — confirm current availability", ms: "1 bangunan — sahkan ketersediaan semasa", zh: "1栋 — 请确认当前供应" },
@@ -130,7 +131,7 @@ export const leasingInventory = {
     routeId: "leasingSemiDetached",
     queryValue: "semi-detached",
     image: images.leasingSemiDetached,
-    brochureUrl: "/semid.pdf",
+    brochureUrl: "/assets/leasing/tpk-park-semi-detached-showroom-industrial-unit-no-69-for-lease.pdf",
     mapUrl: "https://www.google.com/maps/search/69+Jalan+TPK+2%2F8,+Taman+Perindustrian+Kinrara,+Puchong",
     values: {
       availability: { en: "1 building — confirm current availability", ms: "1 bangunan — sahkan ketersediaan semasa", zh: "1栋 — 请确认当前供应" },
@@ -270,10 +271,10 @@ const common = {
       factsTitle: "Current leasing information",
       factsText: "Use these details as a starting point, then confirm the latest position with the leasing team.",
       labels: { availability: "Availability", address: "Address", builtUp: "Built-up area", landArea: "Land area", askingRent: "Asking rent", format: "Property format", lastUpdated: "Last updated" },
-      lastUpdated: "1 September 2026",
+      lastUpdated: "2 September 2026",
       enquire: "Enquire about this space",
       call: "Call leasing team",
-      brochure: "View leasing information",
+      brochure: "Download leasing information pack (PDF)",
       location: "View location",
       disclaimer: "Availability, dimensions, asking rent and commercial terms are indicative and subject to verification, landlord approval and contract. This page is not an offer or reservation."
     },
@@ -304,10 +305,10 @@ const common = {
       factsTitle: "Maklumat penyewaan semasa",
       factsText: "Gunakan butiran ini sebagai titik mula, kemudian sahkan kedudukan terkini dengan pasukan penyewaan.",
       labels: { availability: "Ketersediaan", address: "Alamat", builtUp: "Keluasan binaan", landArea: "Keluasan tanah", askingRent: "Sewa diminta", format: "Format hartanah", lastUpdated: "Kemas kini terakhir" },
-      lastUpdated: "1 September 2026",
+      lastUpdated: "2 September 2026",
       enquire: "Tanya tentang ruang ini",
       call: "Hubungi pasukan penyewaan",
-      brochure: "Lihat maklumat penyewaan",
+      brochure: "Muat turun pek maklumat penyewaan (PDF)",
       location: "Lihat lokasi",
       disclaimer: "Ketersediaan, keluasan, sewa diminta dan terma komersial adalah indikatif serta tertakluk kepada pengesahan, kelulusan tuan tanah dan kontrak. Halaman ini bukan tawaran atau tempahan."
     },
@@ -338,10 +339,10 @@ const common = {
       factsTitle: "当前租赁信息",
       factsText: "请以这些资料为初步参考，并向租赁团队确认最新情况。",
       labels: { availability: "供应情况", address: "地址", builtUp: "建筑面积", landArea: "土地面积", askingRent: "参考叫租", format: "物业形式", lastUpdated: "最后更新" },
-      lastUpdated: "2026年9月1日",
+      lastUpdated: "2026年9月2日",
       enquire: "查询此单位",
       call: "致电租赁团队",
-      brochure: "查看租赁资料",
+      brochure: "下载租赁资料包（PDF）",
       location: "查看位置",
       disclaimer: "单位供应、面积、叫租及商业条款均为参考资料，须经核实、业主批准并以合约为准。本页不构成正式报价或预留。"
     },
@@ -506,7 +507,7 @@ const enPages = {
       { type: "faq", kicker: "Shop & showroom FAQ", title: "Planning your enquiry", items: [
         { q: "Where are the shop and showroom units?", a: "The referenced shoplots are along Jalan TPK 2/8 within Taman Perindustrian Kinrara, Puchong." },
         { q: "What businesses are a good fit?", a: "Customer-facing showrooms, specialist retail, renovation and home-improvement brands, cafés, wellness, education, clinics and complementary services are priority uses, subject to approval." },
-        { q: "Can I download more information?", a: "Yes. Use the leasing information link on this page, then contact management to confirm the current unit, measurements, rent and viewing availability." }
+        { q: "Can I download more information?", a: "Yes. Download the leasing information pack (PDF) on this page, then contact management to confirm the current unit, measurements, rent and viewing availability." }
       ] }
     ]
   },
@@ -757,7 +758,7 @@ const msPages = {
       { type: "faq", kicker: "Soalan kedai & bilik pameran", title: "Merancang pertanyaan anda", items: [
         { q: "Di manakah unit kedai dan bilik pameran?", a: "Kedai rujukan terletak di sepanjang Jalan TPK 2/8 dalam Taman Perindustrian Kinrara, Puchong." },
         { q: "Perniagaan apakah yang sesuai?", a: "Bilik pameran berhadapan pelanggan, runcit khusus, jenama renovasi dan penambahbaikan rumah, kafe, kesejahteraan, pendidikan, klinik dan perkhidmatan pelengkap adalah antara kegunaan keutamaan, tertakluk kepada kelulusan." },
-        { q: "Bolehkah saya melihat maklumat tambahan?", a: "Ya. Gunakan pautan maklumat penyewaan pada halaman ini, kemudian hubungi pengurusan untuk mengesahkan unit, ukuran, sewa dan ketersediaan lawatan semasa." }
+        { q: "Bolehkah saya memuat turun maklumat tambahan?", a: "Ya. Muat turun pek maklumat penyewaan (PDF) pada halaman ini, kemudian hubungi pengurusan untuk mengesahkan unit, ukuran, sewa dan ketersediaan lawatan semasa." }
       ] }
     ]
   },
@@ -981,7 +982,7 @@ const zhPages = {
       { type: "faq", kicker: "商铺与展厅常见问题", title: "规划您的查询", items: [
         { q: "商铺与展厅位于哪里？", a: "本页所指商铺位于蒲种金銮工业园Jalan TPK 2/8沿线。" },
         { q: "哪些业务较适合？", a: "面客展厅、专业零售、装修与家居品牌、咖啡馆、健康、教育、诊所及互补服务均属优先考虑用途，但须经批准。" },
-        { q: "可以查看更详细的租赁资料吗？", a: "可以。使用本页的租赁资料链接，然后联系管理团队确认当前单位、尺寸、租金及看房时间。" }
+        { q: "可以下载更详细的租赁资料吗？", a: "可以。下载本页的租赁资料包（PDF），然后联系管理团队确认当前单位、尺寸、租金及看房时间。" }
       ] }
     ]
   },
