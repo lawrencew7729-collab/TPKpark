@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import {
   articles,
   images,
+  leasingInventory,
   localeConfig,
   origin,
   primaryNav,
@@ -38,6 +39,11 @@ function link(locale, routeId, label, className = "") {
   return `<a href="${routePath(locale, routeId)}"${className ? ` class="${className}"` : ""}>${escapeHtml(label)}</a>`;
 }
 
+function contactHref(locale, unitKey = "") {
+  const base = routePath(locale, "contact");
+  return unitKey ? `${base}?space=${encodeURIComponent(leasingInventory[unitKey].queryValue)}` : base;
+}
+
 function localeLinks(locale, routeId) {
   return `<nav class="locale-nav" aria-label="Language">
     ${locales.map((key) => `<a href="${routePath(key, routeId)}" hreflang="${localeConfig[key].hreflang}" lang="${localeConfig[key].htmlLang}"${key === locale ? ' aria-current="true"' : ""}>${localeConfig[key].short}</a>`).join("")}
@@ -46,8 +52,9 @@ function localeLinks(locale, routeId) {
 
 function header(locale, routeId) {
   const t = site[locale];
-  const nav = primaryNav.map((id) => `<a href="${routePath(locale, id)}"${id === routeId ? ' aria-current="page"' : ""}>${escapeHtml(t.nav[id])}</a>`).join("");
-  const mobileNav = routeIds.map((id) => `<a href="${routePath(locale, id)}"${id === routeId ? ' aria-current="page"' : ""}>${escapeHtml(t.nav[id])}</a>`).join("");
+  const activeRoute = t.pages[routeId].parentRoute || routeId;
+  const nav = primaryNav.map((id) => `<a href="${routePath(locale, id)}"${id === activeRoute ? ' aria-current="page"' : ""}>${escapeHtml(t.nav[id])}</a>`).join("");
+  const mobileNav = routeIds.filter((id) => !t.pages[id].parentRoute).map((id) => `<a href="${routePath(locale, id)}"${id === activeRoute ? ' aria-current="page"' : ""}>${escapeHtml(t.nav[id])}</a>`).join("");
   return `<header class="site-header">
     <div class="header-inner">
       <a class="brand" href="${routePath(locale, "home")}" aria-label="TPK Park ${t.nav.home}">
@@ -90,8 +97,9 @@ function footer(locale) {
 
 function pageHero(locale, routeId, page) {
   const t = site[locale];
+  const parent = page.parentRoute ? `<span aria-hidden="true">/</span><a href="${routePath(locale, page.parentRoute)}">${escapeHtml(t.nav[page.parentRoute])}</a>` : "";
   return `<section class="page-hero"><div class="shell">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="${routePath(locale, "home")}">${escapeHtml(t.breadcrumbHome)}</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(page.eyebrow)}</span></nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="${routePath(locale, "home")}">${escapeHtml(t.breadcrumbHome)}</a>${parent}<span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(page.eyebrow)}</span></nav>
     <div class="page-hero-grid"><div><p class="eyebrow">${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1></div><p class="page-hero-copy">${escapeHtml(page.lead)}</p></div>
   </div></section>`;
 }
@@ -117,7 +125,7 @@ function renderCards(locale, block) {
   const t = site[locale];
   const items = block.items.map((item) => {
     const href = item.route ? routePath(locale, item.route) : "";
-    const more = href ? `<a class="text-link" href="${href}">${escapeHtml(t.readMore)} <span class="arrow" aria-hidden="true">→</span></a>` : "";
+    const more = href ? `<a class="text-link" href="${href}">${escapeHtml(item.linkLabel || t.readMore)} <span class="arrow" aria-hidden="true">→</span></a>` : "";
     if (item.image) {
       return `<article class="card image-card"><img src="${item.image}" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="image-card-content"><span class="number">${escapeHtml(item.number)}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p>${more}</div></article>`;
     }
@@ -128,7 +136,7 @@ function renderCards(locale, block) {
 
 function renderSplit(locale, block, index) {
   const t = site[locale];
-  const action = block.route ? `<a class="button button-dark" href="${routePath(locale, block.route)}">${escapeHtml(t.readMore)} <span class="arrow" aria-hidden="true">→</span></a>` : "";
+  const action = block.route ? `<a class="button button-dark" href="${routePath(locale, block.route)}">${escapeHtml(block.linkLabel || t.readMore)} <span class="arrow" aria-hidden="true">→</span></a>` : "";
   const image = `<img class="split-media" src="${block.image}" alt="${escapeHtml(block.alt)}" loading="lazy" referrerpolicy="no-referrer">`;
   const copy = `<div class="split-copy"><span class="section-number">${String(index + 1).padStart(2, "0")}</span><h2>${escapeHtml(block.title)}</h2><p>${escapeHtml(block.text)}</p>${action}</div>`;
   return `<section class="split section-sage">${index % 2 ? `${copy}${image}` : `${image}${copy}`}</section>`;
@@ -174,8 +182,29 @@ function renderFaq(block) {
   return `<section class="section section-sage"><div class="shell">${sectionHeader(block)}<div class="faq-list">${items}</div></div></section>`;
 }
 
-function renderNotice(block) {
-  return `<section class="section-compact"><div class="shell"><p class="notice"><span class="archive-label">Archive / Notice</span><br><br>${escapeHtml(block.text)}</p></div></section>`;
+function renderNotice(locale, block) {
+  return `<section class="section-compact"><div class="shell"><p class="notice"><span class="archive-label">${escapeHtml(block.label || site[locale].noticeLabel)}</span><br><br>${escapeHtml(block.text)}</p></div></section>`;
+}
+
+function renderUnitDetails(locale, block) {
+  const t = site[locale];
+  const ui = t.leasingUi;
+  const unit = leasingInventory[block.inventory];
+  const keys = ["availability", "address", "builtUp", "landArea", "askingRent", "format"];
+  const facts = keys.filter((key) => unit.values[key]).map((key) => `<div class="unit-fact"><dt>${escapeHtml(ui.labels[key])}</dt><dd>${escapeHtml(unit.values[key][locale])}</dd></div>`).join("");
+  const brochureExternal = unit.brochureUrl.startsWith("http");
+  const brochureAttrs = brochureExternal ? ' target="_blank" rel="noopener noreferrer"' : ' target="_blank"';
+  return `<section class="section unit-details"><div class="shell">
+    ${sectionHeader({ kicker: ui.factsKicker, title: ui.factsTitle, text: ui.factsText })}
+    <dl class="unit-facts">${facts}<div class="unit-fact"><dt>${escapeHtml(ui.labels.lastUpdated)}</dt><dd><time datetime="2026-09-01">${escapeHtml(ui.lastUpdated)}</time></dd></div></dl>
+    <div class="unit-actions">
+      <a class="button button-dark" href="${contactHref(locale, block.inventory)}">${escapeHtml(ui.enquire)} <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="button button-outline" href="tel:+60380765200">${escapeHtml(ui.call)}</a>
+      <a class="button button-outline" href="${escapeHtml(unit.brochureUrl)}"${brochureAttrs}>${escapeHtml(ui.brochure)}</a>
+      <a class="text-link" href="${escapeHtml(unit.mapUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(ui.location)} <span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+    <p class="unit-disclaimer">${escapeHtml(ui.disclaimer)}</p>
+  </div></section>`;
 }
 
 function renderProfile(page, block) {
@@ -190,6 +219,7 @@ function renderContact(locale, block) {
   const f = t.form;
   const labels = block.labels;
   const options = f.options.map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`).join("");
+  const spaceOptions = f.spaceOptions.map((option) => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("");
   return `<section class="section"><div class="shell"><div class="contact-grid">
     <div class="contact-list">
       <div class="contact-row"><span>${escapeHtml(labels.phone)}</span><a href="tel:+60380765200">+60 3 8076 5200</a></div>
@@ -203,6 +233,7 @@ function renderContact(locale, block) {
       <div class="field"><label for="email">${escapeHtml(f.email)}</label><input id="email" name="email" type="email" autocomplete="email" required></div>
       <div class="field"><label for="phone">${escapeHtml(f.phone)}</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
       <div class="field field-full"><label for="interest">${escapeHtml(f.interest)}</label><select id="interest" name="interest" required><option value="">${escapeHtml(f.select)}</option>${options}</select></div>
+      <div class="field field-full"><label for="space-type">${escapeHtml(f.spaceType)}</label><select id="space-type" name="spaceType"><option value="">${escapeHtml(f.spaceSelect)}</option>${spaceOptions}</select></div>
       <div class="field field-full"><label for="message">${escapeHtml(f.message)}</label><textarea id="message" name="message" required></textarea></div>
       <p class="form-note">${escapeHtml(t.emailApp)}</p>
       <div class="field-full"><button class="button button-dark" type="submit">${escapeHtml(f.send)} <span class="arrow" aria-hidden="true">→</span></button></div>
@@ -220,16 +251,17 @@ function renderBlock(locale, routeId, page, block, index) {
     case "quote": return renderQuote(block);
     case "news": return renderNews(locale, block);
     case "faq": return renderFaq(block);
-    case "notice": return renderNotice(block);
+    case "notice": return renderNotice(locale, block);
+    case "unitDetails": return renderUnitDetails(locale, block);
     case "profile": return renderProfile(page, block);
     case "contact": return renderContact(locale, block);
     default: throw new Error(`Unknown block type: ${block.type}`);
   }
 }
 
-function cta(locale) {
+function cta(locale, page) {
   const t = site[locale];
-  return `<aside class="cta-panel"><div><h2>${escapeHtml(t.ctaTitle)}</h2><p>${escapeHtml(t.ctaText)}</p></div><a class="button button-primary" href="${routePath(locale, "contact")}">${escapeHtml(t.ctaButton)} <span class="arrow" aria-hidden="true">→</span></a></aside>`;
+  return `<aside class="cta-panel"><div><h2>${escapeHtml(t.ctaTitle)}</h2><p>${escapeHtml(t.ctaText)}</p></div><a class="button button-primary" href="${contactHref(locale, page.unitKey)}">${escapeHtml(t.ctaButton)} <span class="arrow" aria-hidden="true">→</span></a></aside>`;
 }
 
 function schemas(locale, routeId, page) {
@@ -273,12 +305,14 @@ function schemas(locale, routeId, page) {
   ];
 
   if (routeId !== "home") {
+    const breadcrumbItems = [
+      { "@type": "ListItem", position: 1, name: site[locale].breadcrumbHome, item: absolute(locale, "home") }
+    ];
+    if (page.parentRoute) breadcrumbItems.push({ "@type": "ListItem", position: 2, name: site[locale].nav[page.parentRoute], item: absolute(locale, page.parentRoute) });
+    breadcrumbItems.push({ "@type": "ListItem", position: breadcrumbItems.length + 1, name: page.title, item: url });
     graph.push({
       "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: site[locale].breadcrumbHome, item: absolute(locale, "home") },
-        { "@type": "ListItem", position: 2, name: page.title, item: url }
-      ]
+      itemListElement: breadcrumbItems
     });
   }
 
@@ -287,6 +321,19 @@ function schemas(locale, routeId, page) {
 
   if (routeId === "news") {
     graph.push({ "@type": "ItemList", name: page.title, itemListElement: articles.map((article, index) => ({ "@type": "ListItem", position: index + 1, url: article.url, name: article.title[locale] })) });
+  }
+
+  if (routeId === "leasing") {
+    graph.push({
+      "@type": "ItemList",
+      name: page.title,
+      itemListElement: Object.values(leasingInventory).map((unit, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: absolute(locale, unit.routeId),
+        name: site[locale].pages[unit.routeId].title
+      }))
+    });
   }
 
   if (routeId === "profile") {
@@ -327,21 +374,32 @@ function scripts(locale) {
       });
     }
     const emailForm = document.querySelector('[data-email-form]');
-    if (emailForm) emailForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(emailForm);
-      const subject = 'TPK Park enquiry — ' + data.get('interest');
-      const body = [
-        '${escapeHtml(t.form.name)}: ' + data.get('name'),
-        '${escapeHtml(t.form.company)}: ' + (data.get('company') || '-'),
-        '${escapeHtml(t.form.email)}: ' + data.get('email'),
-        '${escapeHtml(t.form.phone)}: ' + (data.get('phone') || '-'),
-        '${escapeHtml(t.form.interest)}: ' + data.get('interest'),
-        '',
-        data.get('message')
-      ].join('\\n');
-      window.location.href = 'mailto:info@tpkpark.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    });
+    if (emailForm) {
+      const requestedSpace = new URLSearchParams(window.location.search).get('space');
+      const spaceField = emailForm.querySelector('[name="spaceType"]');
+      const interestField = emailForm.querySelector('[name="interest"]');
+      if (requestedSpace && spaceField && [...spaceField.options].some((option) => option.value === requestedSpace)) {
+        spaceField.value = requestedSpace;
+        interestField.value = ${safeJson(t.form.options[0])};
+      }
+      emailForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(emailForm);
+        const selectedSpace = spaceField?.selectedOptions[0]?.text || '-';
+        const subject = 'TPK Park enquiry — ' + data.get('interest');
+        const body = [
+          '${escapeHtml(t.form.name)}: ' + data.get('name'),
+          '${escapeHtml(t.form.company)}: ' + (data.get('company') || '-'),
+          '${escapeHtml(t.form.email)}: ' + data.get('email'),
+          '${escapeHtml(t.form.phone)}: ' + (data.get('phone') || '-'),
+          '${escapeHtml(t.form.interest)}: ' + data.get('interest'),
+          '${escapeHtml(t.form.spaceType)}: ' + selectedSpace,
+          '',
+          data.get('message')
+        ].join('\\n');
+        window.location.href = 'mailto:info@tpkpark.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      });
+    }
   </script>`;
 }
 
@@ -355,7 +413,7 @@ function renderPage(locale, routeId) {
   const hero = routeId === "home" ? homeHero(locale, page) : pageHero(locale, routeId, page);
   const blocks = page.blocks.map((block, index) => renderBlock(locale, routeId, page, block, index)).join("");
   const ogImage = page.image || (routeId === "profile" ? images.portrait : images.park);
-  const body = `${hero}${blocks}${routeId === "contact" ? "" : cta(locale)}`;
+  const body = `${hero}${blocks}${routeId === "contact" ? "" : cta(locale, page)}`;
   return `<!doctype html>
 <html lang="${localeConfig[locale].htmlLang}">
 <head>

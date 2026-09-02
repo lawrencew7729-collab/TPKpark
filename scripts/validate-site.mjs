@@ -1,7 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 import { dirname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
-import { localeConfig, origin, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
+import { leasingInventory, localeConfig, origin, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
 
 const root = process.cwd();
 const locales = Object.keys(localeConfig);
@@ -68,6 +68,7 @@ for (const locale of locales) {
 
     const h1s = matches(html, /<h1(?:\s[^>]*)?>/gi);
     if (h1s.length !== 1) fail(label, `expected one h1, found ${h1s.length}`);
+    if (!html.includes(`>${escapeHtml(page.title)}</h1>`)) fail(label, "h1 does not match the configured page title");
 
     const alternates = matches(html, /<link rel="alternate" hreflang="[^"]+" href="[^"]+">/g);
     if (alternates.length !== 4) fail(label, `expected four hreflang links, found ${alternates.length}`);
@@ -88,6 +89,13 @@ for (const locale of locales) {
         const webPage = graph.find((entry) => entry["@type"] === "WebPage");
         if (!webPage) fail(label, "WebPage schema is missing");
         if (webPage?.dateModified !== routeLastModified[routeId]) fail(label, "WebPage dateModified is incorrect");
+        const breadcrumb = graph.find((entry) => entry["@type"] === "BreadcrumbList");
+        if (routeId !== "home" && !breadcrumb) fail(label, "BreadcrumbList schema is missing");
+        if (page.parentRoute && breadcrumb?.itemListElement?.length !== 3) fail(label, "nested page breadcrumb does not contain three levels");
+        if (routeId === "leasing") {
+          const itemList = graph.find((entry) => entry["@type"] === "ItemList");
+          if (itemList?.itemListElement?.length !== Object.keys(leasingInventory).length) fail(label, "leasing ItemList does not contain every property page");
+        }
         if (routeId === "profile") {
           const person = graph.find((entry) => entry["@type"] === "Person");
           if (!person) fail(label, "Person schema is missing");
@@ -98,6 +106,20 @@ for (const locale of locales) {
       } catch (error) {
         fail(label, `invalid JSON-LD: ${error.message}`);
       }
+    }
+
+    if (page.unitKey) {
+      const unit = leasingInventory[page.unitKey];
+      if (!html.includes('class="unit-facts"')) fail(label, "unit facts are missing");
+      if (!html.includes(`${routePath(locale, "contact")}?space=${unit.queryValue}`)) fail(label, "unit-specific enquiry link is missing");
+      for (const value of Object.values(unit.values)) {
+        if (value && !html.includes(escapeHtml(value[locale]))) fail(label, `missing localized inventory fact: ${value[locale]}`);
+      }
+    }
+
+    if (routeId === "contact") {
+      if (!html.includes('id="space-type"')) fail(label, "space-type enquiry field is missing");
+      for (const unit of Object.values(leasingInventory)) if (!html.includes(`value="${unit.queryValue}"`)) fail(label, `missing enquiry option: ${unit.queryValue}`);
     }
 
     const images = matches(html, /<img\b[^>]*>/gi);
@@ -143,8 +165,8 @@ const sitemapPath = join(root, "sitemap.xml");
 const sitemap = await readFile(sitemapPath, "utf8");
 const locs = matches(sitemap, /<loc>([^<]+)<\/loc>/g);
 const lastmods = matches(sitemap, /<lastmod>([^<]+)<\/lastmod>/g);
-if (locs.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected 30 locations, found ${locs.length}`);
-if (lastmods.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected 30 lastmod values, found ${lastmods.length}`);
+if (locs.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected ${locales.length * routeIds.length} locations, found ${locs.length}`);
+if (lastmods.length !== locales.length * routeIds.length) fail("sitemap.xml", `expected ${locales.length * routeIds.length} lastmod values, found ${lastmods.length}`);
 for (const locale of locales) for (const routeId of routeIds) {
   const url = `${origin}${routePath(locale, routeId)}`;
   if (!sitemap.includes(`<loc>${url}</loc>`)) fail("sitemap.xml", `missing ${url}`);
