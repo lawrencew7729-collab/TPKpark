@@ -77,6 +77,16 @@ for (const locale of locales) {
       if (!html.includes(expected)) fail(label, `missing ${localeConfig[key].hreflang} alternate`);
     }
 
+    if (!html.includes(`<nav class="locale-nav locale-nav-header" aria-label="${escapeHtml(site[locale].language)}">`)) fail(label, "prominent header language selector is missing");
+    if (!html.includes(`<nav class="locale-nav locale-nav-panel" aria-label="${escapeHtml(site[locale].language)}">`)) fail(label, "expanded mobile language selector is missing");
+    if (!html.includes('<span class="locale-symbol" aria-hidden="true">A/文</span>')) fail(label, "header language cue is missing");
+    for (const key of locales) {
+      const current = key === locale ? ' aria-current="true"' : "";
+      const attrs = `<a href="${routePath(key, routeId)}" hreflang="${localeConfig[key].hreflang}" lang="${localeConfig[key].htmlLang}" aria-label="${escapeHtml(localeConfig[key].label)}"${current}>`;
+      if (!html.includes(`${attrs}${escapeHtml(localeConfig[key].short)}</a>`)) fail(label, `missing compact ${key} language option`);
+      if (!html.includes(`${attrs}${escapeHtml(localeConfig[key].label)}</a>`)) fail(label, `missing expanded ${key} language option`);
+    }
+
     const jsonScripts = matches(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g);
     if (jsonScripts.length !== 1) fail(label, `expected one JSON-LD block, found ${jsonScripts.length}`);
     for (const block of jsonScripts) {

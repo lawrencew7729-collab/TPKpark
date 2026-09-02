@@ -44,9 +44,12 @@ function contactHref(locale, unitKey = "") {
   return unitKey ? `${base}?space=${encodeURIComponent(leasingInventory[unitKey].queryValue)}` : base;
 }
 
-function localeLinks(locale, routeId) {
-  return `<nav class="locale-nav" aria-label="Language">
-    ${locales.map((key) => `<a href="${routePath(key, routeId)}" hreflang="${localeConfig[key].hreflang}" lang="${localeConfig[key].htmlLang}"${key === locale ? ' aria-current="true"' : ""}>${localeConfig[key].short}</a>`).join("")}
+function localeLinks(locale, routeId, expanded = false) {
+  const t = site[locale];
+  const variant = expanded ? "panel" : "header";
+  return `<nav class="locale-nav locale-nav-${variant}" aria-label="${escapeHtml(t.language)}">
+    ${expanded ? `<span class="locale-heading">${escapeHtml(t.language)}</span>` : '<span class="locale-symbol" aria-hidden="true">A/文</span>'}
+    ${locales.map((key) => `<a href="${routePath(key, routeId)}" hreflang="${localeConfig[key].hreflang}" lang="${localeConfig[key].htmlLang}" aria-label="${escapeHtml(localeConfig[key].label)}"${key === locale ? ' aria-current="true"' : ""}>${escapeHtml(expanded ? localeConfig[key].label : localeConfig[key].short)}</a>`).join("")}
   </nav>`;
 }
 
@@ -65,8 +68,8 @@ function header(locale, routeId) {
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="${escapeHtml(t.menuOpen)}"><span></span></button>
     </div>
     <div id="mobile-menu" class="mobile-panel" data-open="false">
+      ${localeLinks(locale, routeId, true)}
       <nav class="mobile-nav" aria-label="Mobile">${mobileNav}</nav>
-      ${localeLinks(locale, routeId)}
     </div>
   </header>`;
 }
