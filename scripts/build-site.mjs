@@ -167,15 +167,52 @@ function renderQuote(block) {
   return `<section class="quote-band"><blockquote>${escapeHtml(block.text)}</blockquote><cite>— ${escapeHtml(block.cite)}</cite></section>`;
 }
 
+function formatDate(locale, date) {
+  return new Intl.DateTimeFormat(localeConfig[locale].htmlLang, { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
+}
+
+function renderNewsFeature(locale, block) {
+  const date = formatDate(locale, block.date);
+  return `<section class="section news-feature-section"><div class="shell">
+    <article class="news-feature">
+      <div class="news-feature-media"><img src="${block.image}" alt="${escapeHtml(block.alt)}" loading="eager" referrerpolicy="no-referrer"></div>
+      <div class="news-feature-copy">
+        <span class="section-number">${escapeHtml(block.kicker)}</span>
+        <div class="news-feature-meta"><span>${escapeHtml(block.category)}</span><time datetime="${block.date}">${escapeHtml(date)}</time></div>
+        <h2>${escapeHtml(block.title)}</h2>
+        <p>${escapeHtml(block.text)}</p>
+        <a class="button button-primary" href="${routePath(locale, block.route)}">${escapeHtml(block.linkLabel)} <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </div></section>`;
+}
+
+function renderNewsUpdates(locale, block) {
+  const items = block.items.map((item) => {
+    const date = item.date ? `<time datetime="${item.date}">${escapeHtml(formatDate(locale, item.date))}</time>` : "";
+    const href = routePath(locale, item.route);
+    return `<article class="update-card">
+      <a class="update-card-media" href="${href}"><img src="${item.image}" alt="${escapeHtml(item.alt)}" loading="lazy" referrerpolicy="no-referrer"></a>
+      <div class="update-card-meta"><span>${escapeHtml(item.category)}</span>${date}</div>
+      <h3><a href="${href}">${escapeHtml(item.title)}</a></h3>
+      <p>${escapeHtml(item.text)}</p>
+      <a class="text-link" href="${href}">${escapeHtml(item.linkLabel)} <span class="arrow" aria-hidden="true">→</span></a>
+    </article>`;
+  }).join("");
+  return `<section class="section section-sage"><div class="shell">${sectionHeader(block)}<div class="updates-grid">${items}</div></div></section>`;
+}
+
 function renderNews(locale, block) {
   const t = site[locale];
-  const lang = localeConfig[locale].htmlLang;
   const cards = articles.slice(0, block.limit).map((article) => {
-    const date = new Intl.DateTimeFormat(lang, { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(`${article.date}T00:00:00Z`));
+    const date = formatDate(locale, article.date);
+    const sourceLanguage = t.newsUi.sourceLanguages[article.sourceLanguage];
+    const summary = block.detailed ? `<p class="news-summary">${escapeHtml(article.summary[locale])}</p>` : "";
     return `<article class="news-card">
       <a href="${article.url}" target="_blank" rel="noopener noreferrer"><img src="${article.image}" alt="${escapeHtml(article.title[locale])}" loading="lazy" referrerpolicy="no-referrer"></a>
-      <div class="news-meta"><span>${escapeHtml(article.source)}</span><time datetime="${article.date}">${escapeHtml(date)}</time></div>
-      <h3>${escapeHtml(article.title[locale])}</h3>
+      <div class="news-meta"><span>${escapeHtml(article.source)} · ${escapeHtml(sourceLanguage)}</span><time datetime="${article.date}">${escapeHtml(date)}</time></div>
+      <h3><a href="${article.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(article.title[locale])}</a></h3>
+      ${summary}
       <a class="text-link" href="${article.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(t.readMore)} <span class="arrow" aria-hidden="true">↗</span><span class="visually-hidden"> (${escapeHtml(t.external)})</span></a>
     </article>`;
   }).join("");
@@ -258,6 +295,8 @@ function renderBlock(locale, routeId, page, block, index) {
     case "directory": return renderDirectory(block);
     case "timeline": return renderTimeline(block);
     case "quote": return renderQuote(block);
+    case "newsFeature": return renderNewsFeature(locale, block);
+    case "newsUpdates": return renderNewsUpdates(locale, block);
     case "news": return renderNews(locale, block);
     case "faq": return renderFaq(block);
     case "notice": return renderNotice(locale, block);
@@ -270,7 +309,9 @@ function renderBlock(locale, routeId, page, block, index) {
 
 function cta(locale, page) {
   const t = site[locale];
-  return `<aside class="cta-panel"><div><h2>${escapeHtml(t.ctaTitle)}</h2><p>${escapeHtml(t.ctaText)}</p></div><a class="button button-primary" href="${contactHref(locale, page.unitKey)}">${escapeHtml(t.ctaButton)} <span class="arrow" aria-hidden="true">→</span></a></aside>`;
+  const config = page.cta || { title: t.ctaTitle, text: t.ctaText, button: t.ctaButton };
+  const href = config.route ? routePath(locale, config.route) : contactHref(locale, page.unitKey);
+  return `<aside class="cta-panel"><div><h2>${escapeHtml(config.title)}</h2><p>${escapeHtml(config.text)}</p></div><a class="button button-primary" href="${href}">${escapeHtml(config.button)} <span class="arrow" aria-hidden="true">→</span></a></aside>`;
 }
 
 function schemas(locale, routeId, page) {
@@ -343,7 +384,15 @@ function schemas(locale, routeId, page) {
   if (faq) graph.push({ "@type": "FAQPage", mainEntity: faq.items.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })) });
 
   if (routeId === "news") {
-    graph.push({ "@type": "ItemList", name: page.title, itemListElement: articles.map((article, index) => ({ "@type": "ListItem", position: index + 1, url: article.url, name: article.title[locale] })) });
+    const feature = page.blocks.find((block) => block.type === "newsFeature");
+    const updates = page.blocks.find((block) => block.type === "newsUpdates")?.items || [];
+    const firstPartyItems = [feature, ...updates].filter(Boolean).map((item) => ({ url: absolute(locale, item.route), name: item.title }));
+    const mediaItems = articles.map((article) => ({ url: article.url, name: article.title[locale] }));
+    graph.push({
+      "@type": "ItemList",
+      name: page.title,
+      itemListElement: [...firstPartyItems, ...mediaItems].map((item, index) => ({ "@type": "ListItem", position: index + 1, url: item.url, name: item.name }))
+    });
   }
 
   if (routeId === "leasing") {
