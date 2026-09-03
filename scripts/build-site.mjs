@@ -175,7 +175,7 @@ function renderNewsFeature(locale, block) {
   const date = formatDate(locale, block.date);
   return `<section class="section news-feature-section"><div class="shell">
     <article class="news-feature">
-      <div class="news-feature-media"><img src="${block.image}" alt="${escapeHtml(block.alt)}" loading="eager" referrerpolicy="no-referrer"></div>
+      <div class="news-feature-media"><img src="${block.image}" alt="${escapeHtml(block.alt)}" loading="eager" fetchpriority="high" referrerpolicy="no-referrer"></div>
       <div class="news-feature-copy">
         <span class="section-number">${escapeHtml(block.kicker)}</span>
         <div class="news-feature-meta"><span>${escapeHtml(block.category)}</span><time datetime="${block.date}">${escapeHtml(date)}</time></div>
