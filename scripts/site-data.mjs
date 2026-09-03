@@ -13,6 +13,7 @@ export const routeSlugs = {
   news: "news",
   milestones: "milestones",
   profile: "wong-shung-yen",
+  publicRecord: "wong-shung-yen/public-record",
   contact: "contact"
 };
 
@@ -38,6 +39,7 @@ export const seoTitles = {
     news: "TPK Park News, Updates & Media Coverage | Puchong",
     milestones: "TPK Park Milestones | Home & Living Recognition",
     profile: "Wong Shung Yen 黄松延 | Managing Director, TPK Park",
+    publicRecord: "Wong Shung Yen Media & Public Record | TPK Park",
     contact: "Contact TPK Park Puchong | Leasing & Enquiries"
   },
   ms: {
@@ -53,6 +55,7 @@ export const seoTitles = {
     news: "Berita, Kemas Kini & Liputan Media TPK Park | Puchong",
     milestones: "Pencapaian TPK Park | Pengiktirafan Home & Living",
     profile: "Wong Shung Yen 黄松延 | Pengarah Urusan TPK Park",
+    publicRecord: "Media & Rekod Awam Wong Shung Yen | TPK Park",
     contact: "Hubungi TPK Park Puchong | Penyewaan & Pertanyaan"
   },
   zh: {
@@ -68,11 +71,12 @@ export const seoTitles = {
     news: "TPK Park新闻、动态与媒体报道 | 蒲种",
     milestones: "TPK Park里程碑 | 家居生活集群认证",
     profile: "黄松延 Wong Shung Yen | TPK Park董事经理",
+    publicRecord: "黄松延媒体报道与公开记录 | Wong Shung Yen",
     contact: "联系蒲种TPK Park | 租赁与一般咨询"
   }
 };
 
-export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, routeId === "news" ? "2026-09-04" : "2026-09-03"]));
+export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, ["news", "profile", "publicRecord"].includes(routeId) ? "2026-09-04" : "2026-09-03"]));
 
 export function routePath(locale, routeId) {
   const prefix = localeConfig[locale].prefix;
@@ -311,9 +315,156 @@ export const articles = [
   }
 ];
 
+export const profileSources = [
+  {
+    year: "2026", date: "2026-07-07", source: "Kosmo!", sourceLanguage: "ms", category: "place",
+    url: "https://www.kosmo.com.my/2026/07/07/kejayaan-tpk-park-diiktiraf-malaysia-book-of-records/",
+    title: { en: "TPK Park's renewal receives national record recognition", ms: "Pembaharuan TPK Park menerima pengiktirafan rekod kebangsaan", zh: "TPK Park更新成果获国家纪录认证" },
+    summary: { en: "Kosmo! reports on the Malaysia Book of Records recognition and the long-term work behind the Home & Living cluster.", ms: "Kosmo! melaporkan pengiktirafan Malaysia Book of Records serta usaha jangka panjang di sebalik kluster Home & Living.", zh: "《Kosmo!》报道TPK Park获《马来西亚纪录大全》认证，以及家居生活集群背后的长期工作。" }
+  },
+  {
+    year: "2026", date: "2026-07-06", source: "Malaysian Business", sourceLanguage: "en", category: "place", featured: true,
+    url: "https://malaysian-business.com/portal/2026/07/06/yb-ng-sze-han-tpk-parks-mbor-recognition-reflects-puchongs-evolution-as-a-home-living-hub/",
+    title: { en: "Recognition reflects Puchong's evolution as a Home & Living hub", ms: "Pengiktirafan mencerminkan evolusi Puchong sebagai hab Home & Living", zh: "认证反映蒲种逐步发展为家居生活枢纽" },
+    summary: { en: "The report connects TPK Park's record recognition with the wider evolution of Puchong's retail and property landscape.", ms: "Laporan ini mengaitkan pengiktirafan TPK Park dengan evolusi landskap runcit dan hartanah Puchong.", zh: "报道把TPK Park的纪录认证与蒲种零售及房地产格局的演变联系起来。" }
+  },
+  {
+    year: "2026", date: "2026-07-05", source: "Oriental Daily", sourceLanguage: "zh", category: "place",
+    url: "https://www.orientaldaily.com.my/news/central/2026/07/05/830619",
+    title: { en: "A mature industrial area renewed as a focused retail destination", ms: "Kawasan industri matang diperbaharui sebagai destinasi runcit berfokus", zh: "成熟工业区更新为聚焦型零售目的地" },
+    summary: { en: "Oriental Daily examines the property renewal, tenant mix and placemaking behind TPK Park's development.", ms: "Oriental Daily meneliti pembaharuan hartanah, campuran penyewa dan pembentukan tempat di sebalik pembangunan TPK Park.", zh: "《东方日报》探讨TPK Park发展过程中的产业更新、租户组合与地方营造。" }
+  },
+  {
+    year: "2026", source: "Utusan Malaysia", sourceLanguage: "ms", category: "place",
+    url: "https://www.utusan.com.my/nasional/2026/07/tpk-diiktiraf-mbor/",
+    title: { en: "TPK Park recognised by the Malaysia Book of Records", ms: "TPK Park diiktiraf Malaysia Book of Records", zh: "TPK Park获《马来西亚纪录大全》认证" },
+    summary: { en: "Utusan Malaysia records the formal recognition of the Home & Living retail cluster within an industrial-park setting.", ms: "Utusan Malaysia merekodkan pengiktirafan rasmi kluster runcit Home & Living dalam persekitaran taman perindustrian.", zh: "《Utusan Malaysia》报道工业园环境内的家居生活零售集群获得正式认证。" }
+  },
+  {
+    year: "2026", date: "2026-06-30", source: "New Straits Times", sourceLanguage: "en", category: "place", featured: true,
+    url: "https://www.nst.com.my/business/corporate/2026/06/1475902/tpk-park-enters-record-books-largest-home-and-living-retail",
+    title: { en: "TPK Park enters the record books for its Home & Living cluster", ms: "TPK Park catat rekod bagi kluster Home & Living", zh: "TPK Park家居生活集群载入纪录" },
+    summary: { en: "New Straits Times reports on the national record and the role of sustained retail clustering in reaching the milestone.", ms: "New Straits Times melaporkan rekod kebangsaan dan peranan pengelompokan runcit berterusan dalam mencapai pencapaian tersebut.", zh: "《新海峡时报》报道该项国家纪录，以及长期零售集群规划对达成里程碑的作用。" }
+  },
+  {
+    year: "2026", date: "2026-02-02", source: "Sin Chew Daily", sourceLanguage: "zh", category: "community",
+    url: "https://metro.sinchew.com.my/news/20260202/metro/7236636",
+    title: { en: "Public voice on education at SJK(C) Shin Cheng", ms: "Pandangan awam mengenai pendidikan di SJK(C) Shin Cheng", zh: "深静（哈古乐）华小教育事务公共发言" },
+    summary: { en: "Coverage documenting continuing participation in school and community matters at SJK(C) Shin Cheng.", ms: "Liputan yang merekodkan penglibatan berterusan dalam hal sekolah dan masyarakat di SJK(C) Shin Cheng.", zh: "报道记录黄松延持续参与深静（哈古乐）华小的校务与社区事务。" }
+  },
+  {
+    year: "2025", source: "Institut Teknologi Nasional Malang", sourceLanguage: "id", category: "business",
+    url: "https://itn.ac.id/headlines/kerjasama/itn-malang-utar-malaysia-gelar-international-real-estate-development-forum-bahas-inovasi-keberlanjutan/",
+    title: { en: "International forum on sustainable real-estate development", ms: "Forum antarabangsa mengenai pembangunan hartanah mampan", zh: "可持续房地产发展国际论坛" },
+    summary: { en: "ITN Malang records Wong Shung Yen's participation in an international real-estate forum involving UTAR and Rasmi Indah.", ms: "ITN Malang merekodkan penyertaan Wong Shung Yen dalam forum hartanah antarabangsa yang melibatkan UTAR dan Rasmi Indah.", zh: "玛琅国立理工学院记录黄松延参与由拉曼大学及Rasmi Indah等参与的国际房地产论坛。" }
+  },
+  {
+    year: "2025", date: "2025-05-15", source: "The Star", sourceLanguage: "en", category: "philanthropy",
+    url: "https://www.thestar.com.my/news/nation/2025/05/15/rm1mil-boost-to-student-loan-funds-of-tar-umt-utar-from-family-of-late-mca-leader",
+    title: { en: "RM1 million support for TAR UMT and UTAR student-loan funds", ms: "Sokongan RM1 juta untuk dana pinjaman pelajar TAR UMT dan UTAR", zh: "向拉曼理工大学及拉曼大学学生贷款基金捐助100万令吉" },
+    summary: { en: "The Star reports on education support established by the family in memory of the late Wong Seng Chow.", ms: "The Star melaporkan sokongan pendidikan yang diwujudkan oleh keluarga bagi mengenang mendiang Wong Seng Chow.", zh: "《星报》报道黄氏家族为纪念已故黄醒秋而设立的教育支持。" }
+  },
+  {
+    year: "2025", source: "TAR UMT", sourceLanguage: "en", category: "philanthropy", featured: true,
+    url: "https://www.tarumt.edu.my/news/highlights/highlights-news/a-legacy-lives-on-through-student-loan-funds/",
+    title: { en: "A legacy lives on through student-loan funds", ms: "Legasi diteruskan melalui dana pinjaman pelajar", zh: "以学生贷款基金延续教育传承" },
+    summary: { en: "TAR UMT's official account records the family's contribution to student-loan funds at TAR UMT and UTAR.", ms: "Catatan rasmi TAR UMT merekodkan sumbangan keluarga kepada dana pinjaman pelajar TAR UMT dan UTAR.", zh: "拉曼理工大学官方记录黄氏家族向该校及拉曼大学学生贷款基金作出的捐助。" }
+  },
+  {
+    year: "2025", date: "2025-01-19", source: "Sin Chew Daily", sourceLanguage: "zh", category: "community", featured: true,
+    url: "https://metro.sinchew.com.my/news/20250119/metro/6231855",
+    title: { en: "Community participation in the Puchong Dream initiative", ms: "Penglibatan masyarakat dalam inisiatif Puchong Dream", zh: "参与“蒲种梦想”社区计划" },
+    summary: { en: "Sin Chew Daily reports on local community work and Wong Shung Yen's participation in the Puchong Dream initiative.", ms: "Sin Chew Daily melaporkan kerja masyarakat setempat dan penyertaan Wong Shung Yen dalam inisiatif Puchong Dream.", zh: "《星洲日报》报道蒲种社区工作，以及黄松延参与“蒲种梦想”计划。" }
+  },
+  {
+    year: "2024", date: "2024-11-25", source: "Dewan Budaya", sourceLanguage: "ms", category: "culture",
+    url: "https://dewanbudaya.jendeladbp.my/2024/11/25/10670/",
+    title: { en: "Jade exhibition presents cultural dialogue at the National Art Gallery", ms: "Pameran jed mengetengahkan dialog budaya di Balai Seni Negara", zh: "国家美术馆古玉展呈现文化对话" },
+    summary: { en: "Dewan Budaya documents the exhibition, its cultural framing and the work of its co-curators.", ms: "Dewan Budaya mendokumentasikan pameran, kerangka budayanya dan usaha para kurator bersama.", zh: "《Dewan Budaya》记录展览的文化脉络及联合策展工作。" }
+  },
+  {
+    year: "2024", date: "2024-11-25", source: "The Star", sourceLanguage: "en", category: "culture", featured: true,
+    url: "https://www.thestar.com.my/metro/metro-news/2024/11/25/over-100-jade-carvings-showcased-at-national-art-gallery-exhibition",
+    title: { en: "More than 100 jade carvings shown at the National Art Gallery", ms: "Lebih 100 ukiran jed dipamerkan di Balai Seni Negara", zh: "国家美术馆展出逾百件古玉雕刻" },
+    summary: { en: "The Star reports on the 2024 exhibition and identifies Wong Shung Yen among its co-curators.", ms: "The Star melaporkan pameran 2024 dan menamakan Wong Shung Yen sebagai salah seorang kurator bersama.", zh: "《星报》报道2024年古玉展，并列黄松延为联合策展人之一。" }
+  },
+  {
+    year: "2024", source: "Jabatan Penerangan Malaysia / MOTAC", sourceLanguage: "ms", category: "culture",
+    url: "https://dmedia.penerangan.gov.my/upload/sm/23112024.1320861439.pdf",
+    title: { en: "Official release for the National Art Gallery jade exhibition", ms: "Siaran rasmi pameran jed Balai Seni Negara", zh: "国家美术馆古玉展官方文告" },
+    summary: { en: "A Malaysian government release records the exhibition and its role in cultural exchange.", ms: "Siaran kerajaan Malaysia merekodkan pameran tersebut serta peranannya dalam pertukaran budaya.", zh: "马来西亚政府文告记录该展览及其在文化交流中的作用。" }
+  },
+  {
+    year: "2024", source: "National Art Gallery", sourceLanguage: "en", category: "culture", featured: true,
+    url: "https://www.artgallery.gov.my/wp-content/uploads/2024/11/MEDIA-RELEASE-JADE-EXHIBITION.pdf",
+    title: { en: "National Art Gallery media release: Jade exhibition", ms: "Siaran media Balai Seni Negara: Pameran jed", zh: "国家美术馆媒体文告：古玉展" },
+    summary: { en: "The institution's official release records Wong Shung Yen's co-curatorial role in the 2024 exhibition.", ms: "Siaran rasmi institusi itu merekodkan peranan Wong Shung Yen sebagai kurator bersama pameran 2024.", zh: "国家美术馆官方文告记录黄松延担任2024年古玉展联合策展人。" }
+  },
+  {
+    year: "2023", source: "REHDA Institute", sourceLanguage: "en", category: "business",
+    url: "https://rehdainstitute.com/wp-content/uploads/2023/10/D_RI_In-Touch_June23-Issue-V5-Revised-on-Ads-arrangement.pdf",
+    title: { en: "Property-development forum documented by REHDA Institute", ms: "Forum pembangunan hartanah didokumentasikan REHDA Institute", zh: "REHDA Institute记录房地产发展论坛" },
+    summary: { en: "The institute's publication corroborates participation in a forum on real-estate development and industry practice.", ms: "Penerbitan institut itu mengesahkan penyertaan dalam forum mengenai pembangunan hartanah dan amalan industri.", zh: "该研究院刊物佐证黄松延参与房地产发展及行业实践论坛。" }
+  },
+  {
+    year: "2022", date: "2022-12-06", source: "Universiti Tunku Abdul Rahman", sourceLanguage: "en", category: "business", featured: true,
+    url: "https://news.utar.edu.my/news/2022/Dec/06/09/09.html",
+    title: { en: "Industry perspectives at UTAR's property-development forum", ms: "Perspektif industri di forum pembangunan hartanah UTAR", zh: "拉曼大学房地产发展论坛的业界观点" },
+    summary: { en: "UTAR records Wong Shung Yen's participation in a forum connecting property-development education with industry experience.", ms: "UTAR merekodkan penyertaan Wong Shung Yen dalam forum yang menghubungkan pendidikan pembangunan hartanah dengan pengalaman industri.", zh: "拉曼大学记录黄松延参与房地产发展论坛，分享业界经验。" }
+  },
+  {
+    year: "2022", source: "Nanyang Siang Pau", sourceLanguage: "zh", category: "community",
+    url: "https://www.enanyang.my/%E6%96%87%E6%95%99/%E7%BA%AA%E5%BF%B5%E4%B8%BA%E5%8D%8E%E5%B0%8F%E6%89%80%E4%BD%9C%E8%B4%A1%E7%8C%AE-%E6%9D%8E%E6%B7%B1%E9%9D%99%E9%93%9C%E5%83%8F%E6%8F%AD%E5%B9%95",
+    title: { en: "Commemorating contributions to Chinese-language education", ms: "Memperingati sumbangan kepada pendidikan vernakular Cina", zh: "纪念对华文教育的贡献" },
+    summary: { en: "Nanyang Siang Pau covers a school commemoration and continuing community participation at SJK(C) Shin Cheng.", ms: "Nanyang Siang Pau meliputi acara peringatan sekolah dan penglibatan masyarakat berterusan di SJK(C) Shin Cheng.", zh: "《南洋商报》报道深静（哈古乐）华小纪念活动及持续的社区参与。" }
+  },
+  {
+    year: "2021", date: "2021-10-10", source: "Oriental Daily", sourceLanguage: "zh", category: "community",
+    url: "https://www.orientaldaily.com.my/news/central/2021/10/10/443282",
+    title: { en: "Community and school affairs at SJK(C) Shin Cheng", ms: "Hal masyarakat dan sekolah di SJK(C) Shin Cheng", zh: "深静（哈古乐）华小校务与社区事务" },
+    summary: { en: "Coverage documenting Wong Shung Yen's involvement in the school's board and community work.", ms: "Liputan yang merekodkan penglibatan Wong Shung Yen dalam lembaga sekolah dan kerja masyarakat.", zh: "报道记录黄松延参与该校董事会及社区事务。" }
+  },
+  {
+    year: "2020", date: "2020-07-11", source: "China Press", sourceLanguage: "zh", category: "community",
+    url: "https://kl.chinapress.com.my/20200711/%E7%8C%AE%E8%BA%AB%E6%9D%8F%E5%9D%9B38%E8%BD%BD-%E6%B7%B1%E9%9D%99%E5%8D%8E%E5%B0%8F%E9%BB%84%E7%87%95%E8%BE%89%E6%A0%A1%E9%95%BF-%E8%8D%A3%E4%BC%91/",
+    title: { en: "SJK(C) Shin Cheng marks a headmaster's retirement", ms: "SJK(C) Shin Cheng meraikan persaraan guru besar", zh: "深静（哈古乐）华小欢送校长荣休" },
+    summary: { en: "China Press includes Wong Shung Yen's remarks in coverage of a significant school-community occasion.", ms: "China Press memuatkan pandangan Wong Shung Yen dalam liputan acara penting komuniti sekolah.", zh: "《中国报》在学校重要活动报道中引述黄松延发言。" }
+  },
+  {
+    year: "2017", date: "2017-02-12", source: "Sin Chew Daily", sourceLanguage: "zh", category: "community",
+    url: "https://www.sinchew.com.my/20170212/%E9%AD%8F%E5%AE%B6%E7%A5%A5%EF%BC%9A%E6%8B%A8%E6%AC%BE%E5%8D%8E%E5%B0%8F%E6%84%9F%E6%81%A9%E9%A9%AC%E4%BC%81%E4%B8%9A%E5%AE%B6%EF%BC%8E%E9%BB%84%E6%83%A0%E5%BA%B7%E6%8A%95%E6%A1%83%E6%8A%A5/",
+    title: { en: "School fundraising and community organisation", ms: "Pengumpulan dana sekolah dan pengelolaan masyarakat", zh: "华小筹款与社区组织工作" },
+    summary: { en: "Sin Chew Daily records Wong Shung Yen's participation in organising and fundraising for Chinese-language education.", ms: "Sin Chew Daily merekodkan penyertaan Wong Shung Yen dalam penganjuran dan pengumpulan dana untuk pendidikan vernakular Cina.", zh: "《星洲日报》记录黄松延参与华文教育活动的组织及筹款工作。" }
+  },
+  {
+    year: "2015", date: "2015-01-19", source: "China Press", sourceLanguage: "zh", category: "community",
+    url: "https://www.chinapress.com.my/20150119/%E8%AA%9E%E6%95%99%E5%AD%B8%E7%92%B0%E5%A2%83%E5%8F%97%E9%97%9C%E6%B3%A8%E6%97%A5%E6%9C%AC%E5%AD%B8%E7%94%9F%E8%A8%AA%E5%93%88%E5%B0%8F/",
+    title: { en: "International student visit to SJK(C) Shin Cheng", ms: "Lawatan pelajar antarabangsa ke SJK(C) Shin Cheng", zh: "国际学生到访深静（哈古乐）华小" },
+    summary: { en: "China Press covers a school exchange and documents Wong Shung Yen's participation in the programme.", ms: "China Press meliputi pertukaran sekolah dan merekodkan penyertaan Wong Shung Yen dalam program tersebut.", zh: "《中国报》报道学校交流活动，并记录黄松延参与有关项目。" }
+  },
+  {
+    year: "2014", date: "2014-08-15", source: "Variety", sourceLanguage: "en", category: "culture", featured: true,
+    url: "https://variety.com/2014/film/festivals/film-review-men-who-save-the-world-1201282850/",
+    title: { en: "Film review and credits for Men Who Save the World", ms: "Ulasan filem dan kredit Lelaki Harapan Dunia", zh: "电影《Lelaki Harapan Dunia / Men Who Save the World》影评及制作名单" },
+    summary: { en: "Variety's review carries production credits for the Malaysian feature; Wong Shung Yen is credited as an associate producer.", ms: "Ulasan Variety menyertakan kredit produksi filem cereka Malaysia itu; Wong Shung Yen dikreditkan sebagai Penerbit Bersekutu.", zh: "《Variety》影评列出这部马来西亚电影的制作名单；黄松延名列协同制片人。" }
+  },
+  {
+    year: "2012", date: "2012-12-15", source: "Sin Chew Daily", sourceLanguage: "zh", category: "community",
+    url: "https://www.sinchew.com.my/20121215/%E9%AB%98%E7%A5%A5%E5%A8%81%EF%BC%9A%E8%BF%8E%E6%8E%A5%E4%B8%AD%E5%AD%A6%E7%94%9F%E6%B6%AF%EF%BC%8E%E5%B0%8F%E5%85%AD%E7%94%9F%E8%A6%81%E5%8B%87%E6%95%A2%E9%9D%A2%E5%AF%B9%E4%B8%89%E5%8F%98/",
+    title: { en: "Early record of school-community involvement", ms: "Rekod awal penglibatan dalam komuniti sekolah", zh: "早期学校社区参与记录" },
+    summary: { en: "An early recovered report documenting Wong Shung Yen's involvement with SJK(C) Shin Cheng.", ms: "Laporan awal yang ditemui semula, merekodkan penglibatan Wong Shung Yen dengan SJK(C) Shin Cheng.", zh: "现存较早报道之一，记录黄松延参与深静（哈古乐）华小事务。" }
+  },
+  {
+    year: "2012", source: "KLSCCCI", sourceLanguage: "zh", category: "business", featured: true,
+    url: "https://www.chinesechamber.org.my/wp-content/uploads/2017/08/07-%E4%BB%8B%E7%BB%8D%E6%96%B0%E4%BC%9A%E5%91%98-1.pdf",
+    title: { en: "Property-development member profile", ms: "Profil ahli pembangunan hartanah", zh: "房地产发展会员简介" },
+    summary: { en: "The Kuala Lumpur and Selangor Chinese Chamber of Commerce and Industry bulletin records the bilingual identity and property-development role.", ms: "Buletin Dewan Perniagaan dan Perindustrian Cina Kuala Lumpur dan Selangor merekodkan identiti dwibahasa serta peranan dalam pembangunan hartanah.", zh: "吉隆坡暨雪兰莪中华总商会会讯记录黄松延的中英文姓名及房地产发展职务。" }
+  }
+];
+
 const common = {
   en: {
-    nav: { home: "Home", about: "About", homeLiving: "Home & Living", automotive: "Automotive", lifestyle: "Lifestyle", leasing: "Leasing", news: "News", milestones: "Milestones", profile: "Leadership", contact: "Contact" },
+    nav: { home: "Home", about: "About", homeLiving: "Home & Living", automotive: "Automotive", lifestyle: "Lifestyle", leasing: "Leasing", news: "News", milestones: "Milestones", profile: "Leadership", publicRecord: "Media & Public Record", contact: "Contact" },
     skip: "Skip to main content",
     menuOpen: "Open menu",
     menuClose: "Close menu",
@@ -332,7 +483,12 @@ const common = {
     ctaText: "Speak with the TPK Park management team about suitable commercial or industrial space.",
     ctaButton: "Enquire about space",
     noticeLabel: "Important notice",
-    newsUi: { sourceLanguages: { en: "English", ms: "Malay", zh: "Chinese" } },
+    newsUi: { sourceLanguages: { en: "English", ms: "Malay", zh: "Chinese", id: "Indonesian" } },
+    recordUi: {
+      source: "View source",
+      fullRecord: "View the media and public record",
+      categories: { business: "Business & property", community: "Education & community", culture: "Culture & film", philanthropy: "Education support", place: "TPK Park & place renewal" }
+    },
     leasingUi: {
       factsKicker: "Property facts",
       factsTitle: "Current leasing information",
@@ -350,7 +506,7 @@ const common = {
     form: { name: "Name", company: "Company", email: "Email", phone: "Phone", interest: "Area of interest", spaceType: "Preferred space type", message: "Tell us what you need", send: "Prepare email", select: "Select one", spaceSelect: "Not sure / explore options", options: ["Leasing", "Event collaboration", "Media enquiry", "General enquiry"], spaceOptions: [{ value: "shop-showroom", label: "Shop / showroom" }, { value: "detached-building", label: "Detached building" }, { value: "semi-detached", label: "Semi-detached building" }, { value: "terrace-waitlist", label: "Terrace unit waitlist" }] }
   },
   ms: {
-    nav: { home: "Utama", about: "Tentang Kami", homeLiving: "Home & Living", automotive: "Automotif", lifestyle: "Lifestyle", leasing: "Penyewaan", news: "Berita", milestones: "Pencapaian", profile: "Kepimpinan", contact: "Hubungi" },
+    nav: { home: "Utama", about: "Tentang Kami", homeLiving: "Home & Living", automotive: "Automotif", lifestyle: "Lifestyle", leasing: "Penyewaan", news: "Berita", milestones: "Pencapaian", profile: "Kepimpinan", publicRecord: "Media & Rekod Awam", contact: "Hubungi" },
     skip: "Langkau ke kandungan utama",
     menuOpen: "Buka menu",
     menuClose: "Tutup menu",
@@ -369,7 +525,12 @@ const common = {
     ctaText: "Berbincang dengan pasukan pengurusan TPK Park mengenai ruang komersial atau perindustrian yang bersesuaian.",
     ctaButton: "Tanya tentang ruang",
     noticeLabel: "Notis penting",
-    newsUi: { sourceLanguages: { en: "Bahasa Inggeris", ms: "Bahasa Melayu", zh: "Bahasa Cina" } },
+    newsUi: { sourceLanguages: { en: "Bahasa Inggeris", ms: "Bahasa Melayu", zh: "Bahasa Cina", id: "Bahasa Indonesia" } },
+    recordUi: {
+      source: "Lihat sumber",
+      fullRecord: "Lihat media dan rekod awam",
+      categories: { business: "Perniagaan & hartanah", community: "Pendidikan & masyarakat", culture: "Budaya & filem", philanthropy: "Sokongan pendidikan", place: "TPK Park & pembaharuan tempat" }
+    },
     leasingUi: {
       factsKicker: "Fakta hartanah",
       factsTitle: "Maklumat penyewaan semasa",
@@ -387,7 +548,7 @@ const common = {
     form: { name: "Nama", company: "Syarikat", email: "E-mel", phone: "Telefon", interest: "Bidang pertanyaan", spaceType: "Jenis ruang pilihan", message: "Beritahu keperluan anda", send: "Sediakan e-mel", select: "Pilih satu", spaceSelect: "Belum pasti / terokai pilihan", options: ["Penyewaan", "Kerjasama acara", "Pertanyaan media", "Pertanyaan umum"], spaceOptions: [{ value: "shop-showroom", label: "Kedai / bilik pameran" }, { value: "detached-building", label: "Bangunan sesebuah" }, { value: "semi-detached", label: "Bangunan berkembar" }, { value: "terrace-waitlist", label: "Senarai menunggu unit teres" }] }
   },
   zh: {
-    nav: { home: "首页", about: "关于我们", homeLiving: "家居生活", automotive: "汽车服务", lifestyle: "生活品味", leasing: "租赁", news: "新闻", milestones: "里程碑", profile: "管理团队", contact: "联系" },
+    nav: { home: "首页", about: "关于我们", homeLiving: "家居生活", automotive: "汽车服务", lifestyle: "生活品味", leasing: "租赁", news: "新闻", milestones: "里程碑", profile: "管理团队", publicRecord: "媒体与公开记录", contact: "联系" },
     skip: "跳至主要内容",
     menuOpen: "打开菜单",
     menuClose: "关闭菜单",
@@ -406,7 +567,12 @@ const common = {
     ctaText: "欢迎联系TPK Park管理团队，了解合适的商业或工业空间。",
     ctaButton: "查询租赁空间",
     noticeLabel: "重要说明",
-    newsUi: { sourceLanguages: { en: "英文", ms: "马来文", zh: "中文" } },
+    newsUi: { sourceLanguages: { en: "英文", ms: "马来文", zh: "中文", id: "印尼文" } },
+    recordUi: {
+      source: "查看来源",
+      fullRecord: "查看媒体与公开记录",
+      categories: { business: "商业与房地产", community: "教育与社区", culture: "文化与电影", philanthropy: "教育支持", place: "TPK Park与地方更新" }
+    },
     leasingUi: {
       factsKicker: "物业资料",
       factsTitle: "当前租赁信息",
@@ -677,6 +843,7 @@ const enPages = {
     displayNames: [{ text: "Wong Shung Yen", lang: "en" }, { text: "黄松延", lang: "zh-Hans" }],
     description: "Profile of Wong Shung Yen, Managing Director of TPK Park, and his work in property stewardship, retail clustering and industrial park renewal.",
     lead: "Managing Director, TPK Park",
+    cta: { title: "Business and media enquiries.", text: "Contact TPK Park regarding property, community, cultural or media matters connected with this profile.", button: "Contact TPK Park", route: "contact" },
     blocks: [
       { type: "profile", descriptor: "Property Development · Industrial Park Renewal · Retail Clustering · Placemaking", introduction: "Wong Shung Yen is Managing Director of TPK Park Sdn. Bhd. He leads the long-term management and repositioning of selected properties within Taman Perindustrian Kinrara, with a focus on renewing mature industrial property through tenant curation, retail clustering and placemaking.", imageAlt: "Wong Shung Yen, Managing Director of TPK Park" },
       { type: "quote", text: "TPK Park's transformation from a traditional industrial park into a vibrant Home & Living, Automotive and Lifestyle destination has been a three-decade journey.", cite: "Wong Shung Yen" },
@@ -689,8 +856,20 @@ const enPages = {
         { year: "1996—Present", title: "Property development", text: "As a Director of Rasmi Indah Sdn. Bhd. and Dayamam Sdn. Bhd., contributed to the development of Sections 1 and 2 of Taman Perindustrian Kinrara respectively." },
         { year: "2010—Present", title: "TPK Park", text: "Leads long-term management and strategic repositioning of selected properties through asset management, tenant curation and environmental improvement." },
         { year: "Education", title: "Melbourne and UTAR", text: "B.Comm (1993) and LL.B (Honours) (1995), University of Melbourne; admitted in Victoria (1996) and Malaya (1997). Currently pursuing a Master of Real Estate Development at UTAR." },
-        { year: "Community", title: "Education and culture", text: "Treasurer of SJK(C) Shin Cheng's Board of Governors since 2010; co-curator of a 2024 National Art Gallery jade exhibition; Associate Producer of Lelaki Harapan Dunia (2014)." }
-      ] }
+        { year: "Community", title: "Education and culture", text: "Long-standing involvement with SJK(C) Shin Cheng's Board of Governors, including service as treasurer; co-curator of a 2024 National Art Gallery jade exhibition; Associate Producer of Lelaki Harapan Dunia / Men Who Save the World (2014)." }
+      ] },
+      { type: "profileSources", mode: "featured", kicker: "Independent sources", title: "Selected media and public record", text: "A concise selection of institutional records and established media documenting this work. Links open on the original publishers' websites.", moreRoute: "publicRecord" }
+    ]
+  },
+  publicRecord: {
+    eyebrow: "Wong Shung Yen · 黄松延",
+    title: "Media & public record",
+    description: "A curated public record of institutional sources and established media coverage relating to Wong Shung Yen's work in property, education, community and culture.",
+    lead: "A source-led chronology of selected public work, with each record linked to its original publisher.",
+    parentRoute: "profile",
+    cta: { title: "Leadership at TPK Park.", text: "Return to the concise profile of Wong Shung Yen and his current work at TPK Park.", button: "View leadership profile", route: "profile" },
+    blocks: [
+      { type: "profileSources", mode: "all", kicker: "Public record", title: "Independent and institutional sources", text: "This curated chronology focuses on sources that materially document public work and roles. Descriptions summarise their relevance; the linked publisher pages remain the primary record." }
     ]
   },
   contact: {
@@ -932,6 +1111,7 @@ const msPages = {
     displayNames: [{ text: "Wong Shung Yen", lang: "en" }, { text: "黄松延", lang: "zh-Hans" }],
     description: "Profil Wong Shung Yen, Pengarah Urusan TPK Park, dan usaha beliau dalam pengurusan hartanah, pengelompokan runcit dan pembaharuan taman perindustrian.",
     lead: "Pengarah Urusan, TPK Park",
+    cta: { title: "Pertanyaan perniagaan dan media.", text: "Hubungi TPK Park mengenai perkara hartanah, masyarakat, kebudayaan atau media berkaitan profil ini.", button: "Hubungi TPK Park", route: "contact" },
     blocks: [
       { type: "profile", descriptor: "Pembangunan Hartanah · Pembaharuan Taman Perindustrian · Pengelompokan Runcit · Pembentukan Tempat", introduction: "Wong Shung Yen ialah Pengarah Urusan TPK Park Sdn. Bhd. Beliau menerajui pengurusan jangka panjang dan pembaharuan strategik hartanah terpilih di Taman Perindustrian Kinrara, dengan tumpuan kepada pemilihan penyewa, pengelompokan peruncitan dan pembentukan tempat.", imageAlt: "Wong Shung Yen, Pengarah Urusan TPK Park" },
       { type: "quote", text: "Transformasi TPK Park daripada taman perindustrian tradisional kepada destinasi Home & Living, Automotif dan Lifestyle yang dinamik merupakan perjalanan selama tiga dekad.", cite: "Wong Shung Yen" },
@@ -939,8 +1119,20 @@ const msPages = {
         { number: "01", title: "Pengurusan hartanah", text: "Pengurusan aset dan penyewaan jangka panjang bagi premis terpilih." }, { number: "02", title: "Pengelompokan perniagaan", text: "Perancangan campuran penyewa Home & Living, Automotif dan Lifestyle." }, { number: "03", title: "Pembaharuan taman", text: "Landskap, pencahayaan fasad, papan tanda, parkir, acara dan penjenamaan destinasi." }
       ] },
       { type: "timeline", kicker: "Latar belakang profesional", title: "Hartanah, undang-undang dan masyarakat", items: [
-        { year: "1996—Kini", title: "Pembangunan hartanah", text: "Sebagai Pengarah Rasmi Indah Sdn. Bhd. dan Dayamam Sdn. Bhd., menyumbang kepada pembangunan Seksyen 1 dan 2 Taman Perindustrian Kinrara." }, { year: "2010—Kini", title: "TPK Park", text: "Menerajui pengurusan jangka panjang dan pembaharuan strategik hartanah terpilih." }, { year: "Pendidikan", title: "Melbourne dan UTAR", text: "Sarjana Muda Perdagangan (1993) dan LL.B (Kepujian) (1995), University of Melbourne; diterima masuk di Victoria (1996) dan Malaya (1997). Kini mengikuti Sarjana Pembangunan Hartanah di UTAR." }, { year: "Masyarakat", title: "Pendidikan dan budaya", text: "Bendahari Lembaga Pengelola SJK(C) Shin Cheng sejak 2010; kurator bersama pameran jed Balai Seni Negara 2024; Penerbit Bersekutu Lelaki Harapan Dunia (2014)." }
-      ] }
+        { year: "1996—Kini", title: "Pembangunan hartanah", text: "Sebagai Pengarah Rasmi Indah Sdn. Bhd. dan Dayamam Sdn. Bhd., menyumbang kepada pembangunan Seksyen 1 dan 2 Taman Perindustrian Kinrara." }, { year: "2010—Kini", title: "TPK Park", text: "Menerajui pengurusan jangka panjang dan pembaharuan strategik hartanah terpilih." }, { year: "Pendidikan", title: "Melbourne dan UTAR", text: "Sarjana Muda Perdagangan (1993) dan LL.B (Kepujian) (1995), University of Melbourne; diterima masuk di Victoria (1996) dan Malaya (1997). Kini mengikuti Sarjana Pembangunan Hartanah di UTAR." }, { year: "Masyarakat", title: "Pendidikan dan budaya", text: "Penglibatan berpanjangan dengan Lembaga Pengelola SJK(C) Shin Cheng, termasuk berkhidmat sebagai bendahari; kurator bersama pameran jed Balai Seni Negara 2024; Penerbit Bersekutu bagi Lelaki Harapan Dunia / Men Who Save the World (2014)." }
+      ] },
+      { type: "profileSources", mode: "featured", kicker: "Sumber bebas", title: "Pilihan media dan rekod awam", text: "Pilihan ringkas rekod institusi dan media arus perdana yang mendokumentasikan kerja ini. Pautan dibuka di laman penerbit asal.", moreRoute: "publicRecord" }
+    ]
+  },
+  publicRecord: {
+    eyebrow: "Wong Shung Yen · 黄松延",
+    title: "Media & rekod awam",
+    description: "Rekod awam terpilih daripada sumber institusi dan liputan media arus perdana mengenai kerja Wong Shung Yen dalam hartanah, pendidikan, masyarakat dan budaya.",
+    lead: "Kronologi berasaskan sumber mengenai kerja awam terpilih, dengan setiap rekod dipautkan kepada penerbit asal.",
+    parentRoute: "profile",
+    cta: { title: "Kepimpinan di TPK Park.", text: "Kembali kepada profil ringkas Wong Shung Yen dan kerja semasa beliau di TPK Park.", button: "Lihat profil kepimpinan", route: "profile" },
+    blocks: [
+      { type: "profileSources", mode: "all", kicker: "Rekod awam", title: "Sumber bebas dan institusi", text: "Kronologi terpilih ini memberi tumpuan kepada sumber yang mendokumentasikan kerja dan peranan awam secara nyata. Huraian merumuskan kaitannya; halaman penerbit yang dipautkan kekal sebagai rekod utama." }
     ]
   },
   contact: {
@@ -1167,6 +1359,7 @@ const zhPages = {
     displayNames: [{ text: "黄松延", lang: "zh-Hans" }, { text: "Wong Shung Yen", lang: "en" }],
     description: "TPK Park董事经理黄松延的个人资料，以及他在产业管理、零售集群及成熟工业园更新方面的工作。",
     lead: "TPK Park（金銮工业园）董事经理",
+    cta: { title: "商业与媒体咨询。", text: "如欲查询与本简介有关的房地产、社区、文化或媒体事项，请联系TPK Park。", button: "联系TPK Park", route: "contact" },
     blocks: [
       { type: "profile", descriptor: "房地产发展 · 工业园更新 · 零售集群 · 地方营造", introduction: "黄松延是TPK Park Sdn. Bhd.的董事经理，主导公司在金銮工业园内所持特定产业的长期管理与重新定位，重点通过租户组合规划、零售集群及地方营造推动成熟工业物业更新。", imageAlt: "TPK Park董事经理黄松延" },
       { type: "quote", text: "TPK Park从传统工业园逐步转型为汇聚家居生活、汽车服务及生活品味的多元目的地，是一段历时三十年的旅程。", cite: "黄松延" },
@@ -1174,8 +1367,20 @@ const zhPages = {
         { number: "01", title: "产业长期管理", text: "对特定工业、商业及零售产业进行长期资产与租赁管理。" }, { number: "02", title: "商业集群规划", text: "围绕家居生活、汽车服务及生活品味规划租户组合。" }, { number: "03", title: "成熟工业园更新", text: "园林、建筑照明、招牌协调、停车、活动及目的地推广。" }
       ] },
       { type: "timeline", kicker: "专业背景", title: "房地产、法律与社会贡献", items: [
-        { year: "1996年至今", title: "房地产开发", text: "担任Rasmi Indah Sdn. Bhd.及Dayamam Sdn. Bhd.董事，分别参与金銮工业园第一区及第二区的发展。" }, { year: "2010年至今", title: "TPK Park", text: "主导特定产业的长期管理与策略性重新定位。" }, { year: "教育", title: "墨尔本大学与拉曼大学", text: "墨尔本大学商学学士（1993）及法学荣誉学士（1995）；1996年及1997年取得维多利亚州及马来亚律师资格。目前在拉曼大学攻读房地产发展硕士。" }, { year: "社会", title: "教育与文化", text: "自2010年任深静（哈古乐）华小董事会财政；联合策划2024年国家美术馆古玉展；担任电影《Lelaki Harapan Dunia》（2014）协同制片人。" }
-      ] }
+        { year: "1996年至今", title: "房地产开发", text: "担任Rasmi Indah Sdn. Bhd.及Dayamam Sdn. Bhd.董事，分别参与金銮工业园第一区及第二区的发展。" }, { year: "2010年至今", title: "TPK Park", text: "主导特定产业的长期管理与策略性重新定位。" }, { year: "教育", title: "墨尔本大学与拉曼大学", text: "墨尔本大学商学学士（1993）及法学荣誉学士（1995）；1996年及1997年取得维多利亚州及马来亚律师资格。目前在拉曼大学攻读房地产发展硕士。" }, { year: "社会", title: "教育与文化", text: "长期参与深静（哈古乐）华小董事会事务，包括担任财政；联合策划2024年国家美术馆古玉展；担任电影《Lelaki Harapan Dunia / Men Who Save the World》（2014）协同制片人。" }
+      ] },
+      { type: "profileSources", mode: "featured", kicker: "独立来源", title: "精选媒体与公开记录", text: "精选机构记录及主流媒体报道，简要记录相关工作。链接将打开原发布机构的网站。", moreRoute: "publicRecord" }
+    ]
+  },
+  publicRecord: {
+    eyebrow: "黄松延 · Wong Shung Yen",
+    title: "媒体与公开记录",
+    description: "精选机构资料及主流媒体报道，记录黄松延在房地产、教育、社区及文化领域的公共工作。",
+    lead: "以来源为依据的精选公共工作年表，每项记录均链接至原发布机构。",
+    parentRoute: "profile",
+    cta: { title: "TPK Park管理团队。", text: "返回黄松延简介，了解他目前在TPK Park的工作。", button: "查看管理团队简介", route: "profile" },
+    blocks: [
+      { type: "profileSources", mode: "all", kicker: "公开记录", title: "独立媒体与机构来源", text: "这份精选年表集中收录能够实质记录公共工作与职务的来源。说明文字概述其相关性；链接所指的原发布页面为主要记录。" }
     ]
   },
   contact: {

@@ -1,7 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 import { dirname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
-import { articles, leasingInventory, localeConfig, origin, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
+import { articles, leasingInventory, localeConfig, origin, profileSources, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
 
 const root = process.cwd();
 const locales = Object.keys(localeConfig);
@@ -107,7 +107,8 @@ for (const locale of locales) {
         const organization = graph.find((entry) => entry["@type"] === "Organization");
         const place = graph.find((entry) => entry["@type"] === "Place");
         const webSite = graph.find((entry) => entry["@type"] === "WebSite");
-        const webPage = graph.find((entry) => entry["@type"] === "WebPage");
+        const expectedPageType = routeId === "profile" ? "ProfilePage" : routeId === "publicRecord" ? "CollectionPage" : "WebPage";
+        const webPage = graph.find((entry) => entry["@type"] === expectedPageType);
         if (!organization) fail(label, "Organization schema is missing");
         if (organization?.["@id"] !== organizationId) fail(label, "Organization schema ID is incorrect");
         if (organization?.location?.["@id"] !== placeId) fail(label, "Organization location does not reference Taman Perindustrian Kinrara");
@@ -118,11 +119,11 @@ for (const locale of locales) {
         if (!webSite) fail(label, "WebSite schema is missing");
         if (webSite?.publisher?.["@id"] !== organizationId) fail(label, "WebSite publisher is incorrect");
         if (webSite?.about?.["@id"] !== placeId) fail(label, "WebSite subject is incorrect");
-        if (!webPage) fail(label, "WebPage schema is missing");
+        if (!webPage) fail(label, `${expectedPageType} schema is missing`);
         if (webPage?.dateModified !== routeLastModified[routeId]) fail(label, "WebPage dateModified is incorrect");
         if (webPage?.publisher?.["@id"] !== organizationId) fail(label, "WebPage publisher is incorrect");
-        if (routeId !== "profile" && webPage?.about?.["@id"] !== placeId) fail(label, "WebPage subject does not reference Taman Perindustrian Kinrara");
-        if (routeId !== "profile" && webPage?.mainEntity?.["@id"] !== placeId) fail(label, "WebPage main entity does not reference Taman Perindustrian Kinrara");
+        if (!["profile", "publicRecord"].includes(routeId) && webPage?.about?.["@id"] !== placeId) fail(label, "WebPage subject does not reference Taman Perindustrian Kinrara");
+        if (!["profile", "publicRecord"].includes(routeId) && webPage?.mainEntity?.["@id"] !== placeId) fail(label, "WebPage main entity does not reference Taman Perindustrian Kinrara");
         const breadcrumb = graph.find((entry) => entry["@type"] === "BreadcrumbList");
         if (routeId !== "home" && !breadcrumb) fail(label, "BreadcrumbList schema is missing");
         if (page.parentRoute && breadcrumb?.itemListElement?.length !== 3) fail(label, "nested page breadcrumb does not contain three levels");
@@ -140,7 +141,18 @@ for (const locale of locales) {
           if (!person) fail(label, "Person schema is missing");
           if (person?.["@id"] !== `${canonical}#person`) fail(label, "Person schema ID is incorrect");
           if (webPage?.mainEntity?.["@id"] !== `${canonical}#person`) fail(label, "profile WebPage mainEntity is incorrect");
+          if (!person?.sameAs?.includes("https://www.imdb.com/name/nm6562891/")) fail(label, "IMDb sameAs link is missing");
           if (person?.alumniOf?.some((institution) => institution.name === "Universiti Tunku Abdul Rahman")) fail(label, "current university is incorrectly listed as alumniOf");
+        }
+        if (routeId === "publicRecord") {
+          const profileCanonical = `${origin}${routePath(locale, "profile")}`;
+          const person = graph.find((entry) => entry["@type"] === "Person");
+          const itemList = graph.find((entry) => entry["@type"] === "ItemList");
+          if (webPage?.about?.["@id"] !== `${profileCanonical}#person`) fail(label, "public record subject is not the profile Person");
+          if (webPage?.mainEntity?.["@id"] !== `${canonical}#record-list`) fail(label, "public record main entity is incorrect");
+          if (person?.["@id"] !== `${profileCanonical}#person`) fail(label, "public record Person schema ID is incorrect");
+          if (!person?.sameAs?.includes("https://www.imdb.com/name/nm6562891/")) fail(label, "IMDb sameAs link is missing");
+          if (itemList?.itemListElement?.length !== profileSources.length) fail(label, "public record ItemList does not contain every selected source");
         }
       } catch (error) {
         fail(label, `invalid JSON-LD: ${error.message}`);
@@ -177,6 +189,18 @@ for (const locale of locales) {
       for (const sourceLanguage of new Set(articles.map((article) => article.sourceLanguage))) {
         if (!html.includes(escapeHtml(site[locale].newsUi.sourceLanguages[sourceLanguage]))) fail(label, `missing ${sourceLanguage} source-language label`);
       }
+    }
+
+    if (routeId === "profile") {
+      const featuredCount = profileSources.filter((item) => item.featured).length;
+      if (matches(html, /class="source-record"/g).length !== featuredCount) fail(label, "selected profile sources are incomplete");
+      if (!html.includes("Men Who Save the World")) fail(label, "bilingual film title is missing");
+      if (!html.includes("https://variety.com/2014/film/festivals/film-review-men-who-save-the-world-1201282850/")) fail(label, "independent film-credit source is missing");
+    }
+
+    if (routeId === "publicRecord") {
+      if (matches(html, /class="source-record"/g).length !== profileSources.length) fail(label, "public record source list is incomplete");
+      for (const item of profileSources) if (!html.includes(`href="${item.url}"`)) fail(label, `missing public-record source: ${item.source}`);
     }
 
     const images = matches(html, /<img\b[^>]*>/gi);
@@ -225,7 +249,10 @@ for (const locale of locales) {
       "TPK Park是金銮工业园内一组",
       "TPK Park Sdn. Bhd. does not own or control the whole industrial park",
       "TPK Park Sdn. Bhd. tidak memiliki atau mengawal keseluruhan taman perindustrian",
-      "TPK Park Sdn. Bhd.并不拥有或控制整个工业园"
+      "TPK Park Sdn. Bhd.并不拥有或控制整个工业园",
+      "Treasurer of SJK(C) Shin Cheng's Board of Governors since 2010",
+      "Bendahari Lembaga Pengelola SJK(C) Shin Cheng sejak 2010",
+      "自2010年任深静（哈古乐）华小董事会财政"
     ];
     for (const phrase of forbidden) if (html.includes(phrase)) fail(label, `contains forbidden legacy text: ${phrase}`);
   }
