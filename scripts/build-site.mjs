@@ -61,7 +61,7 @@ function header(locale, routeId) {
   return `<header class="site-header">
     <div class="header-inner">
       <a class="brand" href="${routePath(locale, "home")}" aria-label="TPK Park ${t.nav.home}">
-        <span class="brand-mark" aria-hidden="true">TPK</span><span class="brand-name">TPK Park</span>
+        <img class="brand-logo" src="/assets/brand/tpk-park-logo.svg" alt="" width="58" height="31" aria-hidden="true"><span class="brand-name">TPK Park</span>
       </a>
       <nav class="desktop-nav" aria-label="Primary">${nav}</nav>
       ${localeLinks(locale, routeId)}
@@ -83,7 +83,7 @@ function footer(locale) {
     <div class="shell">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="${routePath(locale, "home")}"><span class="brand-mark" aria-hidden="true">TPK</span><span>TPK Park</span></a>
+          <a class="brand" href="${routePath(locale, "home")}" aria-label="TPK Park ${t.nav.home}"><img class="brand-logo brand-logo-reverse" src="/assets/brand/tpk-park-logo.svg" alt="" width="58" height="31" aria-hidden="true"><span>TPK Park</span></a>
           <p>${escapeHtml(t.footerIntro)}</p>
         </div>
         <div><p class="footer-title">${escapeHtml(t.explore)}</p><nav class="footer-links" aria-label="Footer">${explore}</nav></div>

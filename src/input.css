@@ -36,7 +36,8 @@ button, input, select, textarea { font: inherit; }
 .site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(18px); }
 .header-inner { max-width: var(--max); min-height: 78px; margin: auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: -.03em; }
-.brand-mark { width: 38px; height: 38px; border-radius: 50%; background: var(--forest); display: grid; place-items: center; color: var(--cream); font-family: Georgia, serif; font-size: 13px; }
+.brand-logo { width: 58px; height: auto; flex: 0 0 auto; object-fit: contain; }
+.brand-logo-reverse { filter: brightness(0) invert(1); }
 .brand-name { white-space: nowrap; }
 .desktop-nav { margin-left: auto; display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 650; }
 .desktop-nav a { text-decoration: none; position: relative; }

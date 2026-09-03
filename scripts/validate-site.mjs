@@ -80,6 +80,8 @@ for (const locale of locales) {
     if (!html.includes(`<nav class="locale-nav locale-nav-header" aria-label="${escapeHtml(site[locale].language)}">`)) fail(label, "prominent header language selector is missing");
     if (!html.includes(`<nav class="locale-nav locale-nav-panel" aria-label="${escapeHtml(site[locale].language)}">`)) fail(label, "expanded mobile language selector is missing");
     if (!html.includes('<span class="locale-symbol" aria-hidden="true">A/文</span>')) fail(label, "header language cue is missing");
+    if (matches(html, /<img class="brand-logo(?: brand-logo-reverse)?" src="\/assets\/brand\/tpk-park-logo\.svg"/g).length !== 2) fail(label, "official TPK Park logo is missing from the header or footer");
+    if (html.includes('class="brand-mark"')) fail(label, "legacy circular TPK badge is still present");
     for (const key of locales) {
       const current = key === locale ? ' aria-current="true"' : "";
       const attrs = `<a href="${routePath(key, routeId)}" hreflang="${localeConfig[key].hreflang}" lang="${localeConfig[key].htmlLang}" aria-label="${escapeHtml(localeConfig[key].label)}"${current}>`;
@@ -222,6 +224,7 @@ for (const locale of locales) for (const routeId of routeIds) {
 const robots = await readFile(join(root, "robots.txt"), "utf8");
 if (!robots.includes(`Sitemap: ${origin}/sitemap.xml`)) fail("robots.txt", "missing sitemap declaration");
 if (!(await exists(join(root, "css", "tailwind.css")))) fail("css/tailwind.css", "missing compiled stylesheet");
+if (!(await exists(join(root, "assets", "brand", "tpk-park-logo.svg")))) fail("assets/brand/tpk-park-logo.svg", "official TPK Park logo asset is missing");
 
 if (failures.length) {
   console.error(`Validation failed with ${failures.length} issue(s):`);
