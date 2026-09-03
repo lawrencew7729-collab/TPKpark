@@ -273,26 +273,39 @@ function cta(locale, page) {
 function schemas(locale, routeId, page) {
   const url = absolute(locale, routeId);
   const personId = `${url}#person`;
-  const pageEntityId = routeId === "profile" ? personId : `${origin}/#organization`;
+  const organizationId = `${origin}/#organization`;
+  const placeId = `${origin}/#taman-perindustrian-kinrara`;
+  const pageEntityId = routeId === "profile" ? personId : placeId;
   const graph = [
     {
       "@type": "Organization",
-      "@id": `${origin}/#organization`,
+      "@id": organizationId,
       name: "TPK Park Sdn. Bhd.",
       alternateName: "TPK Park",
       url: `${origin}/`,
+      description: "Manages and promotes selected properties and place-renewal initiatives at Taman Perindustrian Kinrara.",
       telephone: "+60 3 8076 5200",
       email: "info@tpkpark.com",
       foundingDate: "2010",
       address: { "@type": "PostalAddress", streetAddress: "2 Jalan TPK 1/4, Taman Perindustrian Kinrara", postalCode: "47180", addressLocality: "Puchong", addressRegion: "Selangor", addressCountry: "MY" },
+      location: { "@id": placeId },
       sameAs: socialLinks.map(([, socialUrl]) => socialUrl)
+    },
+    {
+      "@type": "Place",
+      "@id": placeId,
+      name: "Taman Perindustrian Kinrara",
+      alternateName: ["TPK", "TPK Park", "Kinrara Industrial Park", "金銮工业园"],
+      url: `${origin}/`,
+      address: { "@type": "PostalAddress", postalCode: "47180", addressLocality: "Puchong", addressRegion: "Selangor", addressCountry: "MY" }
     },
     {
       "@type": "WebSite",
       "@id": `${origin}/#website`,
       url: `${origin}/`,
       name: "TPK Park",
-      publisher: { "@id": `${origin}/#organization` },
+      publisher: { "@id": organizationId },
+      about: { "@id": placeId },
       inLanguage: localeConfig[locale].htmlLang
     },
     {
@@ -302,6 +315,7 @@ function schemas(locale, routeId, page) {
       name: page.title,
       description: page.description,
       isPartOf: { "@id": `${origin}/#website` },
+      publisher: { "@id": organizationId },
       about: { "@id": pageEntityId },
       mainEntity: { "@id": pageEntityId },
       datePublished: "2026-09-01",
