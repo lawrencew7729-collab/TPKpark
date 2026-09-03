@@ -1,7 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 import { dirname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
-import { leasingInventory, localeConfig, origin, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
+import { articles, leasingInventory, localeConfig, origin, routeIds, routeLastModified, routePath, seoTitles, site } from "./site-data.mjs";
 
 const root = process.cwd();
 const locales = Object.keys(localeConfig);
@@ -130,6 +130,11 @@ for (const locale of locales) {
           const itemList = graph.find((entry) => entry["@type"] === "ItemList");
           if (itemList?.itemListElement?.length !== Object.keys(leasingInventory).length) fail(label, "leasing ItemList does not contain every property page");
         }
+        if (routeId === "news") {
+          const firstPartyCount = 1 + (page.blocks.find((block) => block.type === "newsUpdates")?.items.length || 0);
+          const itemList = graph.find((entry) => entry["@type"] === "ItemList");
+          if (itemList?.itemListElement?.length !== firstPartyCount + articles.length) fail(label, "news ItemList does not contain first-party updates and all media coverage");
+        }
         if (routeId === "profile") {
           const person = graph.find((entry) => entry["@type"] === "Person");
           if (!person) fail(label, "Person schema is missing");
@@ -162,6 +167,16 @@ for (const locale of locales) {
     if (routeId === "contact") {
       if (!html.includes('id="space-type"')) fail(label, "space-type enquiry field is missing");
       for (const unit of Object.values(leasingInventory)) if (!html.includes(`value="${unit.queryValue}"`)) fail(label, `missing enquiry option: ${unit.queryValue}`);
+    }
+
+    if (routeId === "news") {
+      if (!html.includes('class="news-feature"')) fail(label, "featured TPK Park update is missing");
+      if (matches(html, /class="update-card"/g).length !== 3) fail(label, "expected three first-party update cards");
+      if (matches(html, /class="news-summary"/g).length !== articles.length) fail(label, "media coverage summaries are incomplete");
+      if (!html.includes(`href="${routePath(locale, "leasing")}"`)) fail(label, "news leasing route is missing");
+      for (const sourceLanguage of new Set(articles.map((article) => article.sourceLanguage))) {
+        if (!html.includes(escapeHtml(site[locale].newsUi.sourceLanguages[sourceLanguage]))) fail(label, `missing ${sourceLanguage} source-language label`);
+      }
     }
 
     const images = matches(html, /<img\b[^>]*>/gi);
