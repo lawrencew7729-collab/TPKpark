@@ -1159,7 +1159,7 @@ const zhPages = {
       ] },
       { type: "split", title: "更新之余，保留实用本质。", text: "TPK Park的管理工作聚焦于特定产业及访客共享体验，包括租户组合、园林、建筑照明、招牌协调、停车管理、活动及目的地推广。", image: images.park, alt: "蒲种TPK Park商业与工业单位", route: "about" },
       { type: "stats", items: [{ value: "16", label: "获认证家居生活集群内的企业" }, { value: "96,728", label: "2026年获认证集群总平方英尺" }, { value: "8", label: "纪录评估涵盖的家居生活类别" }] },
-      { type: "news", kicker: "精选报道", title: "媒体眼中的TPK Park", text: "关于家居生活里程碑及园区长期更新的独立报道。", limit: 3 },
+      { type: "news", kicker: "精选报道", title: "媒体报道中的 TPK Park", text: "关于家居生活里程碑及园区长期更新的独立报道。", limit: 3 },
       { type: "faq", kicker: "访客须知", title: "出发前先了解", items: [
         { q: "TPK Park指的是哪里？", a: "TPK Park是雪兰莪州蒲种Taman Perindustrian Kinrara（金銮工业园）的通称，位于蒲种—武吉加里尔走廊。" },
         { q: "TPK Park有哪些商家？", a: "园内业态包括家居生活展厅、汽车销售与维修、餐饮、运动、亲子活动、日常所需及专业服务。" },
