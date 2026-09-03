@@ -68,7 +68,10 @@ for (const locale of locales) {
 
     const h1s = matches(html, /<h1(?:\s[^>]*)?>/gi);
     if (h1s.length !== 1) fail(label, `expected one h1, found ${h1s.length}`);
-    if (!html.includes(`>${escapeHtml(page.title)}</h1>`)) fail(label, "h1 does not match the configured page title");
+    if (page.displayNames) {
+      const displayNameMarkup = `<h1 class="profile-page-title">${page.displayNames.map((name, index) => `<span class="profile-name-${index === 0 ? "primary" : "secondary"}" lang="${escapeHtml(name.lang)}">${escapeHtml(name.text)}</span>`).join("")}</h1>`;
+      if (!html.includes(displayNameMarkup)) fail(label, "profile names are not rendered as separate language lines");
+    } else if (!html.includes(`>${escapeHtml(page.title)}</h1>`)) fail(label, "h1 does not match the configured page title");
 
     const alternates = matches(html, /<link rel="alternate" hreflang="[^"]+" href="[^"]+">/g);
     if (alternates.length !== 4) fail(label, `expected four hreflang links, found ${alternates.length}`);
@@ -80,6 +83,9 @@ for (const locale of locales) {
     if (!html.includes(`<nav class="locale-nav locale-nav-header" aria-label="${escapeHtml(site[locale].language)}">`)) fail(label, "prominent header language selector is missing");
     if (!html.includes(`<nav class="locale-nav locale-nav-panel" aria-label="${escapeHtml(site[locale].language)}">`)) fail(label, "expanded mobile language selector is missing");
     if (!html.includes('<span class="locale-symbol" aria-hidden="true">A/文</span>')) fail(label, "header language cue is missing");
+    if (matches(html, /<img class="brand-logo(?: brand-logo-reverse)?" src="\/assets\/brand\/tpk-park-logo\.svg"/g).length !== 2) fail(label, "official TPK Park logo is missing from the header or footer");
+    if (html.includes('class="brand-mark"')) fail(label, "legacy circular TPK badge is still present");
+    if (html.includes('class="brand-name"')) fail(label, "duplicate typed TPK Park brand name is still present");
     for (const key of locales) {
       const current = key === locale ? ' aria-current="true"' : "";
       const attrs = `<a href="${routePath(key, routeId)}" hreflang="${localeConfig[key].hreflang}" lang="${localeConfig[key].htmlLang}" aria-label="${escapeHtml(localeConfig[key].label)}"${current}>`;
@@ -201,7 +207,10 @@ for (const locale of locales) {
       "TPK Park terletak dalam Taman Perindustrian Kinrara",
       "TPK Park ialah identiti destinasi",
       "TPK Park位于金銮工业园",
-      "TPK Park是金銮工业园内一组"
+      "TPK Park是金銮工业园内一组",
+      "TPK Park Sdn. Bhd. does not own or control the whole industrial park",
+      "TPK Park Sdn. Bhd. tidak memiliki atau mengawal keseluruhan taman perindustrian",
+      "TPK Park Sdn. Bhd.并不拥有或控制整个工业园"
     ];
     for (const phrase of forbidden) if (html.includes(phrase)) fail(label, `contains forbidden legacy text: ${phrase}`);
   }
@@ -222,6 +231,7 @@ for (const locale of locales) for (const routeId of routeIds) {
 const robots = await readFile(join(root, "robots.txt"), "utf8");
 if (!robots.includes(`Sitemap: ${origin}/sitemap.xml`)) fail("robots.txt", "missing sitemap declaration");
 if (!(await exists(join(root, "css", "tailwind.css")))) fail("css/tailwind.css", "missing compiled stylesheet");
+if (!(await exists(join(root, "assets", "brand", "tpk-park-logo.svg")))) fail("assets/brand/tpk-park-logo.svg", "official TPK Park logo asset is missing");
 
 if (failures.length) {
   console.error(`Validation failed with ${failures.length} issue(s):`);

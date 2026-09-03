@@ -401,7 +401,7 @@ const enPages = {
     eyebrow: "About TPK Park",
     title: "A long-term approach to an established place.",
     description: "Learn how TPK Park Sdn. Bhd. manages and repositions selected properties at Taman Perindustrian Kinrara through tenant curation, renewal and placemaking.",
-    lead: "TPK Park is a common reference to Taman Perindustrian Kinrara in Puchong. This website presents selected properties, businesses and place-renewal initiatives connected with the area; TPK Park Sdn. Bhd. does not own or control the whole industrial park.",
+    lead: "TPK Park is a common reference to Taman Perindustrian Kinrara in Puchong. This website highlights selected properties, businesses and place-renewal initiatives associated with the area, together with TPK Park Sdn. Bhd.'s work on the properties and projects under its management.",
     blocks: [
       { type: "split", title: "Useful first. Distinctive over time.", text: "The work starts with the practical strengths of a mature industrial setting: direct vehicle access, ground-level parking, loading convenience and strong road connections. Renewal then adds a clearer tenant mix and a more welcoming shared environment.", image: images.park, alt: "Taman Perindustrian Kinrara, commonly known as TPK Park" },
       { type: "cards", kicker: "How we work", title: "Stewardship, not spectacle.", text: "A grounded management approach built around the needs of tenants and visitors.", items: [
@@ -607,6 +607,7 @@ const enPages = {
   profile: {
     eyebrow: "Leadership",
     title: "Wong Shung Yen 黄松延",
+    displayNames: [{ text: "Wong Shung Yen", lang: "en" }, { text: "黄松延", lang: "zh-Hans" }],
     description: "Profile of Wong Shung Yen, Managing Director of TPK Park, and his work in property stewardship, retail clustering and industrial park renewal.",
     lead: "Managing Director, TPK Park",
     blocks: [
@@ -667,7 +668,7 @@ const msPages = {
     eyebrow: "Tentang TPK Park",
     title: "Pendekatan jangka panjang terhadap tempat yang telah matang.",
     description: "Ketahui bagaimana TPK Park Sdn. Bhd. mengurus dan memperbaharui hartanah terpilih di Taman Perindustrian Kinrara melalui pemilihan penyewa dan pembentukan tempat.",
-    lead: "TPK Park ialah sebutan umum bagi Taman Perindustrian Kinrara di Puchong. Laman ini mengetengahkan hartanah, perniagaan dan inisiatif pembaharuan tempat terpilih yang berkaitan dengan kawasan tersebut; TPK Park Sdn. Bhd. tidak memiliki atau mengawal keseluruhan taman perindustrian.",
+    lead: "TPK Park ialah sebutan lazim bagi Taman Perindustrian Kinrara di Puchong. Laman web ini mengetengahkan hartanah, perniagaan dan inisiatif pembaharuan terpilih yang berkaitan dengan kawasan tersebut, termasuk usaha TPK Park Sdn. Bhd. berkaitan hartanah dan projek di bawah pengurusannya.",
     blocks: [
       { type: "split", title: "Praktikal dahulu. Lebih tersusun dari semasa ke semasa.", text: "Asasnya ialah kekuatan persekitaran perindustrian matang: akses kenderaan terus, parkir aras tanah, pemunggahan mudah dan hubungan jalan raya yang baik. Pembaharuan menambah campuran penyewa yang lebih jelas dan persekitaran bersama yang lebih mesra.", image: images.park, alt: "Taman Perindustrian Kinrara yang lazim dirujuk sebagai TPK Park" },
       { type: "cards", kicker: "Cara kami bekerja", title: "Pengurusan yang konsisten.", text: "Pendekatan yang berpijak pada keperluan penyewa dan pengunjung.", items: [
@@ -851,6 +852,7 @@ const msPages = {
   profile: {
     eyebrow: "Kepimpinan",
     title: "Wong Shung Yen 黄松延",
+    displayNames: [{ text: "Wong Shung Yen", lang: "en" }, { text: "黄松延", lang: "zh-Hans" }],
     description: "Profil Wong Shung Yen, Pengarah Urusan TPK Park, dan usaha beliau dalam pengurusan hartanah, pengelompokan runcit dan pembaharuan taman perindustrian.",
     lead: "Pengarah Urusan, TPK Park",
     blocks: [
@@ -902,7 +904,7 @@ const zhPages = {
     eyebrow: "关于TPK Park",
     title: "以长期视角经营成熟空间。",
     description: "了解TPK Park Sdn. Bhd.如何通过租户组合、产业更新及地方营造，管理Taman Perindustrian Kinrara（金銮工业园）的特定产业。",
-    lead: "TPK Park是位于蒲种的Taman Perindustrian Kinrara（金銮工业园）的通称。本网站介绍该区内的特定产业、商家及地方更新项目；TPK Park Sdn. Bhd.并不拥有或控制整个工业园。",
+    lead: "TPK Park是蒲种Taman Perindustrian Kinrara（金銮工业园）的通称。本网站介绍与该区相关的特定产业、商家及地方更新项目，也呈现TPK Park Sdn. Bhd.在其所管理产业与项目方面的工作。",
     blocks: [
       { type: "split", title: "实用为先，逐步形成特色。", text: "成熟工业环境的优势包括车辆直达、地面停车、装卸便利及良好道路连接。在此基础上，通过更清晰的租户组合及更友善的共享环境持续更新。", image: images.park, alt: "Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）" },
       { type: "cards", kicker: "我们的方式", title: "持续管理，脚踏实地。", text: "以租户及访客的实际需要为基础。", items: [
@@ -1075,6 +1077,7 @@ const zhPages = {
   profile: {
     eyebrow: "管理团队",
     title: "Wong Shung Yen 黄松延",
+    displayNames: [{ text: "黄松延", lang: "zh-Hans" }, { text: "Wong Shung Yen", lang: "en" }],
     description: "TPK Park董事经理黄松延的个人资料，以及他在产业管理、零售集群及成熟工业园更新方面的工作。",
     lead: "TPK Park（金銮工业园）董事经理",
     blocks: [
