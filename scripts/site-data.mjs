@@ -35,7 +35,7 @@ export const seoTitles = {
     leasingShop: "Shop & Showroom for Rent in Puchong | TPK Park",
     leasingDetached: "Detached Building for Rent in Puchong | TPK Park",
     leasingSemiDetached: "Semi-Detached Factory for Rent in Puchong | TPK Park",
-    news: "TPK Park News & Media Coverage | Puchong",
+    news: "TPK Park News, Updates & Media Coverage | Puchong",
     milestones: "TPK Park Milestones | Home & Living Recognition",
     profile: "Wong Shung Yen 黄松延 | Managing Director, TPK Park",
     contact: "Contact TPK Park Puchong | Leasing & Enquiries"
@@ -50,7 +50,7 @@ export const seoTitles = {
     leasingShop: "Kedai & Bilik Pameran untuk Disewa di Puchong | TPK Park",
     leasingDetached: "Bangunan Sesebuah untuk Disewa di Puchong | TPK Park",
     leasingSemiDetached: "Kilang Berkembar untuk Disewa di Puchong | TPK Park",
-    news: "Berita & Liputan Media TPK Park | Puchong",
+    news: "Berita, Kemas Kini & Liputan Media TPK Park | Puchong",
     milestones: "Pencapaian TPK Park | Pengiktirafan Home & Living",
     profile: "Wong Shung Yen 黄松延 | Pengarah Urusan TPK Park",
     contact: "Hubungi TPK Park Puchong | Penyewaan & Pertanyaan"
@@ -65,14 +65,14 @@ export const seoTitles = {
     leasingShop: "蒲种商铺及展厅出租 | TPK Park",
     leasingDetached: "蒲种独立式商业建筑出租 | TPK Park",
     leasingSemiDetached: "蒲种半独立式厂房出租 | TPK Park",
-    news: "TPK Park新闻与媒体报道 | 蒲种",
+    news: "TPK Park新闻、动态与媒体报道 | 蒲种",
     milestones: "TPK Park里程碑 | 家居生活集群认证",
     profile: "黄松延 Wong Shung Yen | TPK Park董事经理",
     contact: "联系蒲种TPK Park | 租赁与一般咨询"
   }
 };
 
-export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, "2026-09-03"]));
+export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, routeId === "news" ? "2026-09-04" : "2026-09-03"]));
 
 export function routePath(locale, routeId) {
   const prefix = localeConfig[locale].prefix;
@@ -159,100 +159,154 @@ export const articles = [
   {
     source: "China Press",
     date: "2026-07-06",
+    sourceLanguage: "zh",
     image: "https://i.imgur.com/onsprL0.jpg",
     url: "https://kl.chinapress.com.my/?p=1626674",
     title: {
       en: "TPK Park receives Malaysia Book of Records recognition",
       ms: "TPK Park raih pengiktirafan Malaysia Book of Records",
       zh: "TPK Park获《马来西亚纪录大全》认证"
+    },
+    summary: {
+      en: "China Press reports on the formal recognition of TPK Park's focused Home & Living retail cluster.",
+      ms: "China Press melaporkan pengiktirafan rasmi bagi kluster runcit Home & Living berfokus di TPK Park.",
+      zh: "《中国报》报道TPK Park聚焦发展的家居生活零售集群获得正式认证。"
     }
   },
   {
     source: "Kwong Wah",
     date: "2026-07-05",
+    sourceLanguage: "zh",
     image: "https://i.imgur.com/Phs3fKB.jpg",
     url: "https://www.kwongwah.com.my/20260705/%E9%BB%84%E6%80%9D%E6%B1%89%EF%BC%9A%E6%84%BF%E6%99%AF%E9%A1%BB%E4%BB%98%E8%AF%B8%E8%A1%8C%E5%8A%A8-%E9%87%91%E9%8A%AE%E5%B7%A5%E4%B8%9A%E5%9B%AD%E8%BD%AC%E5%9E%8B%E6%88%90%E8%92%B2%E7%A7%8D/",
     title: {
       en: "A 30-year industrial park transformation into a Home & Living destination",
       ms: "Transformasi 30 tahun daripada taman perindustrian kepada destinasi Home & Living",
       zh: "三十年工业园转型：愿景必须付诸行动"
+    },
+    summary: {
+      en: "The report traces the long-term work behind the evolution of a mature industrial setting into a Home & Living destination.",
+      ms: "Laporan ini menelusuri usaha jangka panjang di sebalik perubahan kawasan perindustrian matang menjadi destinasi Home & Living.",
+      zh: "报道回顾成熟工业园经过长期经营，逐步发展为家居生活目的地的历程。"
     }
   },
   {
     source: "Oriental Daily",
     date: "2026-07-05",
+    sourceLanguage: "zh",
     image: "https://i.imgur.com/o3dIfeA.jpg",
     url: "https://www.orientaldaily.com.my/news/central/2026/07/05/830619",
     title: {
       en: "Industrial park renewal creates a focused Puchong retail destination",
       ms: "Pembaharuan taman perindustrian membentuk destinasi runcit di Puchong",
       zh: "成熟工业园更新，打造蒲种家居生活目的地"
+    },
+    summary: {
+      en: "A look at how property renewal and a clearer business mix are reshaping a mature industrial location in Puchong.",
+      ms: "Laporan mengenai bagaimana pembaharuan hartanah dan campuran perniagaan yang lebih jelas membentuk semula lokasi perindustrian matang di Puchong.",
+      zh: "报道探讨产业更新与更清晰的商业组合，如何重塑蒲种一处成熟工业区。"
     }
   },
   {
     source: "Harian Metro",
     date: "2026-07-04",
+    sourceLanguage: "ms",
     image: "https://i.imgur.com/t1ZtWIk.jpg",
     url: "https://www.hmetro.com.my/taxonomy/term/2057/2026/07/1377876/tpk-park-kluster-home-living-terbesar-di-malaysia",
     title: {
       en: "TPK Park recognised for Malaysia's largest Home & Living cluster in an industrial park",
       ms: "TPK Park kluster Home & Living terbesar dalam taman perindustrian di Malaysia",
       zh: "TPK Park获认证为工业园内最大家居生活零售集群"
+    },
+    summary: {
+      en: "Harian Metro covers the record assessment and the scale of the recognised Home & Living cluster.",
+      ms: "Harian Metro melaporkan penilaian rekod dan skala kluster Home & Living yang diiktiraf.",
+      zh: "《Harian Metro》报道纪录评估，以及获认证家居生活集群的规模。"
     }
   },
   {
     source: "Kwong Wah",
     date: "2026-07-04",
+    sourceLanguage: "zh",
     image: "https://i.imgur.com/TVeuKhd.jpg",
     url: "https://www.kwongwah.com.my/?p=1801778",
     title: {
       en: "TPK Park brings leading home and living brands together in Kinrara",
       ms: "TPK Park menghimpunkan jenama Home & Living di Kinrara",
       zh: "TPK Park汇聚主要家居生活品牌"
+    },
+    summary: {
+      en: "Coverage of the businesses and complementary categories that give the Home & Living cluster its breadth.",
+      ms: "Liputan mengenai perniagaan dan kategori saling melengkapi yang membentuk keluasan kluster Home & Living.",
+      zh: "报道介绍构成家居生活集群的商家，以及彼此互补的业态类别。"
     }
   },
   {
     source: "New Straits Times",
     date: "2026-06-30",
+    sourceLanguage: "en",
     image: "https://i.imgur.com/cHWqFB9.jpg",
     url: "https://www.nst.com.my/business/corporate/2026/06/1475902/tpk-park-enters-record-books-largest-home-and-living-retail",
     title: {
       en: "TPK Park enters the record books for its Home & Living retail cluster",
       ms: "TPK Park catat rekod bagi kluster peruncitan Home & Living",
       zh: "TPK Park家居生活零售集群载入纪录"
+    },
+    summary: {
+      en: "New Straits Times reports on the national record and the role of long-term clustering in reaching the milestone.",
+      ms: "New Straits Times melaporkan rekod kebangsaan dan peranan pengelompokan jangka panjang dalam mencapai pencapaian tersebut.",
+      zh: "《新海峡时报》报道该项国家纪录，以及长期商业集群发展对达成里程碑的作用。"
     }
   },
   {
     source: "Guang Ming Daily",
     date: "2026-06-30",
+    sourceLanguage: "zh",
     image: "https://i.imgur.com/3N1S23N.jpg",
     url: "https://guangming.com.my/%e3%80%90%e5%b8%82%e5%9c%ba%e6%83%85%e6%8a%a5%e3%80%91%e5%b7%a5%e4%b8%9a%e5%9b%ad%e6%9c%80%e5%a4%a7%e5%ae%b6%e5%b1%85%e4%b8%8e%e7%94%9f%e6%b4%bb%e9%9b%b6%e5%94%ae%e9%9b%86%e7%be%a4",
     title: {
       en: "Industrial park is home to the largest Home & Living retail cluster",
       ms: "Taman perindustrian menempatkan kluster runcit Home & Living terbesar",
       zh: "工业园内最大家居与生活零售集群"
+    },
+    summary: {
+      en: "Guang Ming Daily highlights the recognised cluster within its mature industrial-park setting.",
+      ms: "Guang Ming Daily menonjolkan kluster yang diiktiraf dalam persekitaran taman perindustrian matang.",
+      zh: "《光明日报》聚焦获认证集群与其成熟工业园环境。"
     }
   },
   {
     source: "Business News",
     date: "2026-06-28",
+    sourceLanguage: "en",
     image: "https://i.imgur.com/PN8KtTZ.jpg",
     url: "https://businessnews.com.my/tpk-park-30-year-transformation-book-of-record/",
     title: {
       en: "TPK Park's 30-year transformation earns national recognition",
       ms: "Transformasi 30 tahun TPK Park menerima pengiktirafan kebangsaan",
       zh: "TPK Park三十年转型获国家纪录认证"
+    },
+    summary: {
+      en: "The article connects three decades of gradual renewal with the cluster's 2026 national recognition.",
+      ms: "Artikel ini mengaitkan pembaharuan beransur selama tiga dekad dengan pengiktirafan kebangsaan kluster pada 2026.",
+      zh: "文章将三十年的渐进式更新，与集群在2026年获得国家认证联系起来。"
     }
   },
   {
     source: "Malaya Newsroom",
     date: "2026-06-26",
+    sourceLanguage: "ms",
     image: "https://i.imgur.com/NRbC08K.jpg",
     url: "https://malayanewsroom.com/26/06/2026/tpk-park-raih-pengiktirafan-malaysia-book-of-records-hasil-transformasi-selama-30-tahun/",
     title: {
       en: "Three decades of renewal recognised by the Malaysia Book of Records",
       ms: "Transformasi selama 30 tahun diiktiraf Malaysia Book of Records",
       zh: "三十年更新历程获《马来西亚纪录大全》肯定"
+    },
+    summary: {
+      en: "Malaya Newsroom reviews the long-term transformation leading to the Malaysia Book of Records milestone.",
+      ms: "Malaya Newsroom meninjau transformasi jangka panjang yang membawa kepada pencapaian Malaysia Book of Records.",
+      zh: "Malaya Newsroom回顾长期转型历程，以及其如何迈向《马来西亚纪录大全》里程碑。"
     }
   }
 ];
@@ -278,6 +332,7 @@ const common = {
     ctaText: "Speak with the TPK Park management team about suitable commercial or industrial space.",
     ctaButton: "Enquire about space",
     noticeLabel: "Important notice",
+    newsUi: { sourceLanguages: { en: "English", ms: "Malay", zh: "Chinese" } },
     leasingUi: {
       factsKicker: "Property facts",
       factsTitle: "Current leasing information",
@@ -314,6 +369,7 @@ const common = {
     ctaText: "Berbincang dengan pasukan pengurusan TPK Park mengenai ruang komersial atau perindustrian yang bersesuaian.",
     ctaButton: "Tanya tentang ruang",
     noticeLabel: "Notis penting",
+    newsUi: { sourceLanguages: { en: "Bahasa Inggeris", ms: "Bahasa Melayu", zh: "Bahasa Cina" } },
     leasingUi: {
       factsKicker: "Fakta hartanah",
       factsTitle: "Maklumat penyewaan semasa",
@@ -350,6 +406,7 @@ const common = {
     ctaText: "欢迎联系TPK Park管理团队，了解合适的商业或工业空间。",
     ctaButton: "查询租赁空间",
     noticeLabel: "重要说明",
+    newsUi: { sourceLanguages: { en: "英文", ms: "马来文", zh: "中文" } },
     leasingUi: {
       factsKicker: "物业资料",
       factsTitle: "当前租赁信息",
@@ -577,11 +634,21 @@ const enPages = {
     ]
   },
   news: {
-    eyebrow: "News & Coverage",
+    eyebrow: "News & Media",
     title: "Reporting on a place in transition.",
-    description: "Read selected independent media coverage of TPK Park's Home & Living milestone and long-term industrial park renewal in Puchong.",
-    lead: "A selected archive of independent coverage. Articles open on their original publishers' websites.",
-    blocks: [{ type: "news", kicker: "Media archive", title: "Selected coverage", text: "Publication titles and links are retained for reference.", limit: 20 }]
+    description: "Read current TPK Park updates on leasing, business mix and industrial park renewal, alongside selected independent media coverage from Puchong.",
+    lead: "Updates from TPK Park, alongside a selected archive of independent media coverage.",
+    image: images.leasing,
+    cta: { title: "Looking for space at TPK Park?", text: "Review current shop, showroom and industrial property information, then confirm the latest availability with the leasing team.", button: "View available properties", route: "leasing" },
+    blocks: [
+      { type: "newsFeature", kicker: "Latest update", category: "Leasing", date: "2026-09-03", title: "Leasing information in three languages.", text: "Prospective tenants can review current information packs for shop and showroom units, a detached building and a semi-detached property in English, Bahasa Melayu or Chinese. Availability and commercial terms remain subject to confirmation.", image: images.leasing, alt: "Commercial and industrial properties available for lease at TPK Park in Puchong", route: "leasing", linkLabel: "Explore available properties" },
+      { type: "newsUpdates", kicker: "From TPK Park", title: "Updates and useful context", text: "First-party information about the place, its business mix and ongoing management priorities.", items: [
+        { category: "Park renewal", title: "Keeping a mature industrial address useful", text: "TPK Park's work across selected properties combines tenant curation with landscaping, façade lighting, signage coordination, parking management and destination activity.", image: images.park, alt: "Commercial and industrial surroundings at TPK Park in Puchong", route: "about", linkLabel: "How TPK Park approaches renewal" },
+        { category: "Business mix", title: "Three complementary business pillars", text: "Home & Living, Automotive and Lifestyle businesses create a broader mix of showrooms, services, dining, fitness and everyday needs.", image: images.homeLiving, alt: "Home and Living businesses at TPK Park in Puchong", route: "home", linkLabel: "Explore the business mix" },
+        { category: "2026 milestone", date: "2026-07-05", title: "Recognition for a focused Home & Living cluster", text: "The recognised cluster comprised 16 businesses, 96,728 sq ft and eight categories within an industrial-park setting.", image: images.record, alt: "Malaysia Book of Records recognition for the TPK Park Home and Living cluster", route: "milestones", linkLabel: "Explore the milestone" }
+      ] },
+      { type: "news", kicker: "Media archive", title: "Independent media coverage", text: "Selected reports are retained with the publisher and original publication language clearly identified. Links open on the publishers' websites.", limit: 20, detailed: true }
+    ]
   },
   milestones: {
     eyebrow: "Milestones Archive",
@@ -829,11 +896,21 @@ const msPages = {
     ]
   },
   news: {
-    eyebrow: "Berita & Liputan",
-    title: "Laporan mengenai sebuah tempat yang sedang berubah.",
-    description: "Baca liputan media bebas tentang pencapaian Home & Living dan pembaharuan jangka panjang TPK Park di Puchong.",
-    lead: "Arkib pilihan liputan bebas. Artikel dibuka di laman penerbit asal.",
-    blocks: [{ type: "news", kicker: "Arkib media", title: "Liputan pilihan", text: "Tajuk penerbitan dan pautan dikekalkan sebagai rujukan.", limit: 20 }]
+    eyebrow: "Berita & Media",
+    title: "Merakam perubahan sebuah kawasan.",
+    description: "Ikuti kemas kini TPK Park mengenai penyewaan, campuran perniagaan dan pembaharuan taman perindustrian, bersama liputan media bebas dari Puchong.",
+    lead: "Kemas kini daripada TPK Park, bersama arkib pilihan liputan media bebas.",
+    image: images.leasing,
+    cta: { title: "Mencari ruang di TPK Park?", text: "Semak maklumat semasa bagi kedai, bilik pameran dan hartanah industri, kemudian sahkan ketersediaan terkini dengan pasukan penyewaan.", button: "Lihat hartanah yang tersedia", route: "leasing" },
+    blocks: [
+      { type: "newsFeature", kicker: "Kemas kini terkini", category: "Penyewaan", date: "2026-09-03", title: "Maklumat penyewaan dalam tiga bahasa.", text: "Bakal penyewa boleh meneliti pek maklumat semasa bagi unit kedai dan bilik pameran, sebuah bangunan sesebuah serta sebuah bangunan berkembar dalam Bahasa Inggeris, Bahasa Melayu atau Bahasa Cina. Ketersediaan dan terma komersial masih tertakluk kepada pengesahan.", image: images.leasing, alt: "Hartanah komersial dan industri untuk disewa di TPK Park, Puchong", route: "leasing", linkLabel: "Terokai hartanah yang tersedia" },
+      { type: "newsUpdates", kicker: "Daripada TPK Park", title: "Kemas kini dan konteks berguna", text: "Maklumat langsung mengenai kawasan ini, campuran perniagaannya dan keutamaan pengurusan berterusan.", items: [
+        { category: "Pembaharuan taman", title: "Mengekalkan nilai praktikal kawasan perindustrian matang", text: "Usaha TPK Park bagi hartanah terpilih menggabungkan pemilihan penyewa, landskap, pencahayaan fasad, penyelarasan papan tanda, pengurusan parkir dan aktiviti destinasi.", image: images.park, alt: "Persekitaran komersial dan perindustrian di TPK Park, Puchong", route: "about", linkLabel: "Pendekatan TPK Park terhadap pembaharuan" },
+        { category: "Campuran perniagaan", title: "Tiga teras perniagaan yang saling melengkapi", text: "Perniagaan Home & Living, Automotif dan Lifestyle membentuk gabungan bilik pameran, perkhidmatan, makanan, kecergasan dan keperluan harian.", image: images.homeLiving, alt: "Perniagaan Home and Living di TPK Park, Puchong", route: "home", linkLabel: "Terokai campuran perniagaan" },
+        { category: "Pencapaian 2026", date: "2026-07-05", title: "Pengiktirafan bagi kluster Home & Living yang berfokus", text: "Kluster yang diiktiraf merangkumi 16 perniagaan, 96,728 kaki persegi dan lapan kategori dalam persekitaran taman perindustrian.", image: images.record, alt: "Pengiktirafan Malaysia Book of Records bagi kluster Home and Living TPK Park", route: "milestones", linkLabel: "Terokai pencapaian" }
+      ] },
+      { type: "news", kicker: "Arkib media", title: "Liputan media bebas", text: "Laporan pilihan dikekalkan dengan nama penerbit dan bahasa penerbitan asal dikenal pasti dengan jelas. Pautan dibuka di laman penerbit.", limit: 20, detailed: true }
+    ]
   },
   milestones: {
     eyebrow: "Arkib Pencapaian",
@@ -1054,11 +1131,21 @@ const zhPages = {
     ]
   },
   news: {
-    eyebrow: "新闻与报道",
-    title: "记录一个地方的转变。",
-    description: "阅读关于TPK Park家居生活里程碑及蒲种成熟工业园长期更新的独立媒体报道。",
-    lead: "精选独立媒体报道，文章将在原媒体网站打开。",
-    blocks: [{ type: "news", kicker: "媒体档案", title: "精选报道", text: "保留媒体标题及链接供参考。", limit: 20 }]
+    eyebrow: "新闻与媒体",
+    title: "记录一个地方的持续转变。",
+    description: "掌握TPK Park租赁、商业组合及成熟工业园更新动态，并阅读来自蒲种的精选独立媒体报道。",
+    lead: "TPK Park发布的最新动态，以及精选独立媒体报道。",
+    image: images.leasing,
+    cta: { title: "正在寻找TPK Park租赁空间？", text: "查看当前商铺、展厅及工业单位资料，再向租赁团队确认最新供应情况。", button: "查看出租单位", route: "leasing" },
+    blocks: [
+      { type: "newsFeature", kicker: "最新动态", category: "租赁", date: "2026-09-03", title: "租赁资料提供三种语言版本", text: "准租户现可用英文、马来文或中文查阅商铺与展厅、独立式建筑及半独立式单位的最新资料包。单位供应与商业条款仍须另行确认。", image: images.leasing, alt: "蒲种TPK Park待租商业与工业单位", route: "leasing", linkLabel: "查看出租单位" },
+      { type: "newsUpdates", kicker: "来自TPK Park", title: "最新动态与实用资讯", text: "由TPK Park发布，介绍这里的商业组合及持续管理重点。", items: [
+        { category: "园区更新", title: "让成熟工业区持续保持实用价值", text: "TPK Park针对特定产业的工作，包括租户组合、园林、建筑照明、招牌协调、停车管理及目的地活动。", image: images.park, alt: "蒲种TPK Park商业与工业环境", route: "about", linkLabel: "了解TPK Park的更新方式" },
+        { category: "商业组合", title: "三个相辅相成的业态支柱", text: "家居生活、汽车服务及生活品味业态，共同形成展厅、服务、餐饮、运动与日常所需的多元组合。", image: images.homeLiving, alt: "蒲种TPK Park家居生活商家", route: "home", linkLabel: "探索商业组合" },
+        { category: "2026年里程碑", date: "2026-07-05", title: "聚焦发展的家居生活集群获得认证", text: "获认证集群涵盖16家企业、96,728平方英尺及八个类别，坐落于成熟工业园环境。", image: images.record, alt: "TPK Park家居生活集群获马来西亚纪录大全认证", route: "milestones", linkLabel: "了解这项里程碑" }
+      ] },
+      { type: "news", kicker: "媒体档案", title: "独立媒体报道", text: "精选报道清楚列明媒体名称及原文语言；链接将在媒体网站打开。", limit: 20, detailed: true }
+    ]
   },
   milestones: {
     eyebrow: "里程碑档案",
