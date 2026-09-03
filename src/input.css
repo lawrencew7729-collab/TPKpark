@@ -98,6 +98,7 @@ button, input, select, textarea { font: inherit; }
 .card .number { color: var(--gold); font-weight: 800; font-size: 12px; letter-spacing: .12em; }
 .card h3 { margin: auto 0 12px; font-family: Georgia, serif; font-size: 2rem; line-height: 1.05; font-weight: 400; }
 .card p { margin: 0; color: rgba(16,23,19,.66); }
+.card:not(.image-card) > h3 { min-height: 2.1em; }
 .card:not(.image-card) > p { min-height: 6.6em; }
 .card .text-link { margin-top: 20px; }
 .image-card { min-height: 480px; position: relative; padding: 0; overflow: hidden; color: var(--cream); border: 0; }
@@ -236,6 +237,7 @@ button, input, select, textarea { font: inherit; }
   .section { padding: 70px 0; }
   .card-grid, .news-grid { grid-template-columns: 1fr; }
   .card { min-height: 270px; }
+  .card:not(.image-card) > h3,
   .card:not(.image-card) > p { min-height: 0; }
   .image-card { min-height: 430px; }
   .split { grid-template-columns: 1fr; }
