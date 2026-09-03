@@ -1,5 +1,17 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/shoplot.pdf",
+      "destination": "/assets/leasing/tpk-park-section-2-shoplots-for-lease.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/semid.pdf",
+      "destination": "/assets/leasing/tpk-park-semi-detached-showroom-industrial-unit-no-69-for-lease.pdf",
+      "permanent": true
+    }
+  ]
 }

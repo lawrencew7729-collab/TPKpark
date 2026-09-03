@@ -96,9 +96,27 @@ for (const locale of locales) {
         if (parsed["@context"] !== "https://schema.org") fail(label, "JSON-LD context is incorrect");
         if (!Array.isArray(parsed["@graph"])) fail(label, "JSON-LD graph is missing");
         const graph = parsed["@graph"] || [];
+        const organizationId = `${origin}/#organization`;
+        const placeId = `${origin}/#taman-perindustrian-kinrara`;
+        const organization = graph.find((entry) => entry["@type"] === "Organization");
+        const place = graph.find((entry) => entry["@type"] === "Place");
+        const webSite = graph.find((entry) => entry["@type"] === "WebSite");
         const webPage = graph.find((entry) => entry["@type"] === "WebPage");
+        if (!organization) fail(label, "Organization schema is missing");
+        if (organization?.["@id"] !== organizationId) fail(label, "Organization schema ID is incorrect");
+        if (organization?.location?.["@id"] !== placeId) fail(label, "Organization location does not reference Taman Perindustrian Kinrara");
+        if (!place) fail(label, "Taman Perindustrian Kinrara Place schema is missing");
+        if (place?.["@id"] !== placeId) fail(label, "Place schema ID is incorrect");
+        if (place?.name !== "Taman Perindustrian Kinrara") fail(label, "Place schema name is incorrect");
+        if (!Array.isArray(place?.alternateName) || !place.alternateName.includes("TPK") || !place.alternateName.includes("TPK Park")) fail(label, "Place schema aliases are incomplete");
+        if (!webSite) fail(label, "WebSite schema is missing");
+        if (webSite?.publisher?.["@id"] !== organizationId) fail(label, "WebSite publisher is incorrect");
+        if (webSite?.about?.["@id"] !== placeId) fail(label, "WebSite subject is incorrect");
         if (!webPage) fail(label, "WebPage schema is missing");
         if (webPage?.dateModified !== routeLastModified[routeId]) fail(label, "WebPage dateModified is incorrect");
+        if (webPage?.publisher?.["@id"] !== organizationId) fail(label, "WebPage publisher is incorrect");
+        if (routeId !== "profile" && webPage?.about?.["@id"] !== placeId) fail(label, "WebPage subject does not reference Taman Perindustrian Kinrara");
+        if (routeId !== "profile" && webPage?.mainEntity?.["@id"] !== placeId) fail(label, "WebPage main entity does not reference Taman Perindustrian Kinrara");
         const breadcrumb = graph.find((entry) => entry["@type"] === "BreadcrumbList");
         if (routeId !== "home" && !breadcrumb) fail(label, "BreadcrumbList schema is missing");
         if (page.parentRoute && breadcrumb?.itemListElement?.length !== 3) fail(label, "nested page breadcrumb does not contain three levels");
@@ -174,7 +192,17 @@ for (const locale of locales) {
       if (attr(linkTag[0], "target") === "_blank" && !(attr(linkTag[0], "rel") || "").includes("noopener")) fail(label, "target=_blank link missing noopener");
     }
 
-    const forbidden = ["+603-8070-1234", "lawrencew7729-collab/TPKpark", "data-i18n="];
+    const forbidden = [
+      "+603-8070-1234",
+      "lawrencew7729-collab/TPKpark",
+      "data-i18n=",
+      "TPK Park is within Taman Perindustrian Kinrara",
+      "TPK Park is the destination identity for",
+      "TPK Park terletak dalam Taman Perindustrian Kinrara",
+      "TPK Park ialah identiti destinasi",
+      "TPK Park位于金銮工业园",
+      "TPK Park是金銮工业园内一组"
+    ];
     for (const phrase of forbidden) if (html.includes(phrase)) fail(label, `contains forbidden legacy text: ${phrase}`);
   }
 }

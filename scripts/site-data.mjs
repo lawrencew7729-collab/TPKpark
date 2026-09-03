@@ -27,7 +27,7 @@ export const localeConfig = {
 export const seoTitles = {
   en: {
     home: "TPK Park Puchong | Home & Living, Automotive & Lifestyle",
-    about: "About TPK Park | Industrial Park Renewal in Puchong",
+    about: "About TPK Park | Taman Perindustrian Kinrara, Puchong",
     homeLiving: "Home & Living Showrooms in Puchong | TPK Park",
     automotive: "Automotive Sales & Services in Puchong | TPK Park",
     lifestyle: "Dining, Fitness & Lifestyle in Puchong | TPK Park",
@@ -42,7 +42,7 @@ export const seoTitles = {
   },
   ms: {
     home: "TPK Park Puchong | Home & Living, Automotif & Lifestyle",
-    about: "Tentang TPK Park | Pembaharuan Taman Perindustrian Puchong",
+    about: "Tentang TPK Park | Taman Perindustrian Kinrara, Puchong",
     homeLiving: "Bilik Pameran Home & Living di Puchong | TPK Park",
     automotive: "Jualan & Servis Automotif di Puchong | TPK Park",
     lifestyle: "Makan, Kecergasan & Lifestyle di Puchong | TPK Park",
@@ -57,7 +57,7 @@ export const seoTitles = {
   },
   zh: {
     home: "蒲种TPK Park | 家居生活、汽车服务与生活品味",
-    about: "关于TPK Park | 蒲种成熟工业园更新与地方营造",
+    about: "关于TPK Park | 蒲种Taman Perindustrian Kinrara",
     homeLiving: "蒲种家居生活展厅与装修品牌 | TPK Park",
     automotive: "蒲种汽车销售、维修与美容服务 | TPK Park",
     lifestyle: "蒲种餐饮、运动与生活配套 | TPK Park",
@@ -72,8 +72,7 @@ export const seoTitles = {
   }
 };
 
-const brochureRouteIds = new Set(["leasingShop", "leasingDetached", "leasingSemiDetached"]);
-export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, brochureRouteIds.has(routeId) ? "2026-09-02" : "2026-09-01"]));
+export const routeLastModified = Object.fromEntries(routeIds.map((routeId) => [routeId, "2026-09-03"]));
 
 export function routePath(locale, routeId) {
   const prefix = localeConfig[locale].prefix;
@@ -271,7 +270,7 @@ const common = {
     viewAll: "View all news",
     external: "Opens on the publisher's website",
     breadcrumbHome: "Home",
-    footerIntro: "A renewed business destination within Taman Perindustrian Kinrara, bringing Home & Living, Automotive and Lifestyle uses together in Puchong.",
+    footerIntro: "TPK Park is a common reference to Taman Perindustrian Kinrara, where selected Home & Living, Automotive and Lifestyle businesses come together in Puchong.",
     explore: "Explore",
     connect: "Connect",
     rights: "TPK Park Sdn. Bhd. All rights reserved.",
@@ -284,7 +283,7 @@ const common = {
       factsTitle: "Current leasing information",
       factsText: "Use these details as a starting point, then confirm the latest position with the leasing team.",
       labels: { availability: "Availability", address: "Address", builtUp: "Built-up area", landArea: "Land area", askingRent: "Asking rent", format: "Property format", lastUpdated: "Last updated" },
-      lastUpdated: "2 September 2026",
+      lastUpdated: "3 September 2026",
       enquire: "Enquire about this space",
       call: "Call leasing team",
       brochure: "Download leasing information pack (PDF)",
@@ -307,7 +306,7 @@ const common = {
     viewAll: "Lihat semua berita",
     external: "Dibuka di laman penerbit",
     breadcrumbHome: "Utama",
-    footerIntro: "Destinasi perniagaan yang diperbaharui di Taman Perindustrian Kinrara, menghimpunkan Home & Living, Automotif dan Lifestyle di Puchong.",
+    footerIntro: "TPK Park ialah sebutan umum bagi Taman Perindustrian Kinrara, tempat perniagaan Home & Living, Automotif dan Lifestyle terpilih beroperasi di Puchong.",
     explore: "Terokai",
     connect: "Hubungi",
     rights: "TPK Park Sdn. Bhd. Hak cipta terpelihara.",
@@ -320,7 +319,7 @@ const common = {
       factsTitle: "Maklumat penyewaan semasa",
       factsText: "Gunakan butiran ini sebagai titik mula, kemudian sahkan kedudukan terkini dengan pasukan penyewaan.",
       labels: { availability: "Ketersediaan", address: "Alamat", builtUp: "Keluasan binaan", landArea: "Keluasan tanah", askingRent: "Sewa diminta", format: "Format hartanah", lastUpdated: "Kemas kini terakhir" },
-      lastUpdated: "2 September 2026",
+      lastUpdated: "3 September 2026",
       enquire: "Tanya tentang ruang ini",
       call: "Hubungi pasukan penyewaan",
       brochure: "Muat turun pek maklumat penyewaan (PDF)",
@@ -343,7 +342,7 @@ const common = {
     viewAll: "查看全部新闻",
     external: "将在媒体网站打开",
     breadcrumbHome: "首页",
-    footerIntro: "位于蒲种金銮工业园内的更新型商业目的地，汇聚家居生活、汽车服务及生活品味业态。",
+    footerIntro: "TPK Park是Taman Perindustrian Kinrara（金銮工业园）的通称；这里汇聚精选家居生活、汽车服务及生活品味业态。",
     explore: "探索",
     connect: "联系",
     rights: "TPK Park Sdn. Bhd. 版权所有。",
@@ -356,7 +355,7 @@ const common = {
       factsTitle: "当前租赁信息",
       factsText: "请以这些资料为初步参考，并向租赁团队确认最新情况。",
       labels: { availability: "供应情况", address: "地址", builtUp: "建筑面积", landArea: "土地面积", askingRent: "参考叫租", format: "物业形式", lastUpdated: "最后更新" },
-      lastUpdated: "2026年9月2日",
+      lastUpdated: "2026年9月3日",
       enquire: "查询此单位",
       call: "致电租赁团队",
       brochure: "下载租赁资料包（PDF）",
@@ -373,7 +372,7 @@ const enPages = {
   home: {
     eyebrow: "Puchong · Selangor",
     title: "A mature industrial place, renewed for everyday life.",
-    description: "Explore TPK Park in Puchong: Home & Living showrooms, automotive services, lifestyle amenities and leasing opportunities within Taman Perindustrian Kinrara.",
+    description: "Explore Taman Perindustrian Kinrara, commonly known as TPK Park, in Puchong: Home & Living showrooms, automotive services, lifestyle amenities and leasing opportunities.",
     lead: "TPK Park brings useful businesses together in an established, accessible setting—Home & Living, Automotive and Lifestyle, thoughtfully curated over time.",
     image: images.park,
     blocks: [
@@ -390,7 +389,7 @@ const enPages = {
       ] },
       { type: "news", kicker: "Selected coverage", title: "TPK Park in the news", text: "Independent coverage of the Home & Living milestone and the park's long-term renewal.", limit: 3 },
       { type: "faq", kicker: "Visitor essentials", title: "Before you visit", items: [
-        { q: "Where is TPK Park?", a: "TPK Park is within Taman Perindustrian Kinrara, Puchong, Selangor, along the Puchong–Bukit Jalil corridor." },
+        { q: "What does TPK Park refer to?", a: "TPK Park is a common reference to Taman Perindustrian Kinrara in Puchong, Selangor, along the Puchong–Bukit Jalil corridor." },
         { q: "What can I find at TPK Park?", a: "The business mix includes Home & Living showrooms, automotive sales and services, dining, fitness, family activities, daily essentials and professional services." },
         { q: "Are all businesses open at the same time?", a: "No. Each tenant sets its own operating hours. Check with the business you plan to visit before travelling." },
         { q: "Does TPK Park offer space for lease?", a: "Yes. Commercial and industrial spaces may become available. Contact the management team for current options; published availability can change." },
@@ -401,10 +400,10 @@ const enPages = {
   about: {
     eyebrow: "About TPK Park",
     title: "A long-term approach to an established place.",
-    description: "Learn how TPK Park manages and repositions selected properties within Taman Perindustrian Kinrara through tenant curation, renewal and placemaking.",
-    lead: "TPK Park is the destination identity for a managed collection of selected commercial and industrial properties within Taman Perindustrian Kinrara—not a claim of control over the whole industrial area.",
+    description: "Learn how TPK Park Sdn. Bhd. manages and repositions selected properties at Taman Perindustrian Kinrara through tenant curation, renewal and placemaking.",
+    lead: "TPK Park is a common reference to Taman Perindustrian Kinrara in Puchong. This website presents selected properties, businesses and place-renewal initiatives connected with the area; TPK Park Sdn. Bhd. does not own or control the whole industrial park.",
     blocks: [
-      { type: "split", title: "Useful first. Distinctive over time.", text: "The work starts with the practical strengths of a mature industrial setting: direct vehicle access, ground-level parking, loading convenience and strong road connections. Renewal then adds a clearer tenant mix and a more welcoming shared environment.", image: images.park, alt: "TPK Park streetscape in Taman Perindustrian Kinrara" },
+      { type: "split", title: "Useful first. Distinctive over time.", text: "The work starts with the practical strengths of a mature industrial setting: direct vehicle access, ground-level parking, loading convenience and strong road connections. Renewal then adds a clearer tenant mix and a more welcoming shared environment.", image: images.park, alt: "Taman Perindustrian Kinrara, commonly known as TPK Park" },
       { type: "cards", kicker: "How we work", title: "Stewardship, not spectacle.", text: "A grounded management approach built around the needs of tenants and visitors.", items: [
         { number: "01", title: "Property stewardship", text: "Long-term asset and tenancy management across selected premises." },
         { number: "02", title: "Business clustering", text: "A clearer mix around Home & Living, Automotive and Lifestyle uses." },
@@ -481,8 +480,8 @@ const enPages = {
   leasing: {
     eyebrow: "Property Leasing · Puchong",
     title: "Commercial & Industrial Property for Rent in Puchong",
-    description: "Explore commercial and industrial property for rent at TPK Park, Puchong, including shoplots, showrooms, detached buildings and semi-detached premises.",
-    lead: "Customer-facing spaces within Taman Perindustrian Kinrara for showrooms, retail, automotive, food, wellness and specialist service businesses.",
+    description: "Explore commercial and industrial property for rent at Taman Perindustrian Kinrara, commonly known as TPK Park, in Puchong, including shoplots, showrooms and whole buildings.",
+    lead: "Customer-facing spaces at Taman Perindustrian Kinrara for showrooms, retail, automotive, food, wellness and specialist service businesses.",
     image: images.leasing,
     blocks: [
       { type: "notice", text: "Published availability, dimensions, asking rents and commercial terms are indicative and must be confirmed with the TPK Park leasing team." },
@@ -491,7 +490,7 @@ const enPages = {
         { number: "02", title: "Detached building", text: "A standalone whole-building option for a flagship showroom, automotive centre or larger commercial operation.", route: "leasingDetached", image: images.leasingDetached, linkLabel: "View detached building" },
         { number: "03", title: "Semi-detached building", text: "A flexible whole-building format for showroom, service, display, storage and operational needs.", route: "leasingSemiDetached", image: images.leasingSemiDetached, linkLabel: "View semi-detached building" }
       ] },
-      { type: "split", title: "A visible address on the Puchong–Bukit Jalil corridor.", text: "TPK Park combines drive-up access, visitor parking and an established cluster of Home & Living, Automotive and Lifestyle businesses within Taman Perindustrian Kinrara.", image: images.leasing, alt: "Customer-facing commercial property at TPK Park in Puchong", route: "contact", linkLabel: "Discuss your space needs" },
+      { type: "split", title: "A visible address on the Puchong–Bukit Jalil corridor.", text: "At Taman Perindustrian Kinrara, commonly known as TPK Park, selected Home & Living, Automotive and Lifestyle businesses benefit from drive-up access, visitor parking and an established cluster.", image: images.leasing, alt: "Customer-facing commercial property at TPK Park in Puchong", route: "contact", linkLabel: "Discuss your space needs" },
       { type: "cards", kicker: "Preferred tenant fit", title: "Businesses that add to the destination", text: "The leasing strategy favours useful, customer-facing concepts that complement the existing business mix.", items: [
         { number: "A", title: "Home & Living", text: "Furniture, kitchens, wardrobes, tiles, sanitaryware, lighting, interiors and renovation services." },
         { number: "B", title: "Automotive", text: "Sales, accessories, detailing, EV-related services, specialist workshops and mobility uses." },
@@ -510,7 +509,7 @@ const enPages = {
     unitKey: "shopShowroom",
     eyebrow: "Leasing · Shop & Showroom",
     title: "Shop & Showroom for Rent in Puchong",
-    description: "Explore customer-facing shop and showroom space for rent along Jalan TPK 2/8 at TPK Park in Taman Perindustrian Kinrara, Puchong.",
+    description: "Explore customer-facing shop and showroom space for rent along Jalan TPK 2/8 at Taman Perindustrian Kinrara, commonly known as TPK Park, in Puchong.",
     lead: "High-visibility commercial space for brands that need display, direct customer access and a place within an established business cluster.",
     image: images.leasingShop,
     blocks: [
@@ -523,7 +522,7 @@ const enPages = {
         { number: "03", title: "Cluster effect", text: "Neighbouring Home & Living, Automotive and Lifestyle businesses create useful trip reasons." }
       ] },
       { type: "faq", kicker: "Shop & showroom FAQ", title: "Planning your enquiry", items: [
-        { q: "Where are the shop and showroom units?", a: "The referenced shoplots are along Jalan TPK 2/8 within Taman Perindustrian Kinrara, Puchong." },
+        { q: "Where are the shop and showroom units?", a: "The referenced shoplots are along Jalan TPK 2/8 at Taman Perindustrian Kinrara, commonly known as TPK Park, in Puchong." },
         { q: "What businesses are a good fit?", a: "Customer-facing showrooms, specialist retail, renovation and home-improvement brands, cafés, wellness, education, clinics and complementary services are priority uses, subject to approval." },
         { q: "Can I download more information?", a: "Yes. Download the leasing information pack (PDF) on this page, then contact management to confirm the current unit, measurements, rent and viewing availability." }
       ] }
@@ -639,7 +638,7 @@ const msPages = {
   home: {
     eyebrow: "Puchong · Selangor",
     title: "Kawasan perindustrian matang, diperbaharui untuk kehidupan seharian.",
-    description: "Terokai TPK Park di Puchong: pameran Home & Living, perkhidmatan automotif, kemudahan gaya hidup dan peluang penyewaan di Taman Perindustrian Kinrara.",
+    description: "Terokai Taman Perindustrian Kinrara, yang lazim dirujuk sebagai TPK Park, di Puchong: pameran Home & Living, perkhidmatan automotif, kemudahan gaya hidup dan peluang penyewaan.",
     lead: "TPK Park menghimpunkan perniagaan yang berguna dalam persekitaran yang mudah diakses—Home & Living, Automotif dan Lifestyle, dibentuk dengan teliti dari semasa ke semasa.",
     image: images.park,
     blocks: [
@@ -656,7 +655,7 @@ const msPages = {
       ] },
       { type: "news", kicker: "Liputan pilihan", title: "TPK Park dalam berita", text: "Liputan bebas tentang pencapaian Home & Living dan pembaharuan jangka panjang taman ini.", limit: 3 },
       { type: "faq", kicker: "Maklumat pengunjung", title: "Sebelum anda berkunjung", items: [
-        { q: "Di manakah TPK Park?", a: "TPK Park terletak dalam Taman Perindustrian Kinrara, Puchong, Selangor, di koridor Puchong–Bukit Jalil." },
+        { q: "Apakah maksud TPK Park?", a: "TPK Park ialah sebutan umum bagi Taman Perindustrian Kinrara di Puchong, Selangor, di koridor Puchong–Bukit Jalil." },
         { q: "Apakah yang terdapat di TPK Park?", a: "Campuran perniagaan merangkumi bilik pameran Home & Living, jualan dan servis automotif, makanan, kecergasan, aktiviti keluarga, keperluan harian dan perkhidmatan profesional." },
         { q: "Adakah semua perniagaan dibuka pada waktu yang sama?", a: "Tidak. Setiap penyewa menetapkan waktu operasinya sendiri. Semak dengan perniagaan berkenaan sebelum berkunjung." },
         { q: "Adakah ruang untuk disewa?", a: "Ya. Ruang komersial dan perindustrian mungkin tersedia dari semasa ke semasa. Hubungi pengurusan untuk pilihan terkini." },
@@ -667,10 +666,10 @@ const msPages = {
   about: {
     eyebrow: "Tentang TPK Park",
     title: "Pendekatan jangka panjang terhadap tempat yang telah matang.",
-    description: "Ketahui bagaimana TPK Park mengurus dan memperbaharui hartanah terpilih dalam Taman Perindustrian Kinrara melalui pemilihan penyewa dan pembentukan tempat.",
-    lead: "TPK Park ialah identiti destinasi bagi koleksi hartanah komersial dan perindustrian terpilih yang diurus dalam Taman Perindustrian Kinrara—bukan tuntutan mengawal keseluruhan kawasan perindustrian.",
+    description: "Ketahui bagaimana TPK Park Sdn. Bhd. mengurus dan memperbaharui hartanah terpilih di Taman Perindustrian Kinrara melalui pemilihan penyewa dan pembentukan tempat.",
+    lead: "TPK Park ialah sebutan umum bagi Taman Perindustrian Kinrara di Puchong. Laman ini mengetengahkan hartanah, perniagaan dan inisiatif pembaharuan tempat terpilih yang berkaitan dengan kawasan tersebut; TPK Park Sdn. Bhd. tidak memiliki atau mengawal keseluruhan taman perindustrian.",
     blocks: [
-      { type: "split", title: "Praktikal dahulu. Lebih tersusun dari semasa ke semasa.", text: "Asasnya ialah kekuatan persekitaran perindustrian matang: akses kenderaan terus, parkir aras tanah, pemunggahan mudah dan hubungan jalan raya yang baik. Pembaharuan menambah campuran penyewa yang lebih jelas dan persekitaran bersama yang lebih mesra.", image: images.park, alt: "Persekitaran TPK Park di Taman Perindustrian Kinrara" },
+      { type: "split", title: "Praktikal dahulu. Lebih tersusun dari semasa ke semasa.", text: "Asasnya ialah kekuatan persekitaran perindustrian matang: akses kenderaan terus, parkir aras tanah, pemunggahan mudah dan hubungan jalan raya yang baik. Pembaharuan menambah campuran penyewa yang lebih jelas dan persekitaran bersama yang lebih mesra.", image: images.park, alt: "Taman Perindustrian Kinrara yang lazim dirujuk sebagai TPK Park" },
       { type: "cards", kicker: "Cara kami bekerja", title: "Pengurusan yang konsisten.", text: "Pendekatan yang berpijak pada keperluan penyewa dan pengunjung.", items: [
         { number: "01", title: "Pengurusan hartanah", text: "Pengurusan aset dan penyewaan jangka panjang bagi premis terpilih." },
         { number: "02", title: "Pengelompokan perniagaan", text: "Campuran lebih jelas berasaskan Home & Living, Automotif dan Lifestyle." },
@@ -732,7 +731,7 @@ const msPages = {
   leasing: {
     eyebrow: "Penyewaan Hartanah · Puchong",
     title: "Premis Komersial & Perindustrian untuk Disewa di Puchong",
-    description: "Terokai premis komersial dan perindustrian untuk disewa di TPK Park, Puchong, termasuk kedai, bilik pameran, bangunan sesebuah dan bangunan berkembar.",
+    description: "Terokai premis komersial dan perindustrian untuk disewa di Taman Perindustrian Kinrara, yang lazim dirujuk sebagai TPK Park, di Puchong, termasuk kedai, bilik pameran dan keseluruhan bangunan.",
     lead: "Ruang berhadapan pelanggan di Taman Perindustrian Kinrara untuk bilik pameran, runcit, automotif, makanan, kesejahteraan dan perkhidmatan khusus.",
     image: images.leasing,
     blocks: [
@@ -742,7 +741,7 @@ const msPages = {
         { number: "02", title: "Bangunan sesebuah", text: "Pilihan keseluruhan bangunan untuk bilik pameran utama, pusat automotif atau operasi komersial lebih besar.", route: "leasingDetached", image: images.leasingDetached, linkLabel: "Lihat bangunan sesebuah" },
         { number: "03", title: "Bangunan berkembar", text: "Format fleksibel untuk keperluan pameran, servis, paparan, penyimpanan dan operasi.", route: "leasingSemiDetached", image: images.leasingSemiDetached, linkLabel: "Lihat bangunan berkembar" }
       ] },
-      { type: "split", title: "Alamat mudah dilihat di koridor Puchong–Bukit Jalil.", text: "TPK Park menggabungkan akses terus, parkir pengunjung dan kluster perniagaan Home & Living, Automotif serta Lifestyle yang mapan dalam Taman Perindustrian Kinrara.", image: images.leasing, alt: "Hartanah komersial berhadapan pelanggan di TPK Park, Puchong", route: "contact", linkLabel: "Bincangkan keperluan ruang anda" },
+      { type: "split", title: "Alamat mudah dilihat di koridor Puchong–Bukit Jalil.", text: "Di Taman Perindustrian Kinrara, yang lazim dirujuk sebagai TPK Park, perniagaan Home & Living, Automotif dan Lifestyle terpilih mendapat manfaat daripada akses terus, parkir pengunjung dan kluster yang mapan.", image: images.leasing, alt: "Hartanah komersial berhadapan pelanggan di TPK Park, Puchong", route: "contact", linkLabel: "Bincangkan keperluan ruang anda" },
       { type: "cards", kicker: "Kesesuaian penyewa", title: "Perniagaan yang melengkapi destinasi", text: "Strategi penyewaan mengutamakan konsep berguna dan berhadapan pelanggan yang melengkapi campuran perniagaan sedia ada.", items: [
         { number: "A", title: "Home & Living", text: "Perabot, dapur, almari, jubin, perkakasan sanitari, pencahayaan, dalaman dan renovasi." },
         { number: "B", title: "Automotif", text: "Jualan, aksesori, detailing, perkhidmatan EV, bengkel khusus dan kegunaan mobiliti." },
@@ -761,7 +760,7 @@ const msPages = {
     unitKey: "shopShowroom",
     eyebrow: "Penyewaan · Kedai & Bilik Pameran",
     title: "Kedai & Bilik Pameran untuk Disewa di Puchong",
-    description: "Terokai ruang kedai dan bilik pameran untuk disewa di Jalan TPK 2/8, TPK Park dalam Taman Perindustrian Kinrara, Puchong.",
+    description: "Terokai ruang kedai dan bilik pameran untuk disewa di Jalan TPK 2/8, Taman Perindustrian Kinrara, yang lazim dirujuk sebagai TPK Park, di Puchong.",
     lead: "Ruang komersial berketerlihatan tinggi untuk jenama yang memerlukan paparan, akses terus pelanggan dan lokasi dalam kluster perniagaan mapan.",
     image: images.leasingShop,
     blocks: [
@@ -774,7 +773,7 @@ const msPages = {
         { number: "03", title: "Kesan kluster", text: "Perniagaan Home & Living, Automotif dan Lifestyle berdekatan mewujudkan sebab kunjungan yang berguna." }
       ] },
       { type: "faq", kicker: "Soalan kedai & bilik pameran", title: "Merancang pertanyaan anda", items: [
-        { q: "Di manakah unit kedai dan bilik pameran?", a: "Kedai rujukan terletak di sepanjang Jalan TPK 2/8 dalam Taman Perindustrian Kinrara, Puchong." },
+        { q: "Di manakah unit kedai dan bilik pameran?", a: "Kedai rujukan terletak di sepanjang Jalan TPK 2/8, Taman Perindustrian Kinrara, yang lazim dirujuk sebagai TPK Park, di Puchong." },
         { q: "Perniagaan apakah yang sesuai?", a: "Bilik pameran berhadapan pelanggan, runcit khusus, jenama renovasi dan penambahbaikan rumah, kafe, kesejahteraan, pendidikan, klinik dan perkhidmatan pelengkap adalah antara kegunaan keutamaan, tertakluk kepada kelulusan." },
         { q: "Bolehkah saya memuat turun maklumat tambahan?", a: "Ya. Muat turun pek maklumat penyewaan (PDF) pada halaman ini, kemudian hubungi pengurusan untuk mengesahkan unit, ukuran, sewa dan ketersediaan lawatan semasa." }
       ] }
@@ -878,7 +877,7 @@ const zhPages = {
   home: {
     eyebrow: "蒲种 · 雪兰莪",
     title: "成熟工业空间，为日常生活持续更新。",
-    description: "探索蒲种TPK Park：金銮工业园内的家居生活展厅、汽车服务、生活配套及租赁机会。",
+    description: "探索蒲种Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）的家居生活展厅、汽车服务、生活配套及租赁机会。",
     lead: "TPK Park在交通便利的成熟环境中，逐步汇聚家居生活、汽车服务及生活品味业态。",
     image: images.park,
     blocks: [
@@ -891,7 +890,7 @@ const zhPages = {
       { type: "stats", items: [{ value: "16", label: "获认证家居生活集群内的企业" }, { value: "96,728", label: "2026年获认证集群总平方英尺" }, { value: "8", label: "纪录评估涵盖的家居生活类别" }] },
       { type: "news", kicker: "精选报道", title: "媒体眼中的TPK Park", text: "关于家居生活里程碑及园区长期更新的独立报道。", limit: 3 },
       { type: "faq", kicker: "访客须知", title: "出发前先了解", items: [
-        { q: "TPK Park在哪里？", a: "TPK Park位于雪兰莪州蒲种金銮工业园，坐落在蒲种—武吉加里尔走廊。" },
+        { q: "TPK Park指的是哪里？", a: "TPK Park是雪兰莪州蒲种Taman Perindustrian Kinrara（金銮工业园）的通称，位于蒲种—武吉加里尔走廊。" },
         { q: "TPK Park有哪些商家？", a: "园内业态包括家居生活展厅、汽车销售与维修、餐饮、运动、亲子活动、日常所需及专业服务。" },
         { q: "所有商家的营业时间相同吗？", a: "不同。各租户自行决定营业时间，出发前请直接向相关商家确认。" },
         { q: "是否有单位出租？", a: "部分商业与工业空间会不定时开放租赁。请联系管理团队了解最新选择。" },
@@ -902,10 +901,10 @@ const zhPages = {
   about: {
     eyebrow: "关于TPK Park",
     title: "以长期视角经营成熟空间。",
-    description: "了解TPK Park如何通过租户组合、产业更新及地方营造，管理金銮工业园内的特定产业。",
-    lead: "TPK Park是金銮工业园内一组特定商业及工业产业的目的地品牌，并不代表管理整个工业园区。",
+    description: "了解TPK Park Sdn. Bhd.如何通过租户组合、产业更新及地方营造，管理Taman Perindustrian Kinrara（金銮工业园）的特定产业。",
+    lead: "TPK Park是位于蒲种的Taman Perindustrian Kinrara（金銮工业园）的通称。本网站介绍该区内的特定产业、商家及地方更新项目；TPK Park Sdn. Bhd.并不拥有或控制整个工业园。",
     blocks: [
-      { type: "split", title: "实用为先，逐步形成特色。", text: "成熟工业环境的优势包括车辆直达、地面停车、装卸便利及良好道路连接。在此基础上，通过更清晰的租户组合及更友善的共享环境持续更新。", image: images.park, alt: "金銮工业园内的TPK Park街景" },
+      { type: "split", title: "实用为先，逐步形成特色。", text: "成熟工业环境的优势包括车辆直达、地面停车、装卸便利及良好道路连接。在此基础上，通过更清晰的租户组合及更友善的共享环境持续更新。", image: images.park, alt: "Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）" },
       { type: "cards", kicker: "我们的方式", title: "持续管理，脚踏实地。", text: "以租户及访客的实际需要为基础。", items: [
         { number: "01", title: "产业管理", text: "对特定单位进行长期资产与租赁管理。" }, { number: "02", title: "商业集群", text: "围绕家居生活、汽车服务及生活品味规划业态。" }, { number: "03", title: "地方更新", text: "园林、照明、招牌协调、停车及目的地活动。" }
       ] },
@@ -956,8 +955,8 @@ const zhPages = {
   leasing: {
     eyebrow: "蒲种物业租赁",
     title: "蒲种商业与工业单位出租",
-    description: "查找蒲种TPK Park商业及工业单位出租信息，包括商铺、展厅、独立式建筑及半独立式厂房。",
-    lead: "位于金銮工业园的面客空间，适合展厅、零售、汽车、餐饮、健康及专业服务业务。",
+    description: "查找蒲种Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）的商业及工业单位出租信息，包括商铺、展厅、独立式建筑及半独立式厂房。",
+    lead: "Taman Perindustrian Kinrara（金銮工业园）的面客空间，适合展厅、零售、汽车、餐饮、健康及专业服务业务。",
     image: images.leasing,
     blocks: [
       { type: "notice", text: "网页所列的单位供应、面积、叫租及商业条款均为参考资料，须向TPK Park租赁团队确认。" },
@@ -966,7 +965,7 @@ const zhPages = {
         { number: "02", title: "独立式建筑", text: "整栋独立物业，适合旗舰展厅、汽车中心或较大型商业运营。", route: "leasingDetached", image: images.leasingDetached, linkLabel: "查看独立式建筑" },
         { number: "03", title: "半独立式单位", text: "适合展厅、服务、陈列、储存及运营需求的灵活整栋空间。", route: "leasingSemiDetached", image: images.leasingSemiDetached, linkLabel: "查看半独立式单位" }
       ] },
-      { type: "split", title: "位于蒲种—武吉加里尔走廊的醒目商业地址。", text: "TPK Park位于金銮工业园，结合便捷驶入、访客停车，并汇聚成熟的家居生活、汽车服务及生活业态。", image: images.leasing, alt: "蒲种TPK Park面客商业物业", route: "contact", linkLabel: "讨论您的空间需求" },
+      { type: "split", title: "位于蒲种—武吉加里尔走廊的醒目商业地址。", text: "Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）具备便利驶入及访客停车，并汇聚成熟的家居生活、汽车服务及生活业态。", image: images.leasing, alt: "蒲种TPK Park面客商业物业", route: "contact", linkLabel: "讨论您的空间需求" },
       { type: "cards", kicker: "优先租户类型", title: "为园区增加价值的业务", text: "租赁策略优先考虑实用、面向顾客，并能补充现有商业组合的业态。", items: [
         { number: "A", title: "家居生活", text: "家具、厨房、衣柜、瓷砖、卫浴、灯饰、室内设计及装修服务。" },
         { number: "B", title: "汽车服务", text: "销售、配件、美容、电动车相关服务、专业车厂及移动出行业务。" },
@@ -985,7 +984,7 @@ const zhPages = {
     unitKey: "shopShowroom",
     eyebrow: "租赁 · 商铺与展厅",
     title: "蒲种商铺与展厅出租",
-    description: "查找蒲种金銮工业园TPK Park Jalan TPK 2/8沿线的商铺及展厅出租信息。",
+    description: "查找蒲种Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）Jalan TPK 2/8沿线的商铺及展厅出租信息。",
     lead: "适合需要商品展示、顾客直接到访，并希望进驻成熟商业集群的品牌。",
     image: images.leasingShop,
     blocks: [
@@ -998,7 +997,7 @@ const zhPages = {
         { number: "03", title: "集群效应", text: "邻近家居生活、汽车服务及生活业态，为顾客创造实用到访理由。" }
       ] },
       { type: "faq", kicker: "商铺与展厅常见问题", title: "规划您的查询", items: [
-        { q: "商铺与展厅位于哪里？", a: "本页所指商铺位于蒲种金銮工业园Jalan TPK 2/8沿线。" },
+        { q: "商铺与展厅位于哪里？", a: "本页所指商铺位于蒲种Taman Perindustrian Kinrara（金銮工业园，通称TPK Park）Jalan TPK 2/8沿线。" },
         { q: "哪些业务较适合？", a: "面客展厅、专业零售、装修与家居品牌、咖啡馆、健康、教育、诊所及互补服务均属优先考虑用途，但须经批准。" },
         { q: "可以下载更详细的租赁资料吗？", a: "可以。下载本页的租赁资料包（PDF），然后联系管理团队确认当前单位、尺寸、租金及看房时间。" }
       ] }
