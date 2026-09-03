@@ -284,7 +284,10 @@ function renderProfileSources(locale, block) {
   let records;
   if (block.mode === "all") {
     const years = [...new Set(items.map((item) => item.year))];
-    records = years.map((year) => `<div class="source-year-group"><p class="source-year-label">${escapeHtml(year)}</p><div class="source-list">${items.filter((item) => item.year === year).map((item) => renderProfileSource(locale, item)).join("")}</div></div>`).join("");
+    records = years.map((year, index) => `<details class="source-year-group"${index === 0 ? " open" : ""}>
+      <summary class="source-year-summary"><span class="source-year-label">${escapeHtml(year)}</span><span class="source-year-toggle" aria-hidden="true"></span></summary>
+      <div class="source-list">${items.filter((item) => item.year === year).map((item) => renderProfileSource(locale, item)).join("")}</div>
+    </details>`).join("");
   } else {
     records = `<div class="source-list">${items.map((item) => renderProfileSource(locale, item)).join("")}</div>`;
   }

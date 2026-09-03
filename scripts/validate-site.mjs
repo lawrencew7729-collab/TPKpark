@@ -199,7 +199,11 @@ for (const locale of locales) {
     }
 
     if (routeId === "publicRecord") {
+      const sourceYears = [...new Set(profileSources.map((item) => item.year))];
       if (matches(html, /class="source-record"/g).length !== profileSources.length) fail(label, "public record source list is incomplete");
+      if (matches(html, /<details class="source-year-group"/g).length !== sourceYears.length) fail(label, "public record does not provide one disclosure per year");
+      if (matches(html, /<details class="source-year-group" open>/g).length !== 1) fail(label, "only the current public-record year should be expanded by default");
+      if (matches(html, /class="source-year-summary"/g).length !== sourceYears.length) fail(label, "public-record year disclosures are incomplete");
       for (const item of profileSources) if (!html.includes(`href="${item.url}"`)) fail(label, `missing public-record source: ${item.source}`);
     }
 
