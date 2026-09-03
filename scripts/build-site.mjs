@@ -61,7 +61,7 @@ function header(locale, routeId) {
   return `<header class="site-header">
     <div class="header-inner">
       <a class="brand" href="${routePath(locale, "home")}" aria-label="TPK Park ${t.nav.home}">
-        <img class="brand-logo" src="/assets/brand/tpk-park-logo.svg" alt="" width="58" height="31" aria-hidden="true"><span class="brand-name">TPK Park</span>
+        <img class="brand-logo" src="/assets/brand/tpk-park-logo.svg" alt="" width="76" height="41" aria-hidden="true">
       </a>
       <nav class="desktop-nav" aria-label="Primary">${nav}</nav>
       ${localeLinks(locale, routeId)}
@@ -83,7 +83,7 @@ function footer(locale) {
     <div class="shell">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="${routePath(locale, "home")}" aria-label="TPK Park ${t.nav.home}"><img class="brand-logo brand-logo-reverse" src="/assets/brand/tpk-park-logo.svg" alt="" width="58" height="31" aria-hidden="true"><span>TPK Park</span></a>
+          <a class="brand" href="${routePath(locale, "home")}" aria-label="TPK Park ${t.nav.home}"><img class="brand-logo brand-logo-reverse" src="/assets/brand/tpk-park-logo.svg" alt="" width="76" height="41" aria-hidden="true"></a>
           <p>${escapeHtml(t.footerIntro)}</p>
         </div>
         <div><p class="footer-title">${escapeHtml(t.explore)}</p><nav class="footer-links" aria-label="Footer">${explore}</nav></div>
@@ -101,9 +101,12 @@ function footer(locale) {
 function pageHero(locale, routeId, page) {
   const t = site[locale];
   const parent = page.parentRoute ? `<span aria-hidden="true">/</span><a href="${routePath(locale, page.parentRoute)}">${escapeHtml(t.nav[page.parentRoute])}</a>` : "";
+  const title = page.displayNames
+    ? `<h1 class="profile-page-title">${page.displayNames.map((name, index) => `<span class="profile-name-${index === 0 ? "primary" : "secondary"}" lang="${escapeHtml(name.lang)}">${escapeHtml(name.text)}</span>`).join("")}</h1>`
+    : `<h1>${escapeHtml(page.title)}</h1>`;
   return `<section class="page-hero"><div class="shell">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="${routePath(locale, "home")}">${escapeHtml(t.breadcrumbHome)}</a>${parent}<span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(page.eyebrow)}</span></nav>
-    <div class="page-hero-grid"><div><p class="eyebrow">${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1></div><p class="page-hero-copy">${escapeHtml(page.lead)}</p></div>
+    <div class="page-hero-grid"><div><p class="eyebrow">${escapeHtml(page.eyebrow)}</p>${title}</div><p class="page-hero-copy">${escapeHtml(page.lead)}</p></div>
   </div></section>`;
 }
 
