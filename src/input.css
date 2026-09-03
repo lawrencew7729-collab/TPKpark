@@ -181,6 +181,22 @@ button, input, select, textarea { font: inherit; }
 .profile-role { color: var(--forest); font-weight: 800; margin: 20px 0 8px; }
 .profile-descriptor { color: rgba(16,23,19,.58); margin: 0 0 28px; }
 .profile-intro { font-size: 1.18rem; max-width: 690px; }
+.profile-sources-section { background: var(--paper-deep); }
+.source-years { display: grid; gap: 52px; }
+.source-year-group { display: grid; grid-template-columns: .3fr 1.7fr; gap: 42px; align-items: start; }
+.source-year-label { margin: 0; color: var(--gold); font-family: Georgia, "Times New Roman", serif; font-size: 2rem; line-height: 1; }
+.source-list { border-top: 1px solid var(--line); }
+.source-record { display: grid; grid-template-columns: .55fr 1.45fr; gap: 30px; padding: 28px 0 30px; border-bottom: 1px solid var(--line); align-items: start; }
+.source-record-meta { display: grid; gap: 8px; color: rgba(16,23,19,.56); font-size: 11px; font-weight: 750; letter-spacing: .09em; line-height: 1.45; text-transform: uppercase; }
+.source-record-meta time, .source-record-meta > span:first-child { color: var(--gold); }
+.source-publisher { margin: 0 0 8px !important; color: rgba(16,23,19,.55) !important; font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.source-record-copy h3 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: 1.55rem; font-weight: 400; line-height: 1.2; }
+.source-record-copy h3 a { text-decoration: none; }
+.source-record-copy h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.source-record-copy > p:last-child { margin: 0; color: rgba(16,23,19,.66); }
+.source-arrow { display: inline-block; color: var(--gold); font-family: Arial, sans-serif; font-size: .75em; transition: transform .2s ease; }
+.source-record-copy h3 a:hover .source-arrow { transform: translate(2px,-2px); }
+.source-more { margin-top: 34px; }
 
 .faq-list { max-width: 860px; margin-left: auto; }
 .faq-list details { border-top: 1px solid var(--line); }
@@ -246,6 +262,7 @@ button, input, select, textarea { font: inherit; }
   .mobile-nav { display: grid; }
   .mobile-nav a { padding: 13px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-family: Georgia, serif; font-size: 1.45rem; }
   .page-hero-grid, .section-header, .profile-hero { grid-template-columns: 1fr; gap: 30px; }
+  .source-year-group { grid-template-columns: .2fr 1.8fr; gap: 28px; }
   .profile-portrait { max-width: 520px; }
   .news-feature { grid-template-columns: 1fr; }
   .news-feature-media { min-height: 410px; max-height: 520px; }
@@ -287,6 +304,10 @@ button, input, select, textarea { font: inherit; }
   .unit-actions .text-link { margin: 8px 0 0; }
   .timeline-row { grid-template-columns: .35fr 1fr; }
   .timeline-row p { grid-column: 2; }
+  .source-year-group { grid-template-columns: 1fr; gap: 18px; }
+  .source-year-label { font-size: 1.6rem; }
+  .source-record { grid-template-columns: 1fr; gap: 14px; }
+  .source-record-meta { grid-template-columns: max-content 1fr; gap: 8px 18px; }
   .contact-grid { grid-template-columns: 1fr; gap: 54px; }
   .form-grid { grid-template-columns: 1fr; }
   .field-full, .form-note { grid-column: auto; }

@@ -7,6 +7,7 @@ import {
   localeConfig,
   origin,
   primaryNav,
+  profileSources,
   routeIds,
   routeLastModified,
   routePath,
@@ -260,6 +261,37 @@ function renderProfile(page, block) {
   </div></div></section>`;
 }
 
+function renderProfileSource(locale, item) {
+  const t = site[locale];
+  const sourceLanguage = t.newsUi.sourceLanguages[item.sourceLanguage];
+  const date = item.date ? formatDate(locale, item.date) : item.year;
+  const time = item.date
+    ? `<time datetime="${item.date}">${escapeHtml(date)}</time>`
+    : `<span>${escapeHtml(item.year)}</span>`;
+  return `<article class="source-record">
+    <div class="source-record-meta">${time}<span>${escapeHtml(t.recordUi.categories[item.category])}</span></div>
+    <div class="source-record-copy">
+      <p class="source-publisher">${escapeHtml(item.source)} · ${escapeHtml(sourceLanguage)}</p>
+      <h3><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title[locale])} <span class="source-arrow" aria-hidden="true">↗</span><span class="visually-hidden"> (${escapeHtml(t.external)})</span></a></h3>
+      <p>${escapeHtml(item.summary[locale])}</p>
+    </div>
+  </article>`;
+}
+
+function renderProfileSources(locale, block) {
+  const t = site[locale];
+  const items = block.mode === "featured" ? profileSources.filter((item) => item.featured) : profileSources;
+  let records;
+  if (block.mode === "all") {
+    const years = [...new Set(items.map((item) => item.year))];
+    records = years.map((year) => `<div class="source-year-group"><p class="source-year-label">${escapeHtml(year)}</p><div class="source-list">${items.filter((item) => item.year === year).map((item) => renderProfileSource(locale, item)).join("")}</div></div>`).join("");
+  } else {
+    records = `<div class="source-list">${items.map((item) => renderProfileSource(locale, item)).join("")}</div>`;
+  }
+  const more = block.moreRoute ? `<div class="source-more"><a class="button button-outline" href="${routePath(locale, block.moreRoute)}">${escapeHtml(t.recordUi.fullRecord)} <span class="arrow" aria-hidden="true">→</span></a></div>` : "";
+  return `<section class="section profile-sources-section"><div class="shell">${sectionHeader(block)}<div class="source-years">${records}</div>${more}</div></section>`;
+}
+
 function renderContact(locale, block) {
   const t = site[locale];
   const f = t.form;
@@ -302,6 +334,7 @@ function renderBlock(locale, routeId, page, block, index) {
     case "notice": return renderNotice(locale, block);
     case "unitDetails": return renderUnitDetails(locale, block);
     case "profile": return renderProfile(page, block);
+    case "profileSources": return renderProfileSources(locale, block);
     case "contact": return renderContact(locale, block);
     default: throw new Error(`Unknown block type: ${block.type}`);
   }
@@ -316,10 +349,14 @@ function cta(locale, page) {
 
 function schemas(locale, routeId, page) {
   const url = absolute(locale, routeId);
-  const personId = `${url}#person`;
+  const profileUrl = absolute(locale, "profile");
+  const personId = `${profileUrl}#person`;
   const organizationId = `${origin}/#organization`;
   const placeId = `${origin}/#taman-perindustrian-kinrara`;
-  const pageEntityId = routeId === "profile" ? personId : placeId;
+  const personPage = ["profile", "publicRecord"].includes(routeId);
+  const pageEntityId = personPage ? personId : placeId;
+  const pageType = routeId === "profile" ? "ProfilePage" : routeId === "publicRecord" ? "CollectionPage" : "WebPage";
+  const recordListId = `${url}#record-list`;
   const graph = [
     {
       "@type": "Organization",
@@ -353,7 +390,7 @@ function schemas(locale, routeId, page) {
       inLanguage: localeConfig[locale].htmlLang
     },
     {
-      "@type": "WebPage",
+      "@type": pageType,
       "@id": `${url}#webpage`,
       url,
       name: page.title,
@@ -361,7 +398,7 @@ function schemas(locale, routeId, page) {
       isPartOf: { "@id": `${origin}/#website` },
       publisher: { "@id": organizationId },
       about: { "@id": pageEntityId },
-      mainEntity: { "@id": pageEntityId },
+      mainEntity: { "@id": routeId === "publicRecord" ? recordListId : pageEntityId },
       datePublished: "2026-09-01",
       dateModified: routeLastModified[routeId],
       inLanguage: localeConfig[locale].htmlLang
@@ -408,7 +445,7 @@ function schemas(locale, routeId, page) {
     });
   }
 
-  if (routeId === "profile") {
+  if (personPage) {
     graph.push({
       "@type": "Person",
       "@id": personId,
@@ -416,12 +453,28 @@ function schemas(locale, routeId, page) {
       alternateName: "黄松延",
       jobTitle: "Managing Director",
       worksFor: { "@id": `${origin}/#organization` },
-      url,
+      url: profileUrl,
       image: images.portrait,
-      mainEntityOfPage: { "@id": `${url}#webpage` },
+      ...(routeId === "profile" ? { mainEntityOfPage: { "@id": `${url}#webpage` } } : {}),
       sameAs: ["https://www.linkedin.com/in/wong-shung-yen/", "https://www.imdb.com/name/nm6562891/"],
       alumniOf: [{ "@type": "CollegeOrUniversity", name: "University of Melbourne" }],
       knowsAbout: ["Property Development", "Industrial Real Estate", "Asset Management", "Retail Clustering", "Placemaking"]
+    });
+  }
+
+  if (routeId === "publicRecord") {
+    graph.push({
+      "@type": "ItemList",
+      "@id": recordListId,
+      name: page.title,
+      numberOfItems: profileSources.length,
+      about: { "@id": personId },
+      itemListElement: profileSources.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: item.url,
+        name: item.title[locale]
+      }))
     });
   }
 
