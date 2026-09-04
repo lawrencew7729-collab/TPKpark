@@ -228,7 +228,7 @@ button, input, select, textarea { font: inherit; }
 .field textarea { min-height: 155px; resize: vertical; }
 .form-note { grid-column: 1 / -1; font-size: 12px; color: rgba(16,23,19,.58); margin: 0; }
 
-.cta-panel { margin: 0 auto clamp(72px, 10vw, 126px); max-width: var(--max); padding: clamp(42px, 8vw, 86px); background: var(--forest); color: var(--cream); border-radius: 28px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 50px; align-items: end; }
+.cta-panel { margin: clamp(24px, 3vw, 48px) auto clamp(72px, 10vw, 126px); max-width: var(--max); padding: clamp(42px, 8vw, 86px); background: var(--forest); color: var(--cream); border-radius: 28px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 50px; align-items: end; }
 .cta-panel p { color: rgba(255,255,255,.68); max-width: 600px; }
 .cta-panel .button { justify-self: end; }
 
