@@ -652,10 +652,10 @@ const enPages = {
         { value: "8", label: "categories represented in the assessment" }
       ] },
       { type: "directory", kicker: "Business mix", title: "A practical renovation journey", text: "Tenant names and operating details may change; contact each business directly before visiting.", items: [
-        ["Furniture", "Lavino"], ["Hardware", "Ga Hing"], ["Kitchen & Bath", "Kuche + BaTH"], ["Tiles & Surfaces", "Jubin BMS"],
-        ["Kitchen Systems", "Signature"], ["Curtains", "MK Curtain"], ["Interior Finishes", "Baagus"], ["Tools", "Total Tools"],
-        ["Furniture", "V Haus Living"], ["Design", "Balens Design"], ["Build Solutions", "BUILTOP"], ["Doors", "Premio Door"],
-        ["Interior Design", "Choose Interior"], ["Furniture", "KLOT"], ["Home Products", "DC Moto"], ["Home Products", "Fagolli"]
+        ["Furniture", "Lavino"], ["Kitchen, Bath & Tiles", "Ga Hing"], ["Kitchen & Bath", "Kuche + BaTH"], ["Tiles & Surfaces", "Jubin BMS"],
+        ["Kitchen & Home Solutions", "Signature"], ["Curtains", "MK Curtain"], ["Curtains", "Baagus"], ["Tools", "Total Tools"],
+        ["Furniture", "V Haus Living"], ["Design & Build", "Balens Design"], ["Build Solutions", "BUILTOP"], ["Door & Gate", "Premio Door"],
+        ["Interior Design", "Choose Interior"], ["Furniture", "KLOT"], ["Door & Gate", "DC Moto"], ["Door & Gate", "Fagolli"]
       ] },
       { type: "cards", kicker: "Plan a visit", title: "From first idea to final detail", text: "Use the cluster as a starting point, then confirm individual stock, appointments and hours directly with each business.", items: [
         { number: "01", title: "Compare", text: "See materials and finishes in person before making a decision." },
@@ -940,7 +940,7 @@ const msPages = {
         { value: "16", label: "perniagaan dalam kluster yang diiktiraf pada 2026" }, { value: "96,728", label: "kaki persegi keseluruhan perniagaan yang diiktiraf" }, { value: "8", label: "kategori dalam penilaian" }
       ] },
       { type: "directory", kicker: "Campuran perniagaan", title: "Perjalanan renovasi yang praktikal", text: "Nama penyewa dan waktu operasi boleh berubah; hubungi setiap perniagaan sebelum berkunjung.", items: [
-        ["Perabot", "Lavino"], ["Perkakasan", "Ga Hing"], ["Dapur & Bilik Mandi", "Kuche + BaTH"], ["Jubin & Permukaan", "Jubin BMS"], ["Sistem Dapur", "Signature"], ["Langsir", "MK Curtain"], ["Kemasan Dalaman", "Baagus"], ["Peralatan", "Total Tools"], ["Perabot", "V Haus Living"], ["Reka Bentuk", "Balens Design"], ["Penyelesaian Binaan", "BUILTOP"], ["Pintu", "Premio Door"], ["Reka Bentuk Dalaman", "Choose Interior"], ["Perabot", "KLOT"], ["Produk Rumah", "DC Moto"], ["Produk Rumah", "Fagolli"]
+        ["Perabot", "Lavino"], ["Dapur, Bilik Mandi & Jubin", "Ga Hing"], ["Dapur & Bilik Mandi", "Kuche + BaTH"], ["Jubin & Permukaan", "Jubin BMS"], ["Penyelesaian Dapur & Rumah", "Signature"], ["Langsir", "MK Curtain"], ["Langsir", "Baagus"], ["Peralatan", "Total Tools"], ["Perabot", "V Haus Living"], ["Reka Bentuk & Bina", "Balens Design"], ["Penyelesaian Binaan", "BUILTOP"], ["Pintu & Pagar", "Premio Door"], ["Reka Bentuk Dalaman", "Choose Interior"], ["Perabot", "KLOT"], ["Pintu & Pagar", "DC Moto"], ["Pintu & Pagar", "Fagolli"]
       ] },
       { type: "cards", kicker: "Rancang kunjungan", title: "Daripada idea awal hingga perincian akhir", text: "Gunakan kluster ini sebagai titik mula, kemudian sahkan stok, janji temu dan waktu secara terus.", items: [
         { number: "01", title: "Bandingkan", text: "Lihat bahan dan kemasan secara fizikal sebelum membuat keputusan." }, { number: "02", title: "Selaraskan", text: "Bawa ukuran, rujukan dan garis masa projek anda." }, { number: "03", title: "Sahkan", text: "Semak sebut harga, jaminan, penghantaran dan pemasangan dengan peruncit." }
@@ -1191,7 +1191,7 @@ const zhPages = {
     lead: "顾客可在一趟行程中比较更多方案，商家也能从聚焦型目的地中产生协同效应。",
     blocks: [
       { type: "stats", items: [{ value: "16", label: "2026年获认证集群内的企业" }, { value: "96,728", label: "获认证企业总平方英尺" }, { value: "8", label: "评估涵盖的类别" }] },
-      { type: "directory", kicker: "业态组合", title: "实用的装修采购路线", text: "租户及营业信息可能变更，出发前请直接向商家确认。", items: [["家具", "Lavino"], ["五金", "Ga Hing"], ["厨卫", "Kuche + BaTH"], ["瓷砖与表面", "Jubin BMS"], ["厨房系统", "Signature"], ["窗帘", "MK Curtain"], ["室内饰面", "Baagus"], ["工具", "Total Tools"], ["家具", "V Haus Living"], ["设计", "Balens Design"], ["建筑方案", "BUILTOP"], ["门类", "Premio Door"], ["室内设计", "Choose Interior"], ["家具", "KLOT"], ["家居产品", "DC Moto"], ["家居产品", "Fagolli"]] },
+      { type: "directory", kicker: "业态组合", title: "实用的装修采购路线", text: "租户及营业信息可能变更，出发前请直接向商家确认。", items: [["家具", "Lavino"], ["厨房、卫浴与瓷砖", "Ga Hing"], ["厨卫", "Kuche + BaTH"], ["瓷砖与表面", "Jubin BMS"], ["厨房与家居方案", "Signature"], ["窗帘", "MK Curtain"], ["窗帘", "Baagus"], ["工具", "Total Tools"], ["家具", "V Haus Living"], ["设计与施工", "Balens Design"], ["建筑方案", "BUILTOP"], ["门与门闸", "Premio Door"], ["室内设计", "Choose Interior"], ["家具", "KLOT"], ["门与门闸", "DC Moto"], ["门与门闸", "Fagolli"]] },
       { type: "cards", kicker: "规划行程", title: "从第一步灵感到最后细节", text: "可先从集群寻找方向，再直接确认库存、预约及营业时间。", items: [
         { number: "01", title: "比较", text: "亲自查看材料与饰面后再作决定。" }, { number: "02", title: "协调", text: "带上尺寸、参考图片及项目时间表。" }, { number: "03", title: "确认", text: "向商家确认报价、保修、送货及安装安排。" }
       ] }
