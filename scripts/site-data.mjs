@@ -689,8 +689,8 @@ const enPages = {
     lead: "Beyond showrooms and workshops, TPK Park supports the routines that bring colleagues, families and visitors back through the week.",
     blocks: [
       { type: "directory", kicker: "Around the park", title: "Eat, move, learn and get things done", text: "Individual businesses manage their own programmes, bookings and opening hours.", items: [
-        ["Dining", "m.o.t.d"], ["Dining", "Jazmina Bistro"], ["Swimming", "Optimum Swim School"], ["Gymnastics", "Aces Gymnastics Academy"],
-        ["Optical", "Forsee Lens"], ["Convenience", "99 Speedmart"], ["Family Services", "Happivilles"], ["Wellness", "Aafiyah"]
+        ["Dining", "m.o.t.d"], ["Dining", "Jazmina Bistro"], ["Dining", "Nasi Lemak Daun Pisang Nuarina"], ["Dining", "Yummy Nyonya Kitchen"],
+        ["Swimming", "Optimum Swim School"], ["Gymnastics", "Aces Gymnastic Academy"], ["Optical", "Forsee Lens"], ["Convenience", "99 Speedmart"], ["Wellness", "Happivilles"]
       ] },
       { type: "cards", kicker: "Everyday rhythm", title: "More reasons to return", text: "A mixed destination works best when it supports both planned visits and ordinary daily needs.", items: [
         { number: "01", title: "Meet", text: "Casual dining and practical places to pause between appointments." },
@@ -968,7 +968,7 @@ const msPages = {
     description: "Temui makanan, kecergasan, renang, gimnastik, optik dan keperluan harian di TPK Park, Puchong.",
     lead: "Di samping bilik pameran dan bengkel, TPK Park menyokong rutin yang membawa pekerja, keluarga dan pengunjung kembali sepanjang minggu.",
     blocks: [
-      { type: "directory", kicker: "Sekitar taman", title: "Makan, bergerak, belajar dan selesaikan urusan", text: "Setiap perniagaan mengurus program, tempahan dan waktu operasinya sendiri.", items: [["Makanan", "m.o.t.d"], ["Makanan", "Jazmina Bistro"], ["Renang", "Optimum Swim School"], ["Gimnastik", "Aces Gymnastics Academy"], ["Optik", "Forsee Lens"], ["Kedai Serbaneka", "99 Speedmart"], ["Perkhidmatan Keluarga", "Happivilles"], ["Kesejahteraan", "Aafiyah"]] },
+      { type: "directory", kicker: "Sekitar taman", title: "Makan, bergerak, belajar dan selesaikan urusan", text: "Setiap perniagaan mengurus program, tempahan dan waktu operasinya sendiri.", items: [["Makanan", "m.o.t.d"], ["Makanan", "Jazmina Bistro"], ["Makanan", "Nasi Lemak Daun Pisang Nuarina"], ["Makanan", "Yummy Nyonya Kitchen"], ["Renang", "Optimum Swim School"], ["Gimnastik", "Aces Gymnastic Academy"], ["Optik", "Forsee Lens"], ["Kedai Serbaneka", "99 Speedmart"], ["Kesejahteraan", "Happivilles"]] },
       { type: "cards", kicker: "Rentak harian", title: "Lebih banyak sebab untuk kembali", text: "Destinasi bercampur berfungsi baik apabila menyokong kunjungan terancang dan keperluan biasa.", items: [
         { number: "01", title: "Bertemu", text: "Tempat makan santai dan berhenti seketika antara janji temu." }, { number: "02", title: "Bergerak", text: "Aktiviti renang, gimnastik dan kesejahteraan berstruktur." }, { number: "03", title: "Mengurus", text: "Keperluan harian dan perkhidmatan bersama kunjungan perniagaan." }
       ] },
@@ -1216,7 +1216,7 @@ const zhPages = {
     description: "在蒲种TPK Park寻找餐饮、健身、游泳、体操、眼镜服务及日常所需。",
     lead: "除了展厅与车厂，TPK Park也通过日常配套，让员工、家庭及访客在一周内有更多回访理由。",
     blocks: [
-      { type: "directory", kicker: "园区周边", title: "用餐、运动、学习与处理日常事务", text: "各商家自行管理课程、预约及营业时间。", items: [["餐饮", "m.o.t.d"], ["餐饮", "Jazmina Bistro"], ["游泳", "Optimum Swim School"], ["体操", "Aces Gymnastics Academy"], ["眼镜", "Forsee Lens"], ["便利店", "99 Speedmart"], ["亲子服务", "Happivilles"], ["健康", "Aafiyah"]] },
+      { type: "directory", kicker: "园区周边", title: "用餐、运动、学习与处理日常事务", text: "各商家自行管理课程、预约及营业时间。", items: [["餐饮", "m.o.t.d"], ["餐饮", "Jazmina Bistro"], ["餐饮", "Nasi Lemak Daun Pisang Nuarina"], ["餐饮", "Yummy Nyonya Kitchen"], ["游泳", "Optimum Swim School"], ["体操", "Aces Gymnastic Academy"], ["眼镜", "Forsee Lens"], ["便利店", "99 Speedmart"], ["健康", "Happivilles"]] },
       { type: "cards", kicker: "日常节奏", title: "更多回访理由", text: "混合型目的地既支持计划行程，也照顾日常需要。", items: [
         { number: "01", title: "会面", text: "在预约之间用餐或短暂停留。" }, { number: "02", title: "活动", text: "游泳、体操及健康课程。" }, { number: "03", title: "办事", text: "配合商业行程处理日常所需。" }
       ] },
